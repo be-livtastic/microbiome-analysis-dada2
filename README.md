@@ -254,36 +254,6 @@ Use `scripts/pipelines/single_end_16s.R` instead of main pipeline
 
 ---
 
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**1. "Reference FASTA not found"**
-- Download SILVA files from Zenodo
-- Place in `data/external/reference/` folder
-- Verify file names match exactly
-
-**2. "No paired FASTQ files found"**
-- Check files are in `data/raw/fastq/`
-- Verify naming: `*_1.fastq` and `*_2.fastq`
-- Ensure files are uncompressed (or use `.fastq.gz`)
-
-**3. "Error in learnErrors: Not enough reads"**
-- Increase number of samples (need ≥3 for error learning)
-- Or reduce `truncLen` (retaining more reads after filtering)
-
-**4. Low merge rate (<50%)**
-- Increase `truncLen` for overlap
-- Check primer trimming removed all adapters
-- Use `troubleshooting.R` to inspect read sequences
-
-**For detailed diagnostics:**
-```r
-source("scripts/pipelines/troubleshooting.R")
-```
-
----
-
 ## 📚 References & Resources
 
 **DADA2 Documentation:**
