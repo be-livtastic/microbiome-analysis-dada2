@@ -21,16 +21,14 @@
 
 ## 📋 Project Overview
 
-This project implements a complete **16S rRNA gene amplicon sequencing analysis workflow** using the industry-standard DADA2 pipeline in R. Starting from raw FASTQ files downloaded from NCBI SRA, the pipeline performs quality control, denoising, taxonomic classification, and generates publication-ready microbiome composition data.
+This project implements a complete **16S rRNA gene amplicon sequencing analysis workflow** using the industry-standard DADA2 pipeline in R. Starting from raw FASTQ files, the pipeline performs quality control, denoising, taxonomic classification, and generates publication-ready microbiome composition data.
 
 **What this pipeline does:**
-- Processes raw Illumina paired-end sequencing data from gut microbiome samples
+- Processes raw Illumina paired-end sequencing data from microbiome samples
 - Performs quality filtering and adapter trimming
 - Infers Amplicon Sequence Variants (ASVs) using DADA2's error-correcting algorithm
 - Assigns taxonomy using the SILVA reference database (v138.1)
 - Tracks read counts through each processing step for quality assurance
-
-**Key biological question:** What bacterial taxa are present in these gut microbiome samples?
 
 ---
 
