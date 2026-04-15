@@ -1,7 +1,7 @@
 # Install SRA toolkit first, then:
 # Create a directory for the project
-mkdir -p ~/microbiome_practice/raw_data
-cd ~/microbiome_practice/raw_data
+mkdir -p ~/microbiome_practice/data/raw/NCBI_SRA_fastq
+cd ~/microbiome_practice/data/raw/NCBI_SRA_fastq
 
 # Download the SRA run info to see all samples
 # Go to: https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA762524
@@ -12,16 +12,16 @@ sudo apt install sra-toolkit # Install the SRA toolkit
 
 # Download a few samples first to test pipeline 
 prefetch SRR15862371 
-fastq-dump --split-files SRR15862371 #
+fasterq-dump --split-files SRR15862371 
 
 prefetch SRR15862375
-fastq-dump --split-files SRR15862375
+fasterq-dump --split-files SRR15862375
 
 prefetch SRR15862387
-fastq-dump --split-files SRR15862387
+fasterq-dump --split-files SRR15862387
 
 prefetch SRR15862389
-fastq-dump --split-files SRR15862389
+fasterq-dump --split-files SRR15862389
 
 # For paired-end data, this creates:
 # SRRxxxxxxx_1.fastq (forward reads)
