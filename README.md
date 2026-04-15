@@ -21,16 +21,14 @@
 
 ## 📋 Project Overview
 
-This project implements a complete **16S rRNA gene amplicon sequencing analysis workflow** using the industry-standard DADA2 pipeline in R. Starting from raw FASTQ files downloaded from NCBI SRA, the pipeline performs quality control, denoising, taxonomic classification, and generates publication-ready microbiome composition data.
+This project implements a complete **16S rRNA gene amplicon sequencing analysis workflow** using the industry-standard DADA2 pipeline in R. Starting from raw FASTQ files, the pipeline performs quality control, denoising, taxonomic classification, and generates publication-ready microbiome composition data.
 
 **What this pipeline does:**
-- Processes raw Illumina paired-end sequencing data from gut microbiome samples
+- Processes raw Illumina paired-end sequencing data from microbiome samples
 - Performs quality filtering and adapter trimming
 - Infers Amplicon Sequence Variants (ASVs) using DADA2's error-correcting algorithm
 - Assigns taxonomy using the SILVA reference database (v138.1)
 - Tracks read counts through each processing step for quality assurance
-
-**Key biological question:** What bacterial taxa are present in these gut microbiome samples?
 
 ---
 
@@ -253,36 +251,6 @@ Use `scripts/pipelines/single_end_16s.R` instead of main pipeline
 - SRR15862405  
 - SRR15862407
 - SRR15862409
-
----
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**1. "Reference FASTA not found"**
-- Download SILVA files from Zenodo
-- Place in `data/external/reference/` folder
-- Verify file names match exactly
-
-**2. "No paired FASTQ files found"**
-- Check files are in `data/raw/fastq/`
-- Verify naming: `*_1.fastq` and `*_2.fastq`
-- Ensure files are uncompressed (or use `.fastq.gz`)
-
-**3. "Error in learnErrors: Not enough reads"**
-- Increase number of samples (need ≥3 for error learning)
-- Or reduce `truncLen` (retaining more reads after filtering)
-
-**4. Low merge rate (<50%)**
-- Increase `truncLen` for overlap
-- Check primer trimming removed all adapters
-- Use `troubleshooting.R` to inspect read sequences
-
-**For detailed diagnostics:**
-```r
-source("scripts/pipelines/troubleshooting.R")
-```
 
 ---
 
