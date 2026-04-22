@@ -22,7 +22,7 @@ set.seed(1)
 #
 # Everything downstream of primer removal (error learning, denoising, merging,
 # taxonomy) is shared between both modes.
-pipeline_mode <- "cutadapt"  # Change to "standard" to use the cutadapt workflow
+pipeline_mode <- "cutadapt"  # Change to "standard" to use the standard workflow
 
 # ---- DEFINE PROJECT PATHS ----
 # Using here::here() makes paths work regardless of working directory
