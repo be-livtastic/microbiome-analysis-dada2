@@ -22,11 +22,10 @@ set.seed(1)
 #
 # Everything downstream of primer removal (error learning, denoising, merging,
 # taxonomy) is shared between both modes.
-pipeline_mode <- "standard"  # Change to "cutadapt" to use the cutadapt workflow
+pipeline_mode <- "cutadapt"  # Change to "standard" to use the cutadapt workflow
 
 # ---- DEFINE PROJECT PATHS ----
 # Using here::here() makes paths work regardless of working directory
-# This means the script runs on any computer without modification
 
 project_dir <- here::here() # Root directory of the R project
 
@@ -40,7 +39,7 @@ filtered_dir <- here::here("data", "processed", "dada2")
 # This file assigns taxonomy (Kingdom → Species) to our sequences
 reference_fasta <- here::here(
   "data", "external", "reference",
-  "silva_nr99_v138.1_wSpecies_train_set.fa.gz"
+  "silva_species_assignment_v138.1.fa.gz"
 )
 
 
@@ -334,6 +333,13 @@ if (pipeline_mode == "cutadapt") {
   R1.flags <- paste("-g", FWD_primer, "-a", REV.RC)
   R2.flags <- paste("-G", REV_primer, "-A", FWD.RC)
 
+  # On Linux, paths need no conversion — use them directly 
+  n_filtered_forward_wsl <- to_wsl_path(n_filtered_forward)
+  n_filtered_reverse_wsl <- to_wsl_path(n_filtered_reverse)
+  fnFs.cut_wsl <- to_wsl_path(fnFs.cut)
+  fnRs.cut_wsl <- to_wsl_path(fnRs.cut)
+
+  
   # Run cutadapt for each sample
   for (i in seq_along(n_filtered_forward)) {
     cat("Trimming primers for sample:", sample_names[i], "\n")
@@ -346,13 +352,23 @@ if (pipeline_mode == "cutadapt") {
         "-n", "2",                      # Run adapter trimming twice to catch read-through amplicons
         "--discard-untrimmed",          # Discard read pairs where the primer was NOT found
                                         # (these are likely non-target amplification products)
-        "-o", to_wsl_path(fnFs.cut[i]),
-        "-p", to_wsl_path(fnRs.cut[i]),
-        to_wsl_path(n_filtered_forward[i]),
-        to_wsl_path(n_filtered_reverse[i])
-      )
+  "-o", fnFs.cut_wsl[i],
+        "-p", fnRs.cut_wsl[i],
+        n_filtered_forward_wsl[i],
+        n_filtered_reverse_wsl[i]
+      ),
+      stdout = TRUE,
+      stderr = TRUE
     )
+    
+    cutadapt_logs[[i]] <- cmd
   }
+  
+  # ---- 11. Save logs for reproducibility ----
+  log_file <- file.path(cutadapt_dir, "cutadapt_run_log.txt")
+  writeLines(unlist(cutadapt_logs), con = log_file)
+  
+  cat("\nCutadapt run complete. Logs saved to:\n", log_file, "\n")
 
   # Verify primers are removed; counts should be ~0 after cutadapt
   primer_counts_post_cut <- rbind(
@@ -373,16 +389,14 @@ if (pipeline_mode == "cutadapt") {
   # Do not combine these two filterAndTrim calls - N-filtering must complete
   # before cutadapt runs, and quality filtering must follow cutadapt output.
 
-  trunc_len <- c(150L, 150L) # Adjust based on quality plots of the cutadapt output reads
-                              # Post-cutadapt reads vary in length, so truncLen enforces uniformity
 
   filtering_stats <- filterAndTrim(
     fnFs.cut, filtered_forward,   # Input: cutadapt-trimmed reads; output: quality-filtered reads
-    fnRs.cut, filtered_reverse,
-    truncLen    = trunc_len,
+    fnRs.cut, filtered_reverse,,
     maxN        = 0,
     maxEE       = c(2, 5),
     truncQ      = 2,
+    minLen      = 50,          # Discard reads that are too short after trimming; adjust as needed
     rm.phix     = TRUE,
     compress    = TRUE,
     multithread = use_multithread
@@ -391,7 +405,7 @@ if (pipeline_mode == "cutadapt") {
   # Hand off to shared downstream steps
   reads_for_dada_F <- filtered_forward
   reads_for_dada_R <- filtered_reverse
-}
+} # end if (pipeline_mode == "cutadapt")
 
 
 # =============================================================================
@@ -436,9 +450,10 @@ err_reverse  <- learnErrors(reads_for_dada_R, multithread = use_multithread)
 #   Red line   = expected error rates based purely on Q-scores
 # A good fit confirms the error model has learned the run's characteristics.
 # If dots diverge badly from the line, the error model is unreliable - check input read quality.
-plotErrors(err_forward, nominalQ = TRUE)
-plotErrors(err_reverse,  nominalQ = TRUE)
-
+print(plotErrors(err_forward, nominalQ = TRUE))
+print(plotErrors(err_reverse,  nominalQ = TRUE))
+saveRDS(plotErrors(err_forward, nominalQ = TRUE), file.path(filtered_dir, "err_forward.rds"))
+saveRDS(plotErrors(err_reverse,  nominalQ = TRUE), file.path(filtered_dir, "err_reverse.rds"))
 
 # =============================================================================
 # SHARED: DADA2 DENOISING
@@ -493,10 +508,11 @@ print(dada_forward[[1]])
 mergers <- mergePairs(
   dada_forward, reads_for_dada_F,
   dada_reverse, reads_for_dada_R,
+  minOverlap = 7,     # reduced from default 12; matches dataset ~8bp theoretical overlap, treat results skeptically
+  maxMismatch  = 0,       # keep strict on mismatches to compensate for short overlap
   verbose = TRUE
 )
 print(head(mergers[[1]]))
-
 
 # =============================================================================
 # SHARED: BUILD SEQUENCE TABLE AND LENGTH FILTER
@@ -562,10 +578,16 @@ saveRDS(nonchim_sequence_table, file.path(filtered_dir, "ASV_table.rds"))
 # Column count_unique_reads: counts distinct sequences (uniques), not total reads
 
 count_unique_reads <- function(x) sum(getUniques(x))
-
 # Guard: filtering may drop some samples entirely if they had very few reads.
 # Use the rownames of nonchim_sequence_table as the authoritative sample list.
 surviving_samples <- rownames(nonchim_sequence_table)
+
+#Strip the "_F_cut.fastq.gz" suffix from the rownames of filtering_stats to match sample names
+clean_names <- sub("_F_cut.fastq.gz", "", rownames(filtering_stats))
+rownames(filtering_stats) <- clean_names
+
+# Sanity check: Take the intersection of surviving samples and filtering_stats to ensure we only include samples that made it through filtering
+common_samples <- intersect(surviving_samples, rownames(filtering_stats))
 
 tracking_table <- cbind(
   filtering_stats[surviving_samples, , drop = FALSE],
