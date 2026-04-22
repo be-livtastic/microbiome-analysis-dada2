@@ -1,0 +1,671 @@
+nohup: ignoring input
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, basename, cbind, colnames,
+    dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+    grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+    union, unique, unsplit, which.max, which.min
+
+Loading required package: BiocParallel
+Loading required package: Biostrings
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+Loading required package: IRanges
+Loading required package: XVector
+Loading required package: GenomeInfoDb
+
+Attaching package: ‘Biostrings’
+
+The following object is masked from ‘package:base’:
+
+    strsplit
+
+Loading required package: Rsamtools
+Loading required package: GenomicRanges
+Loading required package: GenomicAlignments
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+Attaching package: ‘Biobase’
+
+The following object is masked from ‘package:MatrixGenerics’:
+
+    rowMedians
+
+The following objects are masked from ‘package:matrixStats’:
+
+    anyMissing, rowMedians
+
+Loading required package: Rcpp
+here() starts at /home/ubuntu
+  [1] "SRR15862371_1.fastq" "SRR15862371_2.fastq" "SRR15862373_1.fastq"
+  [4] "SRR15862373_2.fastq" "SRR15862375_1.fastq" "SRR15862375_2.fastq"
+  [7] "SRR15862377_1.fastq" "SRR15862377_2.fastq" "SRR15862379_1.fastq"
+ [10] "SRR15862379_2.fastq" "SRR15862381_1.fastq" "SRR15862381_2.fastq"
+ [13] "SRR15862383_1.fastq" "SRR15862383_2.fastq" "SRR15862385_1.fastq"
+ [16] "SRR15862385_2.fastq" "SRR15862387_1.fastq" "SRR15862387_2.fastq"
+ [19] "SRR15862389_1.fastq" "SRR15862389_2.fastq" "SRR15862391_1.fastq"
+ [22] "SRR15862391_2.fastq" "SRR15862393_1.fastq" "SRR15862393_2.fastq"
+ [25] "SRR15862395_1.fastq" "SRR15862395_2.fastq" "SRR15862397_1.fastq"
+ [28] "SRR15862397_2.fastq" "SRR15862399_1.fastq" "SRR15862399_2.fastq"
+ [31] "SRR15862401_1.fastq" "SRR15862401_2.fastq" "SRR15862403_1.fastq"
+ [34] "SRR15862403_2.fastq" "SRR15862405_1.fastq" "SRR15862405_2.fastq"
+ [37] "SRR15862407_1.fastq" "SRR15862407_2.fastq" "SRR15862409_1.fastq"
+ [40] "SRR15862409_2.fastq" "SRR15862411_1.fastq" "SRR15862411_2.fastq"
+ [43] "SRR15862413_1.fastq" "SRR15862413_2.fastq" "SRR15862415_1.fastq"
+ [46] "SRR15862415_2.fastq" "SRR15862417_1.fastq" "SRR15862417_2.fastq"
+ [49] "SRR15862419_1.fastq" "SRR15862419_2.fastq" "SRR15862421_1.fastq"
+ [52] "SRR15862421_2.fastq" "SRR15862423_1.fastq" "SRR15862423_2.fastq"
+ [55] "SRR15862425_1.fastq" "SRR15862425_2.fastq" "SRR15862427_1.fastq"
+ [58] "SRR15862427_2.fastq" "SRR15862429_1.fastq" "SRR15862429_2.fastq"
+ [61] "SRR15862431_1.fastq" "SRR15862431_2.fastq" "SRR15862433_1.fastq"
+ [64] "SRR15862433_2.fastq" "SRR15862435_1.fastq" "SRR15862435_2.fastq"
+ [67] "SRR15862437_1.fastq" "SRR15862437_2.fastq" "SRR15862439_1.fastq"
+ [70] "SRR15862439_2.fastq" "SRR15862441_1.fastq" "SRR15862441_2.fastq"
+ [73] "SRR15862442_1.fastq" "SRR15862442_2.fastq" "SRR15862444_1.fastq"
+ [76] "SRR15862444_2.fastq" "SRR15862446_1.fastq" "SRR15862446_2.fastq"
+ [79] "SRR15862448_1.fastq" "SRR15862448_2.fastq" "SRR15862450_1.fastq"
+ [82] "SRR15862450_2.fastq" "SRR15862452_1.fastq" "SRR15862452_2.fastq"
+ [85] "SRR15862454_1.fastq" "SRR15862454_2.fastq" "SRR15862456_1.fastq"
+ [88] "SRR15862456_2.fastq" "SRR15862458_1.fastq" "SRR15862458_2.fastq"
+ [91] "SRR15862460_1.fastq" "SRR15862460_2.fastq" "SRR15862462_1.fastq"
+ [94] "SRR15862462_2.fastq" "SRR15862464_1.fastq" "SRR15862464_2.fastq"
+ [97] "SRR15862466_1.fastq" "SRR15862466_2.fastq" "SRR15862468_1.fastq"
+[100] "SRR15862468_2.fastq" "SRR15862470_1.fastq" "SRR15862470_2.fastq"
+[103] "SRR15862472_1.fastq" "SRR15862472_2.fastq" "SRR15862474_1.fastq"
+[106] "SRR15862474_2.fastq" "SRR15862476_1.fastq" "SRR15862476_2.fastq"
+[109] "SRR15862478_1.fastq" "SRR15862478_2.fastq" "SRR15862480_1.fastq"
+[112] "SRR15862480_2.fastq" "SRR15862482_1.fastq" "SRR15862482_2.fastq"
+[115] "SRR15862484_1.fastq" "SRR15862484_2.fastq" "SRR15862486_1.fastq"
+[118] "SRR15862486_2.fastq" "SRR15862488_1.fastq" "SRR15862488_2.fastq"
+[121] "SRR15862490_1.fastq" "SRR15862490_2.fastq" "SRR15862492_1.fastq"
+[124] "SRR15862492_2.fastq" "SRR15862494_1.fastq" "SRR15862494_2.fastq"
+[127] "SRR15862496_1.fastq" "SRR15862496_2.fastq" "SRR15862498_1.fastq"
+[130] "SRR15862498_2.fastq" "SRR15862500_1.fastq" "SRR15862500_2.fastq"
+[133] "SRR15862502_1.fastq" "SRR15862502_2.fastq" "SRR15862504_1.fastq"
+[136] "SRR15862504_2.fastq" "SRR15862506_1.fastq" "SRR15862506_2.fastq"
+[139] "SRR15862508_1.fastq" "SRR15862508_2.fastq" "SRR15862510_1.fastq"
+[142] "SRR15862510_2.fastq" "SRR15862512_1.fastq" "SRR15862512_2.fastq"
+[1] "Found 72 paired samples:"
+ [1] "SRR15862371" "SRR15862373" "SRR15862375" "SRR15862377" "SRR15862379"
+ [6] "SRR15862381" "SRR15862383" "SRR15862385" "SRR15862387" "SRR15862389"
+[11] "SRR15862391" "SRR15862393" "SRR15862395" "SRR15862397" "SRR15862399"
+[16] "SRR15862401" "SRR15862403" "SRR15862405" "SRR15862407" "SRR15862409"
+[21] "SRR15862411" "SRR15862413" "SRR15862415" "SRR15862417" "SRR15862419"
+[26] "SRR15862421" "SRR15862423" "SRR15862425" "SRR15862427" "SRR15862429"
+[31] "SRR15862431" "SRR15862433" "SRR15862435" "SRR15862437" "SRR15862439"
+[36] "SRR15862441" "SRR15862442" "SRR15862444" "SRR15862446" "SRR15862448"
+[41] "SRR15862450" "SRR15862452" "SRR15862454" "SRR15862456" "SRR15862458"
+[46] "SRR15862460" "SRR15862462" "SRR15862464" "SRR15862466" "SRR15862468"
+[51] "SRR15862470" "SRR15862472" "SRR15862474" "SRR15862476" "SRR15862478"
+[56] "SRR15862480" "SRR15862482" "SRR15862484" "SRR15862486" "SRR15862488"
+[61] "SRR15862490" "SRR15862492" "SRR15862494" "SRR15862496" "SRR15862498"
+[66] "SRR15862500" "SRR15862502" "SRR15862504" "SRR15862506" "SRR15862508"
+[71] "SRR15862510" "SRR15862512"
+Warning messages:
+1: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.
+ℹ The deprecated feature was likely used in the dada2 package.
+  Please report the issue at <https://github.com/benjjneb/dada2/issues>. 
+2: The `<scale>` argument of `guides()` cannot be `FALSE`. Use "none" instead as
+of ggplot2 3.3.4.
+ℹ The deprecated feature was likely used in the dada2 package.
+  Please report the issue at <https://github.com/benjjneb/dada2/issues>. 
+
+Forward read length distribution:
+
+   32    33    34    36    43    47    48    52    55    56    57    61    64 
+ 1404     1     1     1     1     1     1     1     1     1     2     1     5 
+   70    72    74    76    77    78    79    83    89    90    91    95    96 
+    1     1     1    60    28     3     1     1     1    16    13     2     2 
+   99   106   109   115   116   117   120   121   123   125   129   130   131 
+    2     1     1    11     6     1     1     1     1     1     4     1     1 
+  141   143   145   147   148   149   150   151 
+    1     1     1     3    10    21  1639 22672 
+
+Reverse read length distribution:
+
+   32    33    34    36    43    47    48    52    55    56    57    61    64 
+ 1351     1     1     1     1     1     1     1     1     1     2     1     5 
+   70    72    73    74    76    77    78    83    89    90    91    94    95 
+    1     1     1     1    58    28     3     1     2    17    12     1     3 
+   96    99   106   109   115   116   117   120   121   123   125   129   143 
+    4     3     1     1     9     7     1     1     1     1     1     4     1 
+  145   147   148   149   150   151 
+    1     8     6    83  4209 20092 
+
+Forward read IDs (first 3):
+[1] "SRR15862371.1 1 length=151" "SRR15862371.2 2 length=151"
+[3] "SRR15862371.3 3 length=151"
+
+Reverse read IDs (first 3):
+[1] "SRR15862371.1 1 length=151" "SRR15862371.2 2 length=151"
+[3] "SRR15862371.3 3 length=151"
+
+Number of identical forward/reverse sequences (should be ~0): 0 
+Forward primer orientations:
+              Forward            Complement               Reverse 
+"GTGYCAGCMGCCGCGGTAA" "CACRGTCGKCGGCGCCATT" "AATGGCGCCGMCGACYGTG" 
+              RevComp 
+"TTACCGCGGCKGCTGRCAC" 
+
+Reverse primer orientations:
+               Forward             Complement                Reverse 
+"GGACTACNVGGGTWTCTAAT" "CCTGATGNBCCCAWAGATTA" "TAATCTWTGGGVNCATCAGG" 
+               RevComp 
+"ATTAGAWACCCBNGTAGTCC" 
+
+--- Running CUTADAPT pipeline (external primer removal, native Linux) ---
+
+N-filtering statistics (reads before/after N removal):
+                    reads.in reads.out
+SRR15862371_1.fastq    25931     25925
+SRR15862373_1.fastq     3893      3892
+SRR15862375_1.fastq    12982     12982
+SRR15862377_1.fastq     3604      3604
+SRR15862379_1.fastq    14205     14202
+SRR15862381_1.fastq     5916      5915
+
+Primer hit counts in N-filtered reads (before cutadapt):
+                 Forward Complement Reverse RevComp
+FWD.ForwardReads   22598          0       0       0
+FWD.ReverseReads       0          0       0       1
+REV.ForwardReads       0          0       0       1
+REV.ReverseReads   22087          0       0       0
+
+cutadapt version: 5.2 
+Trimming primers for sample: SRR15862371 
+Trimming primers for sample: SRR15862373 
+Trimming primers for sample: SRR15862375 
+Trimming primers for sample: SRR15862377 
+Trimming primers for sample: SRR15862379 
+Trimming primers for sample: SRR15862381 
+Trimming primers for sample: SRR15862383 
+Trimming primers for sample: SRR15862385 
+Trimming primers for sample: SRR15862387 
+Trimming primers for sample: SRR15862389 
+Trimming primers for sample: SRR15862391 
+Trimming primers for sample: SRR15862393 
+Trimming primers for sample: SRR15862395 
+Trimming primers for sample: SRR15862397 
+Trimming primers for sample: SRR15862399 
+Trimming primers for sample: SRR15862401 
+Trimming primers for sample: SRR15862403 
+Trimming primers for sample: SRR15862405 
+Trimming primers for sample: SRR15862407 
+Trimming primers for sample: SRR15862409 
+Trimming primers for sample: SRR15862411 
+Trimming primers for sample: SRR15862413 
+Trimming primers for sample: SRR15862415 
+Trimming primers for sample: SRR15862417 
+Trimming primers for sample: SRR15862419 
+Trimming primers for sample: SRR15862421 
+Trimming primers for sample: SRR15862423 
+Trimming primers for sample: SRR15862425 
+Trimming primers for sample: SRR15862427 
+Trimming primers for sample: SRR15862429 
+Trimming primers for sample: SRR15862431 
+Trimming primers for sample: SRR15862433 
+Trimming primers for sample: SRR15862435 
+Trimming primers for sample: SRR15862437 
+Trimming primers for sample: SRR15862439 
+Trimming primers for sample: SRR15862441 
+Trimming primers for sample: SRR15862442 
+Trimming primers for sample: SRR15862444 
+Trimming primers for sample: SRR15862446 
+Trimming primers for sample: SRR15862448 
+Trimming primers for sample: SRR15862450 
+Trimming primers for sample: SRR15862452 
+Trimming primers for sample: SRR15862454 
+Trimming primers for sample: SRR15862456 
+Trimming primers for sample: SRR15862458 
+Trimming primers for sample: SRR15862460 
+Trimming primers for sample: SRR15862462 
+Trimming primers for sample: SRR15862464 
+Trimming primers for sample: SRR15862466 
+Trimming primers for sample: SRR15862468 
+Trimming primers for sample: SRR15862470 
+Trimming primers for sample: SRR15862472 
+Trimming primers for sample: SRR15862474 
+Trimming primers for sample: SRR15862476 
+Trimming primers for sample: SRR15862478 
+Trimming primers for sample: SRR15862480 
+Trimming primers for sample: SRR15862482 
+Trimming primers for sample: SRR15862484 
+Trimming primers for sample: SRR15862486 
+Trimming primers for sample: SRR15862488 
+Trimming primers for sample: SRR15862490 
+Trimming primers for sample: SRR15862492 
+Trimming primers for sample: SRR15862494 
+Trimming primers for sample: SRR15862496 
+Trimming primers for sample: SRR15862498 
+Trimming primers for sample: SRR15862500 
+Trimming primers for sample: SRR15862502 
+Trimming primers for sample: SRR15862504 
+Trimming primers for sample: SRR15862506 
+Trimming primers for sample: SRR15862508 
+Trimming primers for sample: SRR15862510 
+Trimming primers for sample: SRR15862512 
+
+Cutadapt run complete. Logs saved to:
+ /home/ubuntu/data/processed/dada2_cutadapt/cutadapt_run_log.txt 
+
+Primer hit counts after cutadapt (should be ~0):
+                 Forward Complement Reverse RevComp
+FWD.ForwardReads       0          0       0       0
+FWD.ReverseReads       0          0       0       0
+REV.ForwardReads       0          0       0       0
+REV.ReverseReads       0          0       0       0
+
+Filtering statistics - reads.in vs reads.out (first 6 samples):
+                           reads.in reads.out
+SRR15862371_F_cut.fastq.gz    23079     22889
+SRR15862373_F_cut.fastq.gz     2705      2655
+SRR15862375_F_cut.fastq.gz     4537      4453
+SRR15862377_F_cut.fastq.gz     1097      1065
+SRR15862379_F_cut.fastq.gz     8783      8555
+SRR15862381_F_cut.fastq.gz     2340      2207
+
+First 25bp of filtered forward reads (primers should be absent):
+[1] "TACGGAGGGTGCAAGCGTTAATCGG" "TACGGAGGGTGCAAGCGTTAATCGG"
+[3] "TACGGAGGGTGCAAGCGTTAATCGG" "TACGTAGGTGGCAAGCGTTGTCCGG"
+[5] "TACGGAGGGTGCAAGCGTTAATCGG"
+
+Filtered forward read length distribution:
+
+   54    55    56    73   102   104   128   129   130   131   132   133   134 
+    1     5     1     1     1     1     5     9     2  1194 21526   136     2 
+  135   139   140 
+    1     3     1 
+
+Learning error rates from filtered reads...
+108997970 total bases in 826639 reads from 46 samples will be used for learning the error rates.
+105317373 total bases in 826639 reads from 46 samples will be used for learning the error rates.
+Warning messages:
+1: In scale_y_log10() : log-10 transformation introduced infinite values.
+2: In scale_y_log10() : log-10 transformation introduced infinite values.
+Warning messages:
+1: In scale_y_log10() : log-10 transformation introduced infinite values.
+2: In scale_y_log10() : log-10 transformation introduced infinite values.
+
+Running DADA2 algorithm on forward reads...
+Sample 1 - 22889 reads in 2954 unique sequences.
+Sample 2 - 2655 reads in 561 unique sequences.
+Sample 3 - 4453 reads in 730 unique sequences.
+Sample 4 - 1065 reads in 268 unique sequences.
+Sample 5 - 8555 reads in 1393 unique sequences.
+Sample 6 - 2207 reads in 445 unique sequences.
+Sample 7 - 5190 reads in 747 unique sequences.
+Sample 8 - 3098 reads in 490 unique sequences.
+Sample 9 - 53969 reads in 6887 unique sequences.
+Sample 10 - 2366 reads in 600 unique sequences.
+Sample 11 - 2080 reads in 559 unique sequences.
+Sample 12 - 1279 reads in 257 unique sequences.
+Sample 13 - 4883 reads in 1309 unique sequences.
+Sample 14 - 1967 reads in 389 unique sequences.
+Sample 15 - 11076 reads in 1434 unique sequences.
+Sample 16 - 73368 reads in 10850 unique sequences.
+Sample 17 - 1531 reads in 591 unique sequences.
+Sample 18 - 16063 reads in 4201 unique sequences.
+Sample 19 - 1306 reads in 476 unique sequences.
+Sample 20 - 62839 reads in 7262 unique sequences.
+Sample 21 - 3153 reads in 964 unique sequences.
+Sample 22 - 5735 reads in 1463 unique sequences.
+Sample 23 - 9978 reads in 1794 unique sequences.
+Sample 24 - 7561 reads in 859 unique sequences.
+Sample 25 - 1776 reads in 639 unique sequences.
+Sample 26 - 1002 reads in 320 unique sequences.
+Sample 27 - 3760 reads in 1077 unique sequences.
+Sample 28 - 4633 reads in 1166 unique sequences.
+Sample 29 - 3844 reads in 1008 unique sequences.
+Sample 30 - 2265 reads in 733 unique sequences.
+Sample 31 - 69327 reads in 9095 unique sequences.
+Sample 32 - 2041 reads in 626 unique sequences.
+Sample 33 - 89719 reads in 11272 unique sequences.
+Sample 34 - 2271 reads in 483 unique sequences.
+Sample 35 - 3916 reads in 681 unique sequences.
+Sample 36 - 2652 reads in 661 unique sequences.
+Sample 37 - 2375 reads in 476 unique sequences.
+Sample 38 - 5119 reads in 1395 unique sequences.
+Sample 39 - 2515 reads in 452 unique sequences.
+Sample 40 - 7005 reads in 1471 unique sequences.
+Sample 41 - 33019 reads in 8412 unique sequences.
+Sample 42 - 31256 reads in 5336 unique sequences.
+Sample 43 - 4361 reads in 771 unique sequences.
+Sample 44 - 2688 reads in 740 unique sequences.
+Sample 45 - 91674 reads in 11641 unique sequences.
+Sample 46 - 150155 reads in 35020 unique sequences.
+Sample 47 - 59111 reads in 5046 unique sequences.
+Sample 48 - 130087 reads in 13644 unique sequences.
+Sample 49 - 78967 reads in 8512 unique sequences.
+Sample 50 - 115603 reads in 13904 unique sequences.
+Sample 51 - 62233 reads in 7710 unique sequences.
+Sample 52 - 76798 reads in 15685 unique sequences.
+Sample 53 - 21488 reads in 2973 unique sequences.
+Sample 54 - 1391 reads in 196 unique sequences.
+Sample 55 - 22692 reads in 2734 unique sequences.
+Sample 56 - 22589 reads in 2776 unique sequences.
+Sample 57 - 16045 reads in 1861 unique sequences.
+Sample 58 - 26659 reads in 2439 unique sequences.
+Sample 59 - 5814 reads in 885 unique sequences.
+Sample 60 - 8223 reads in 1501 unique sequences.
+Sample 61 - 51588 reads in 7448 unique sequences.
+Sample 62 - 77265 reads in 14548 unique sequences.
+Sample 63 - 90965 reads in 15995 unique sequences.
+Sample 64 - 2061 reads in 452 unique sequences.
+Sample 65 - 30249 reads in 3705 unique sequences.
+Sample 66 - 18838 reads in 3130 unique sequences.
+Sample 67 - 3074 reads in 495 unique sequences.
+Sample 68 - 8366 reads in 1510 unique sequences.
+Sample 69 - 4654 reads in 815 unique sequences.
+Sample 70 - 37203 reads in 4816 unique sequences.
+Sample 71 - 42356 reads in 5406 unique sequences.
+Sample 72 - 61035 reads in 7965 unique sequences.
+
+   selfConsist step 2
+Running DADA2 algorithm on reverse reads...
+Sample 1 - 22889 reads in 5026 unique sequences.
+Sample 2 - 2655 reads in 646 unique sequences.
+Sample 3 - 4453 reads in 883 unique sequences.
+Sample 4 - 1065 reads in 312 unique sequences.
+Sample 5 - 8555 reads in 1671 unique sequences.
+Sample 6 - 2207 reads in 516 unique sequences.
+Sample 7 - 5190 reads in 921 unique sequences.
+Sample 8 - 3098 reads in 633 unique sequences.
+Sample 9 - 53969 reads in 8474 unique sequences.
+Sample 10 - 2366 reads in 643 unique sequences.
+Sample 11 - 2080 reads in 1023 unique sequences.
+Sample 12 - 1279 reads in 278 unique sequences.
+Sample 13 - 4883 reads in 2430 unique sequences.
+Sample 14 - 1967 reads in 465 unique sequences.
+Sample 15 - 11076 reads in 1870 unique sequences.
+Sample 16 - 73368 reads in 14107 unique sequences.
+Sample 17 - 1531 reads in 992 unique sequences.
+Sample 18 - 16063 reads in 3787 unique sequences.
+Sample 19 - 1306 reads in 459 unique sequences.
+Sample 20 - 62839 reads in 8116 unique sequences.
+Sample 21 - 3153 reads in 961 unique sequences.
+Sample 22 - 5735 reads in 1703 unique sequences.
+Sample 23 - 9978 reads in 1946 unique sequences.
+Sample 24 - 7561 reads in 1211 unique sequences.
+Sample 25 - 1776 reads in 578 unique sequences.
+Sample 26 - 1002 reads in 352 unique sequences.
+Sample 27 - 3760 reads in 1141 unique sequences.
+Sample 28 - 4633 reads in 1340 unique sequences.
+Sample 29 - 3844 reads in 1008 unique sequences.
+Sample 30 - 2265 reads in 742 unique sequences.
+Sample 31 - 69327 reads in 10624 unique sequences.
+Sample 32 - 2041 reads in 684 unique sequences.
+Sample 33 - 89719 reads in 15374 unique sequences.
+Sample 34 - 2271 reads in 536 unique sequences.
+Sample 35 - 3916 reads in 778 unique sequences.
+Sample 36 - 2652 reads in 767 unique sequences.
+Sample 37 - 2375 reads in 587 unique sequences.
+Sample 38 - 5119 reads in 1373 unique sequences.
+Sample 39 - 2515 reads in 482 unique sequences.
+Sample 40 - 7005 reads in 1609 unique sequences.
+Sample 41 - 33019 reads in 8451 unique sequences.
+Sample 42 - 31256 reads in 6410 unique sequences.
+Sample 43 - 4361 reads in 924 unique sequences.
+Sample 44 - 2688 reads in 652 unique sequences.
+Sample 45 - 91674 reads in 12790 unique sequences.
+Sample 46 - 150155 reads in 33927 unique sequences.
+Sample 47 - 59111 reads in 5367 unique sequences.
+Sample 48 - 130087 reads in 13784 unique sequences.
+Sample 49 - 78967 reads in 12187 unique sequences.
+Sample 50 - 115603 reads in 17101 unique sequences.
+Sample 51 - 62233 reads in 17197 unique sequences.
+Sample 52 - 76798 reads in 27831 unique sequences.
+Sample 53 - 21488 reads in 3391 unique sequences.
+Sample 54 - 1391 reads in 228 unique sequences.
+Sample 55 - 22692 reads in 2960 unique sequences.
+Sample 56 - 22589 reads in 3165 unique sequences.
+Sample 57 - 16045 reads in 4759 unique sequences.
+Sample 58 - 26659 reads in 3302 unique sequences.
+Sample 59 - 5814 reads in 1067 unique sequences.
+Sample 60 - 8223 reads in 1817 unique sequences.
+Sample 61 - 51588 reads in 8339 unique sequences.
+Sample 62 - 77265 reads in 18856 unique sequences.
+Sample 63 - 90965 reads in 20894 unique sequences.
+Sample 64 - 2061 reads in 518 unique sequences.
+Sample 65 - 30249 reads in 4407 unique sequences.
+Sample 66 - 18838 reads in 3482 unique sequences.
+Sample 67 - 3074 reads in 671 unique sequences.
+Sample 68 - 8366 reads in 1914 unique sequences.
+Sample 69 - 4654 reads in 920 unique sequences.
+Sample 70 - 37203 reads in 5893 unique sequences.
+Sample 71 - 42356 reads in 6847 unique sequences.
+Sample 72 - 61035 reads in 10093 unique sequences.
+
+   selfConsist step 2
+Dada-class object for first sample (forward reads):
+dada-class: object describing DADA2 denoising results
+26 sequence variants were inferred from 2954 input unique sequences.
+Key parameters: OMEGA_A = 1e-40, OMEGA_C = 1e-40, BAND_SIZE = 16
+22823 paired-reads (in 23 unique pairings) successfully merged out of 22854 (in 35 pairings) input.
+2576 paired-reads (in 39 unique pairings) successfully merged out of 2638 (in 53 pairings) input.
+1288 paired-reads (in 66 unique pairings) successfully merged out of 4409 (in 99 pairings) input.
+782 paired-reads (in 55 unique pairings) successfully merged out of 1039 (in 76 pairings) input.
+845 paired-reads (in 25 unique pairings) successfully merged out of 8502 (in 36 pairings) input.
+1493 paired-reads (in 26 unique pairings) successfully merged out of 2176 (in 40 pairings) input.
+106 paired-reads (in 15 unique pairings) successfully merged out of 5181 (in 18 pairings) input.
+3090 paired-reads (in 13 unique pairings) successfully merged out of 3090 (in 13 pairings) input.
+24635 paired-reads (in 154 unique pairings) successfully merged out of 53844 (in 291 pairings) input.
+2006 paired-reads (in 105 unique pairings) successfully merged out of 2273 (in 152 pairings) input.
+295 paired-reads (in 8 unique pairings) successfully merged out of 2040 (in 55 pairings) input.
+1173 paired-reads (in 37 unique pairings) successfully merged out of 1260 (in 51 pairings) input.
+199 paired-reads (in 11 unique pairings) successfully merged out of 4763 (in 83 pairings) input.
+1789 paired-reads (in 55 unique pairings) successfully merged out of 1912 (in 80 pairings) input.
+11008 paired-reads (in 39 unique pairings) successfully merged out of 11036 (in 53 pairings) input.
+72261 paired-reads (in 438 unique pairings) successfully merged out of 72740 (in 693 pairings) input.
+219 paired-reads (in 18 unique pairings) successfully merged out of 1424 (in 88 pairings) input.
+15492 paired-reads (in 145 unique pairings) successfully merged out of 15886 (in 231 pairings) input.
+1016 paired-reads (in 53 unique pairings) successfully merged out of 1257 (in 80 pairings) input.
+601 paired-reads (in 36 unique pairings) successfully merged out of 62767 (in 66 pairings) input.
+3055 paired-reads (in 70 unique pairings) successfully merged out of 3094 (in 86 pairings) input.
+2436 paired-reads (in 70 unique pairings) successfully merged out of 5678 (in 112 pairings) input.
+9848 paired-reads (in 44 unique pairings) successfully merged out of 9943 (in 74 pairings) input.
+3257 paired-reads (in 38 unique pairings) successfully merged out of 7485 (in 83 pairings) input.
+1472 paired-reads (in 51 unique pairings) successfully merged out of 1728 (in 71 pairings) input.
+668 paired-reads (in 25 unique pairings) successfully merged out of 971 (in 33 pairings) input.
+2250 paired-reads (in 65 unique pairings) successfully merged out of 3692 (in 98 pairings) input.
+4560 paired-reads (in 36 unique pairings) successfully merged out of 4589 (in 43 pairings) input.
+1379 paired-reads (in 59 unique pairings) successfully merged out of 3790 (in 80 pairings) input.
+1280 paired-reads (in 54 unique pairings) successfully merged out of 2205 (in 78 pairings) input.
+36798 paired-reads (in 175 unique pairings) successfully merged out of 69154 (in 354 pairings) input.
+1431 paired-reads (in 25 unique pairings) successfully merged out of 2018 (in 41 pairings) input.
+81757 paired-reads (in 74 unique pairings) successfully merged out of 89571 (in 97 pairings) input.
+2026 paired-reads (in 112 unique pairings) successfully merged out of 2207 (in 144 pairings) input.
+3641 paired-reads (in 72 unique pairings) successfully merged out of 3819 (in 105 pairings) input.
+329 paired-reads (in 57 unique pairings) successfully merged out of 2618 (in 82 pairings) input.
+2260 paired-reads (in 70 unique pairings) successfully merged out of 2326 (in 90 pairings) input.
+5014 paired-reads (in 84 unique pairings) successfully merged out of 5069 (in 108 pairings) input.
+1583 paired-reads (in 67 unique pairings) successfully merged out of 2461 (in 97 pairings) input.
+1292 paired-reads (in 47 unique pairings) successfully merged out of 6972 (in 66 pairings) input.
+27128 paired-reads (in 241 unique pairings) successfully merged out of 32543 (in 423 pairings) input.
+23324 paired-reads (in 108 unique pairings) successfully merged out of 30975 (in 191 pairings) input.
+3926 paired-reads (in 118 unique pairings) successfully merged out of 4236 (in 177 pairings) input.
+230 paired-reads (in 29 unique pairings) successfully merged out of 2666 (in 47 pairings) input.
+34512 paired-reads (in 353 unique pairings) successfully merged out of 91017 (in 1078 pairings) input.
+146134 paired-reads (in 1026 unique pairings) successfully merged out of 148185 (in 1698 pairings) input.
+351 paired-reads (in 14 unique pairings) successfully merged out of 58945 (in 108 pairings) input.
+128433 paired-reads (in 592 unique pairings) successfully merged out of 129427 (in 862 pairings) input.
+77234 paired-reads (in 292 unique pairings) successfully merged out of 78284 (in 424 pairings) input.
+44097 paired-reads (in 588 unique pairings) successfully merged out of 114838 (in 1495 pairings) input.
+10124 paired-reads (in 36 unique pairings) successfully merged out of 61886 (in 134 pairings) input.
+10454 paired-reads (in 120 unique pairings) successfully merged out of 76122 (in 1227 pairings) input.
+1950 paired-reads (in 51 unique pairings) successfully merged out of 21430 (in 88 pairings) input.
+1382 paired-reads (in 9 unique pairings) successfully merged out of 1384 (in 10 pairings) input.
+22153 paired-reads (in 55 unique pairings) successfully merged out of 22554 (in 86 pairings) input.
+22313 paired-reads (in 48 unique pairings) successfully merged out of 22519 (in 76 pairings) input.
+15849 paired-reads (in 57 unique pairings) successfully merged out of 15959 (in 89 pairings) input.
+255 paired-reads (in 29 unique pairings) successfully merged out of 26481 (in 36 pairings) input.
+5794 paired-reads (in 12 unique pairings) successfully merged out of 5800 (in 16 pairings) input.
+8142 paired-reads (in 49 unique pairings) successfully merged out of 8163 (in 60 pairings) input.
+47727 paired-reads (in 177 unique pairings) successfully merged out of 51307 (in 465 pairings) input.
+65223 paired-reads (in 738 unique pairings) successfully merged out of 75840 (in 1488 pairings) input.
+74866 paired-reads (in 995 unique pairings) successfully merged out of 89627 (in 1920 pairings) input.
+889 paired-reads (in 23 unique pairings) successfully merged out of 2048 (in 36 pairings) input.
+30030 paired-reads (in 47 unique pairings) successfully merged out of 30183 (in 82 pairings) input.
+18557 paired-reads (in 35 unique pairings) successfully merged out of 18771 (in 69 pairings) input.
+3024 paired-reads (in 27 unique pairings) successfully merged out of 3031 (in 33 pairings) input.
+8130 paired-reads (in 29 unique pairings) successfully merged out of 8318 (in 55 pairings) input.
+322 paired-reads (in 32 unique pairings) successfully merged out of 4638 (in 46 pairings) input.
+250 paired-reads (in 24 unique pairings) successfully merged out of 37137 (in 41 pairings) input.
+32444 paired-reads (in 45 unique pairings) successfully merged out of 42281 (in 89 pairings) input.
+32601 paired-reads (in 121 unique pairings) successfully merged out of 60870 (in 266 pairings) input.
+                                                                                                                                                                                                                                                       sequence
+1 TACGGAGGGTGCAAGCGTTAATCGGAATTACTGGGCGTAAAGCGCACGCAGGCGGTTTGTTAAGTCAGATGTGAAATCCCCGGGCTCAACCTGGGAACTGCATCTGATACTGGCAAGCTTGAGTCTCGTAGAGGGGGGTAGAATTCCAGGTGTAGCGGTGAAATGCGTAGAGATCTGGAGGAATACCGGTGGCGAAGGCGGCCCCCTGGACGAAGACTGACGCTCAGGTGCGAAAGCGTGGGGAGCAAACAGG
+2 TACGTAGGTGGCAAGCGTTGTCCGGATTTATTGGGCGTAAAGCGAGCGCAGGCGGAATGATAAGTCTGATGTGAAAGCCCACGGCTCAACCGTGGAACTGCATCGGAAACTGTCATTCTTGAGTGCAGAAGAGGAGAGTGGAACTCCATGTGTAGCGGTGGAATGCGTAGATATATGGAAGAACACCAGTGGCGAAGGCGGCTCTCTGGTCTGCAACTGACGCTGAGGCTCGAAAGCATGGGTAGCGAACAGG
+3                                                                                     CACGATTAACCCAAGTCAATAGAAGCCGGCGTAAAGAGTGTTTTAGATCACCCCCTCCCCAATAAAGCTAAAACTCACCTGAGTTGTAAAAAACTCCAGTTGACACAAAATAGACTACGAAAGTGGCTTTAACATATCTGAACACACAATAGCTAAGACCCAAACTGGG
+4 TACGTAGGTGGCAAGCGTTGTCCGGATTTATTGGGCGTAAAGCGAGTGCAGGCGGTTCAATAAGTCTGATGTGAAAGCCTTCGGCTCAACCGGAGAATTGCATCAGAAACTGTTGAACTTGAGTGCAGAAGAGGAGAGTGGAACTCCATGTGTAGCGGTGGAATGCGTAGATATATGGAAGAACACCAGTGGCGAAGGCGGCTCTCTGGTCTGCAACTGACGCTGAGGCTCGAAAGCATGGGTAGCGAACAGG
+5 TACGGAGGGTGCAAGCGTTAATCGGAATTACTGGGCGTAAAGCGCACGCAGGCGGTCTGTCAAGTCGGATGTGAAATCCCCGGGCTCAACCTGGGAACTGCATTCGAAACTGGCAGGCTAGAGTCTTGTAGAGGGGGGTAGAATTCCAGGTGTAGCGGTGAAATGCGTAGAGATCTGGAGGAATACCGGTGGCGAAGGCGGCCCCCTGGACAAAGACTGACGCTCAGGTGCGAAAGCGTGGGGAGCAAACAGG
+6  TACGTAGGGGGCTAGCGTTATCCGGATTTACTGGGCGTAAAGGGTGCGTAGGTGGTCTTTCAAGTCGGTGGTTAAAGGCTACGGCTCAACCGTAGTTAGCCTCCGAAACTGGAAGACTTGAGTGCAGGAGAGGAAAGTGGAATTCCCAGTGTAGCGGTGAAATGCGTAGATATTGGGAGGAACACCAGTAGCGAAGGCGGCTTTCTGGACTGCAACTGACACTGAGGCACGAAAGCGTGGGTAGCAAACAGG
+  abundance forward reverse nmatch nmismatch nindel prefer accept
+1     22281       1       1      8         0      0      1   TRUE
+2       274       2       2      7         0      0      2   TRUE
+3        78       3       3     92         0      0      1   TRUE
+4        54       4       2      7         0      0      2   TRUE
+5        28       5      14      8         0      0      1   TRUE
+6        22       6       4      8         0      0      1   TRUE
+
+ASV length distribution (raw, before length filtering):
+
+  54   55   56   63   64   68   69   72   77  107  118  121  164  165  168  169 
+   1    2    1    1    2    1    1    4   11    1    1    1    1    1    3    7 
+ 170  173  175  179  184  202  221  223  227  252  253  254 
+   1    1    1    1    4    4    6    2    1 2248 2644   18 
+
+ASVs retained after length filter ( 250-256 bp): 4910 
+Identified 4014 bimeras out of 4910 input sequences.
+
+Fraction of reads retained after chimera removal (expect 0.70-0.95):
+[1] 0.9186685
+
+Final ASV table dimensions (samples x ASVs):
+[1]  72 896
+
+Read tracking table:
+             input filtered denoisedF denoisedR merged nonchim
+SRR15862371  23079    22889     22877     22859  22823   22714
+SRR15862373   2705     2655      2644      2641   2576    2363
+SRR15862375   4537     4453      4423      4424   1288    1050
+SRR15862377   1097     1065      1049      1048    782     692
+SRR15862379   8783     8555      8519      8511    845     383
+SRR15862381   2340     2207      2182      2183   1493    1227
+SRR15862383   5229     5190      5184      5182    106      56
+SRR15862385   3131     3098      3092      3094   3090    3066
+SRR15862387  54282    53969     53895     53911  24635   23059
+SRR15862389   2507     2366      2295      2303   2006    1705
+SRR15862391   2181     2080      2058      2052    295     198
+SRR15862393   1309     1279      1264      1269   1173    1060
+SRR15862395   4975     4883      4840      4783    199     125
+SRR15862397   2058     1967      1924      1925   1789    1462
+SRR15862399  11168    11076     11057     11047  11008   10741
+SRR15862401  73728    73368     73065     73001  72261   62138
+SRR15862403   1574     1531      1476      1447    219     114
+SRR15862405  16204    16063     15966     15961  15492   15202
+SRR15862407   1326     1306      1266      1287   1016     858
+SRR15862409  63160    62839     62804     62794    601     438
+SRR15862411   3203     3153      3111      3125   3055    2896
+SRR15862413   5788     5735      5696      5694   2436    2158
+SRR15862415  10035     9978      9959      9955   9848    9755
+SRR15862417   7588     7561      7528      7509   3257    3121
+SRR15862419   1827     1776      1737      1748   1472     911
+SRR15862421   1013     1002       974       995    668     620
+SRR15862423   3810     3760      3721      3712   2250    2074
+SRR15862425   4695     4633      4615      4599   4560    4558
+SRR15862427   3961     3844      3798      3806   1379     696
+SRR15862429   2286     2265      2223      2231   1280    1187
+SRR15862431  69647    69327     69225     69239  36798   33640
+SRR15862433   2063     2041      2024      2025   1431    1396
+SRR15862435  90159    89719     89655     89626  81757   80566
+SRR15862437   2298     2271      2223      2243   2026    1900
+SRR15862439   3988     3916      3832      3859   3641    3172
+SRR15862441   2679     2652      2623      2629    329     256
+SRR15862442   2456     2375      2345      2339   2260    2001
+SRR15862444   5171     5119      5080      5089   5014    4666
+SRR15862446   2545     2515      2476      2487   1583    1479
+SRR15862448   7052     7005      6977      6992   1292    1120
+SRR15862450  33265    33019     32730     32745  27128   26611
+SRR15862452  31412    31256     31086     31111  23324   22358
+SRR15862454   4427     4361      4264      4291   3926    3528
+SRR15862456   2731     2688      2672      2673    230     113
+SRR15862458  92264    91674     91296     91357  34512   32744
+SRR15862460 152069   150155    148982    149044 146134  129756
+SRR15862462  60006    59111     59025     59019    351      65
+SRR15862464 130890   130087    129673    129807 128433  108077
+SRR15862466  79359    78967     78805     78428  77234   71729
+SRR15862468 116299   115603    115259    115138  44097   34073
+SRR15862470  63084    62233     62190     61915  10124    9098
+SRR15862472  77831    76798     76575     76321  10454    8173
+SRR15862474  21659    21488     21449     21448   1950    1554
+SRR15862476   1430     1391      1385      1386   1382    1359
+SRR15862478  22901    22692     22580     22659  22153   21779
+SRR15862480  22719    22589     22555     22549  22313   21786
+SRR15862482  16112    16045     16038     15962  15849   15521
+SRR15862484  26786    26659     26636     26485    255     125
+SRR15862486   5890     5814      5804      5805   5794    5602
+SRR15862488   8320     8223      8192      8179   8142    8025
+SRR15862490  51878    51588     51417     51450  47727   46283
+SRR15862492  77737    77265     76572     76341  65223   56437
+SRR15862494  91453    90965     90271     90162  74866   62007
+SRR15862496   2098     2061      2053      2054    889     637
+SRR15862498  30364    30249     30212     30210  30030   29977
+SRR15862500  19156    18838     18808     18794  18557   15235
+SRR15862502   3159     3074      3062      3035   3024    2461
+SRR15862504   8448     8366      8342      8334   8130    7529
+SRR15862506   4752     4654      4642      4646    322     162
+SRR15862508  37425    37203     37163     37163    250     224
+SRR15862510  42560    42356     42313     42317  32444   31630
+SRR15862512  61320    61035     60919     60962  32601   30739
+Error in is(object, "character") : 
+  object 'ASV_paired_end_table' not found
+Calls: assignTaxonomy -> getSequences -> is
+Execution halted
