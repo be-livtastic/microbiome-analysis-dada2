@@ -1,120 +1,133 @@
-# Master Guide: 16S rRNA Microbiome Analysis
-## Practising with the Okwelogu et al. (2021) IVF Microbiome Dataset
+# 16S rRNA Microbiome Analysis — IVF Reproductive Microbiome
+## Practising with the Okwelogu et al. (2021) Dataset
 
-**Purpose:** Build the biological knowledge and bioinformatics skills to confidently discuss, analyse, and interpret 16S rRNA microbiome data 
-
-**Dataset:** Okwelogu et al. (2021). "Microbiome Compositions From Infertile Couples Seeking In Vitro Fertilization, Using 16S rRNA Gene Sequencing Methods: Any Correlation to Clinical Outcomes?" *Frontiers in Cellular and Infection Microbiology*, 11:709372.
-
-- **PubMed:** https://pubmed.ncbi.nlm.nih.gov/34660337/
-- **Full text (free):** https://doi.org/10.3389/fcimb.2021.709372
-- **Raw data:** NCBI SRA, Project Accession PRJNA762524
-- **Direct SRA link:** https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA762524
+**Author:** Olivia Williams  
+**Stack:** R · DADA2 · cutadapt · SILVA v138.1  
+**Domain:** Microbiome bioinformatics · 16S rRNA amplicon sequencing  
+**Dataset:** Okwelogu et al. (2021). "Microbiome Compositions From Infertile Couples Seeking In Vitro Fertilization, Using 16S rRNA Gene Sequencing Methods: Any Correlation to Clinical Outcomes?" *Frontiers in Cellular and Infection Microbiology*, 11:709372. ([PubMed](https://pubmed.ncbi.nlm.nih.gov/34660337/) · [Full text](https://doi.org/10.3389/fcimb.2021.709372) · [PRJNA762524](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA762524))
 
 ---
 
-> **Author:** Olivia Williams  
-> **Technology:** R, DADA2, SILVA database  
-> **Domain:** Microbiome bioinformatics, 16S rRNA gene sequencing  
-> **Project Type:** Reproducible bioinformatics workflow for amplicon sequencing data
+## Overview
+
+This project implements a complete **16S rRNA amplicon sequencing analysis pipeline** — from raw FASTQ files through to ASV inference, taxonomic classification, and quality-tracked outputs — using the DADA2 framework in R. The dataset is publicly available, but the scripts, decisions, and workflow are my own.
+
+The biological question driving the original study: do microbiome compositions in the reproductive tracts of infertile couples correlate with IVF outcomes? That framing made this dataset particularly interesting to work with — it sits at the intersection of clinical microbiology, sequencing technology, and statistical biology.
 
 ---
 
-## 📋 Project Overview
+## What I Built
 
-This project implements a complete **16S rRNA gene amplicon sequencing analysis workflow** using the industry-standard DADA2 pipeline in R. Starting from raw FASTQ files, the pipeline performs quality control, denoising, taxonomic classification, and generates publication-ready microbiome composition data.
+### Pipeline
+A reproducible, modular DADA2 workflow that handles:
+- Raw data ingestion and quality assessment
+- Adapter and primer removal via cutadapt
+- Quality filtering, error modelling, and ASV denoising
+- Paired-end merging
+- Chimera removal
+- Taxonomic assignment against SILVA v138.1
+- Read-tracking across every processing step
 
-**What this pipeline does:**
-- Processes raw Illumina paired-end sequencing data from microbiome samples
-- Performs quality filtering and adapter trimming
-- Infers Amplicon Sequence Variants (ASVs) using DADA2's error-correcting algorithm
-- Assigns taxonomy using the SILVA reference database (v138.1)
-- Tracks read counts through each processing step for quality assurance
-
----
-
-## 🎯 Learning Objectives & Skills Demonstrated
-
-**Bioinformatics Skills:**
-- Raw sequencing data (FASTQ) processing and quality assessment
-- Understanding 16S rRNA gene amplicon sequencing workflow
-- Reference database usage (SILVA) for taxonomic classification
-- ASV inference vs traditional OTU clustering approaches
-
-**R Programming:**
-- Bioconductor package management (dada2, ShortRead, Biostrings)
-- Reproducible project structure with `here` package
-- Error handling and data validation
-- Function-based workflow design
-
-**Best Practices:**
-- Version control ready (Git/GitHub)
-- Portable file paths (works on any machine)
-- Documented decision points (trim lengths, quality thresholds)
-- Comprehensive quality tracking throughout pipeline
+### Outputs
+| File | Description |
+|---|---|
+| `ASV_table.rds` | Sample × ASV count matrix |
+| `taxonomy_SE.rds` | Kingdom → Species assignments (SILVA v138.1) |
+| Quality plots | Per-base profiles, error learning curves, ASV length distributions |
+| Read tracking table | Counts at each pipeline stage, per sample |
 
 ---
 
-## 📂 Project Structure
+## Problem-Solving Record
+
+The cleanest part of this project is not the final output — it's what happened before I got there.
+
+The dataset uses 2×150 bp paired-end sequencing on the V4 16S region. My first attempt at paired-end merging failed: the reads produced only ~8 bp of overlap, far below the ~20 bp minimum DADA2 requires for reliable merging. Rather than default to someone else's workaround, I diagnosed the overlap issue directly from quality profiles and read length distributions, documented why merging was failing, and considered the tradeoffs of proceeding single-end versus resolving the upstream cause.
+
+After revisiting the primer structure and running the raw reads through cutadapt for proper adapter and primer trimming, paired-end merging became viable. The revised paired-end pipeline is what this repository now runs.
+
+**Pilot run:** 4 samples · 243 ASVs identified  
+**Full dataset:** All samples processed; results uploaded to this repository
+
+---
+
+## Repository Structure
 
 ```
 microbiome_practice/
-├── README.md                    # This file
 ├── scripts/
 │   ├── pipelines/
-│   │   ├── load_packages.R      # One-time setup: install required packages
-│   │   ├── dada2_pipeline.R     # Main paired-end analysis workflow
-│   │   ├── single_end_16s.R     # Alternative: single-end only workflow
-│   │   └── troubleshooting.R    # Diagnostic checks for data quality issues
+│   │   ├── load_packages.R        # Environment setup
+│   │   ├── dada2_pipeline.R       # Main paired-end workflow (cutadapt-trimmed input)
+│   │   └── troubleshooting.R      # Diagnostic scripts (overlap checks, quality plots)
 │   └── download/
-│       └── ena-file-download-*.sh  # Automated SRA data download script
+│       └── ena-file-download-*.sh # SRA data retrieval
 ├── data/
-│   ├── raw/fastq/               # Downloaded FASTQ files (not tracked in Git)
-│   ├── processed/dada2/         # Filtered reads, ASV table, taxonomy
-│   └── external/reference/      # SILVA database files (download separately)
+│   ├── raw/fastq/                 # Raw FASTQ files (not tracked in Git)
+│   ├── processed/dada2/           # Filtered reads, ASV table, taxonomy
+│   └── external/reference/        # SILVA database (download separately)
 ├── outputs/
-│   ├── figures/                 # Quality plots, error rate plots
-│   └── tables/                  # ASV abundance tables, taxonomy assignments
+│   ├── figures/
+│   └── tables/
 └── docs/
-    └── project_structure.md     # Detailed methodology documentation
+    └── project_structure.md
 ```
 
 ---
 
-## 🚀 Quick Start
-
-### Prerequisites
-
-**Required software:**
-- R (≥ 4.0)
-- RStudio (recommended)
-
-**Required R packages:**
-- Bioconductor: `dada2`, `ShortRead`, `Biostrings`, `phyloseq`
-- CRAN: `tidyverse`, `here`, `ggplot2`
-
-### Step 1: Install Dependencies
+## Key Parameters
 
 ```r
-# Run this once to install all required packages
-source("scripts/pipelines/load_packages.R")
+filterAndTrim(
+  trimLeft  = c(19, 21),   # Primer lengths (V4 region, dataset-specific)
+  truncLen  = c(150, 130), # Truncation at quality drop-off
+  maxEE     = c(2, 5)      # Maximum expected errors per read
+)
 ```
 
-This script automatically installs missing packages from both CRAN and Bioconductor.
+These are not defaults — they reflect deliberate decisions based on the quality profiles of this specific dataset. Adapting them to new data requires re-examining quality plots, not just copying the numbers.
 
-### Step 2: Download Reference Database
+---
 
-Download SILVA v138.1 training sets and place in `data/external/reference/`:
+## Reproducing This Analysis
 
-```bash
-# Required files:
-silva_nr99_v138.1_train_set.fa.gz
-silva_nr99_v138.1_wSpecies_train_set.fa.gz  
-silva_species_assignment_v138.1.fa.gz
+**Dependencies:** R ≥ 4.0, cutadapt, and the following R packages:
+
+```r
+# Bioconductor
+dada2, ShortRead, Biostrings, phyloseq
+
+# CRAN  
+tidyverse, here, ggplot2
 ```
 
-**Download from:** https://zenodo.org/record/4587955
+**Reference database:** SILVA v138.1 training sets from [Zenodo](https://zenodo.org/record/4587955) → place in `data/external/reference/`
 
-### Step 3: Obtain Raw Data
+All scripts use `here::here()` for portable paths. Clone the repo, place inputs in the specified directories, and run `scripts/pipelines/dada2_pipeline.R`.
+
+---
+
+## What's Next
+
+1. **Alpha and beta diversity analysis** — Shannon/Simpson indices, PCoA ordination, PERMANOVA
+2. **Differential abundance testing** — DESeq2 and LEfSe adapted for microbiome count data
+3. **Visualisation** — Taxonomic bar plots, co-occurrence networks, per-group composition heatmaps
+4. **Metadata integration** — Correlating microbiome composition with the clinical IVF outcome variables reported in Okwelogu et al.
+
+---
+
+## References
+
+- Callahan et al. (2016). DADA2: High-resolution sample inference from Illumina amplicon data. *Nature Methods*. https://doi.org/10.1038/nmeth.3869  
+- Quast et al. (2013). The SILVA ribosomal RNA gene database project. *Nucleic Acids Research*. https://doi.org/10.1093/nar/gks1219  
+- McMurdie & Holmes (2013). phyloseq: An R package for reproducible interactive analysis of microbiome census data. *PLOS ONE*. https://doi.org/10.1371/journal.pone.0061217
+
+---
+
+*Data sourced from NCBI SRA (public domain). SILVA database used under academic licence.*
+
+
+### In Case Anyone Wants to re-use this pipeline
 
 **Option A: Use my test dataset (PRJNA762524)**
 ```bash
@@ -126,7 +139,7 @@ bash scripts/download/ena-file-download-read_run-PRJNA762524-fastq_ftp-*.sh
 - Place paired-end FASTQ files in `data/raw/fastq/`
 - Files must follow naming convention: `SAMPLE_1.fastq`, `SAMPLE_2.fastq`
 
-### Step 4: Run the Pipeline
+### Run the Pipeline
 
 ```r
 # Open R project in RStudio
@@ -238,38 +251,6 @@ Use `scripts/pipelines/single_end_16s.R` instead of main pipeline
 
 ---
 
-## 📖 Dataset Information
-
-**Project:** PRJNA762524  
-**Organism:** Human gut microbiome  
-**Sequencing:** Illumina paired-end (2×250 bp)  
-**Target:** 16S rRNA V4 region  
-**Samples:** 4 samples (can be expanded)
-
-**SRA Accessions:**
-- SRR15862403
-- SRR15862405  
-- SRR15862407
-- SRR15862409
-
----
-
-## 📚 References & Resources
-
-**DADA2 Documentation:**
-- Official tutorial: https://benjjneb.github.io/dada2/tutorial.html
-- Paper: Callahan et al. (2016) Nature Methods
-
-**SILVA Database:**
-- Website: https://www.arb-silva.de/
-- Training sets: https://zenodo.org/record/4587955
-
-**Microbiome Analysis in R:**
-- phyloseq package: https://joey711.github.io/phyloseq/
-- Statistical analysis: vegan, microbiome, DESeq2
-
----
-
 ## 🎓 What I Learned
 
 **Technical Skills:**
@@ -323,14 +304,6 @@ Planned additions to this project:
 This project is open source and available for educational purposes.  
 Data sourced from NCBI SRA (public domain).  
 SILVA database used under academic license.
-
----
-
-## 🤝 Acknowledgments
-
-- **DADA2 developers** (Benjamin Callahan et al.) for the excellent pipeline
-- **SILVA team** for maintaining the reference database
-- **Bioconductor community** for microbiome analysis tools
 
 ---
 
