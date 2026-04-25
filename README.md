@@ -42,7 +42,7 @@ A reproducible, modular DADA2 workflow that handles:
 
 The cleanest part of this project is not the final output — it's what happened before I got there.
 
-The dataset uses 2×150 bp paired-end sequencing on the V4 16S region. My first attempt at paired-end merging failed: the reads produced only ~8 bp of overlap, far below the ~20 bp minimum DADA2 requires for reliable merging. Rather than default to someone else's workaround, I diagnosed the overlap issue directly from quality profiles and read length distributions, documented why merging was failing, and considered the tradeoffs of proceeding single-end versus resolving the upstream cause.
+The dataset uses 2×150 bp paired-end sequencing on the V4 16S region. My first attempt at paired-end merging failed: the reads produced only ~8 bp of overlap, far below the ~20 bp minimum DADA2 requires for reliable merging. I diagnosed the overlap issue directly from quality profiles and read length distributions, documented why merging was failing, and considered the tradeoffs of proceeding single-end versus resolving the upstream cause.
 
 After revisiting the primer structure and running the raw reads through cutadapt for proper adapter and primer trimming, paired-end merging became viable. The revised paired-end pipeline is what this repository now runs.
 
