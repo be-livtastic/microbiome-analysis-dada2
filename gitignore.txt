@@ -1,0 +1,198 @@
+# =============================================================================
+
+# .gitignore for Microbiome / Bioinformatics Project
+
+# =============================================================================
+
+# Strategy:
+
+# - Ignore everything by default
+
+# - Explicitly whitelist what should be tracked
+
+# - Prevent large/raw/reference files from ever entering Git
+
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+
+# IGNORE EVERYTHING BY DEFAULT
+
+# -----------------------------------------------------------------------------
+
+*
+
+*/
+
+# =============================================================================
+
+# WHITELIST: TRACK THESE DIRECTORIES & FILES
+
+# =============================================================================
+
+# ---- SCRIPTS / CODE ----
+
+!scripts/
+!scripts/**
+
+# ---- PROCESSED DATA ONLY ----
+
+!data/
+!data/processed/
+!data/processed/**
+
+# ---- OUTPUTS (RESULTS) ----
+
+!outputs/
+!outputs/figures/
+!outputs/tables/
+!outputs/figures/**
+!outputs/tables/**
+
+# ---- DOCUMENTATION ----
+
+!README.md
+!docs/
+!docs/**
+
+# ---- LOG FILES ----
+
+!logs/
+!logs/**
+!*.log
+
+# ---- PROJECT FILES ----
+
+!.gitignore
+!*.Rproj
+!*.code-workspace
+!*.md
+!*.txt
+!*.yml
+!*.yaml
+
+# ---- KEEP EMPTY DIRECTORIES ----
+
+!.gitkeep
+
+# =============================================================================
+
+# EXPLICITLY IGNORE LARGE / RAW DATA (CRITICAL)
+
+# =============================================================================
+
+# ---- RAW SEQUENCING DATA ----
+
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+
+# ---- RAW DATA DIRECTORIES ----
+
+data/raw/
+
+# ---- EXTERNAL / REFERENCE DATABASES ----
+
+data/external/
+data/external/reference/
+
+# Common reference file types
+
+*.fa
+*.fasta
+*.fna
+*.fa.gz
+*.fasta.gz
+
+# Index and database files
+
+*.bt2
+*.bwt
+*.sa
+*.pac
+*.ann
+
+# =============================================================================
+
+# TEMPORARY / SYSTEM FILES
+
+# =============================================================================
+
+# R
+
+.Rhistory
+.RData
+.Rproj.user/
+
+# Python
+
+**pycache**/
+*.pyc
+*.pyo
+*.pyd
+
+# Conda / environments
+
+.env
+.venv
+env/
+venv/
+
+# Jupyter
+
+.ipynb_checkpoints/
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# VS Code
+
+.vscode/
+
+# Misc temp
+
+*.tmp
+*.temp
+
+# =============================================================================
+
+# NOTES
+
+# =============================================================================
+
+# ✓ TRACKED:
+
+# - scripts/
+
+# - data/processed/
+
+# - outputs/ (figures, tables)
+
+# - documentation
+
+# - logs
+
+#
+
+# ✗ NOT TRACKED:
+
+# - raw FASTQ files
+
+# - reference databases (SILVA, etc.)
+
+# - large genomic files
+
+# - environment / temp files
+
+#
+
+# Best practice:
+
+# - Document data download steps in README.md
+
+# - Keep repo lightweight and reproducible
+
+# =============================================================================
