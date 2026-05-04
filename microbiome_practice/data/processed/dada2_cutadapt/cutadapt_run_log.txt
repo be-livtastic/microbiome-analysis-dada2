@@ -1,0 +1,7397 @@
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862371_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862371_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862371_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862371_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             25,925
+  Read 1 with adapter:                  23,288 (89.8%)
+  Read 2 with adapter:                  23,208 (89.5%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            2,846 (11.0%)
+Pairs written (passing filters):        23,079 (89.0%)
+
+Total basepairs processed:     7,447,054 bp
+  Read 1:     3,722,296 bp
+  Read 2:     3,724,758 bp
+Total written (filtered):      5,987,964 bp (80.4%)
+  Read 1:     3,030,837 bp
+  Read 2:     2,957,127 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 23264 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+12	3	0.0	1	3
+16	1	0.0	1	0 1
+17	2	0.0	1	2
+18	142	0.0	1	46 96
+19	23094	0.0	1	22592 502
+20	22	0.0	1	6 16
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 41 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 39.0%
+  C: 4.9%
+  G: 36.6%
+  T: 19.5%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	22	405.1	0	22
+4	7	101.3	0	7
+5	1	25.3	0	1
+6	1	6.3	0	1
+10	1	0.0	1	0 1
+22	9	0.0	1	1 8
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 23073 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+19	1	0.0	1	0 1
+20	3	0.0	1	0 3
+21	159	0.0	1	33 126
+22	22846	0.0	1	22038 808
+23	64	0.0	1	16 48
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 144 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 84.7%
+  C: 9.7%
+  G: 1.4%
+  T: 4.2%
+  none/other: 0.0%
+WARNING:
+    The adapter is preceded by 'A' extremely often.
+    The provided adapter sequence could be incomplete at its 5' end.
+    Ignore this warning when trimming primers.
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	29	405.1	0	29
+18	1	0.0	1	0 1
+19	104	0.0	1	1 103
+74	1	0.0	1	0 1
+146	9	0.0	1	0 9
+
+
+WARNING:
+    One or more of your adapter sequences may be incomplete.
+    Please see the detailed output above.
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862373_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862373_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862373_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862373_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              3,892
+  Read 1 with adapter:                   2,742 (70.5%)
+  Read 2 with adapter:                   2,779 (71.4%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            1,187 (30.5%)
+Pairs written (passing filters):         2,705 (69.5%)
+
+Total basepairs processed:     1,066,351 bp
+  Read 1:       534,082 bp
+  Read 2:       532,269 bp
+Total written (filtered):        698,566 bp (65.5%)
+  Read 1:       354,717 bp
+  Read 2:       343,849 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 2732 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+17	1	0.0	1	1
+18	7	0.0	1	2 5
+19	2721	0.0	1	2423 298
+20	3	0.0	1	0 3
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 18 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 16.7%
+  C: 16.7%
+  G: 44.4%
+  T: 22.2%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	12	60.8	0	12
+4	3	15.2	0	3
+21	3	0.0	1	0 3
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 2758 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	28	0.0	1	3 25
+22	2720	0.0	1	2612 108
+23	10	0.0	1	0 10
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 24 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 87.5%
+  C: 8.3%
+  G: 0.0%
+  T: 4.2%
+  none/other: 0.0%
+WARNING:
+    The adapter is preceded by 'A' extremely often.
+    The provided adapter sequence could be incomplete at its 5' end.
+    Ignore this warning when trimming primers.
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	7	60.8	0	7
+19	16	0.0	1	1 15
+146	1	0.0	1	0 1
+
+
+WARNING:
+    One or more of your adapter sequences may be incomplete.
+    Please see the detailed output above.
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862375_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862375_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862375_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862375_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             12,982
+  Read 1 with adapter:                   4,627 (35.6%)
+  Read 2 with adapter:                   5,012 (38.6%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            8,445 (65.1%)
+Pairs written (passing filters):         4,537 (34.9%)
+
+Total basepairs processed:     3,783,945 bp
+  Read 1:     1,900,915 bp
+  Read 2:     1,883,030 bp
+Total written (filtered):      1,159,824 bp (30.7%)
+  Read 1:       593,378 bp
+  Read 2:       566,446 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 4539 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+12	1	0.0	1	1
+18	34	0.0	1	10 24
+19	4498	0.0	1	4176 322
+20	6	0.0	1	0 6
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 97 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 33.0%
+  C: 19.6%
+  G: 24.7%
+  T: 22.7%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	40	202.8	0	40
+4	18	50.7	0	18
+5	1	12.7	0	1
+13	1	0.0	1	0 1
+21	12	0.0	1	0 12
+22	18	0.0	1	1 17
+23	2	0.0	1	0 2
+82	1	0.0	1	0 1
+96	1	0.0	1	0 1
+97	1	0.0	1	0 1
+98	1	0.0	1	0 1
+125	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 4936 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	4	202.8	0	4
+13	1	0.0	1	0 1
+21	66	0.0	1	7 59
+22	4835	0.0	1	4502 333
+23	30	0.0	1	1 29
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 96 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 49.0%
+  C: 12.5%
+  G: 28.1%
+  T: 10.4%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	53	202.8	0	53
+18	2	0.0	1	0 2
+19	40	0.0	1	25 15
+72	1	0.0	1	0 1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862377_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862377_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862377_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862377_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              3,604
+  Read 1 with adapter:                   1,127 (31.3%)
+  Read 2 with adapter:                   1,221 (33.9%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            2,507 (69.6%)
+Pairs written (passing filters):         1,097 (30.4%)
+
+Total basepairs processed:     1,007,733 bp
+  Read 1:       504,710 bp
+  Read 2:       503,023 bp
+Total written (filtered):        280,166 bp (27.8%)
+  Read 1:       142,171 bp
+  Read 2:       137,995 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 1104 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	1	0.0	1	0 1
+19	1099	0.0	1	960 139
+20	4	0.0	1	1 3
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 26 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 46.2%
+  C: 11.5%
+  G: 3.8%
+  T: 38.5%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	14	56.3	0	14
+7	1	0.2	0	1
+8	1	0.1	0	1
+21	2	0.0	1	0 2
+22	7	0.0	1	1 6
+43	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 1188 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+20	2	0.0	1	0 2
+21	14	0.0	1	1 13
+22	1165	0.0	1	1059 106
+23	7	0.0	1	0 7
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 39 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 61.5%
+  C: 7.7%
+  G: 7.7%
+  T: 23.1%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	19	56.3	0	19
+4	1	14.1	0	1
+18	1	0.0	1	0 1
+19	18	0.0	1	3 15
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862379_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862379_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862379_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862379_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             14,202
+  Read 1 with adapter:                   8,907 (62.7%)
+  Read 2 with adapter:                   9,159 (64.5%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            5,419 (38.2%)
+Pairs written (passing filters):         8,783 (61.8%)
+
+Total basepairs processed:     3,801,505 bp
+  Read 1:     1,912,856 bp
+  Read 2:     1,888,649 bp
+Total written (filtered):      2,223,045 bp (58.5%)
+  Read 1:     1,139,241 bp
+  Read 2:     1,083,804 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 8828 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	3	221.9	0	3
+16	1	0.0	1	0 1
+17	3	0.0	1	2 1
+18	50	0.0	1	8 42
+19	8763	0.0	1	8013 750
+20	8	0.0	1	0 8
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 100 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 31.0%
+  C: 11.0%
+  G: 38.0%
+  T: 20.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	42	221.9	0	42
+4	24	55.5	0	24
+5	3	13.9	0	3
+6	2	3.5	0	2
+7	1	0.9	0	1
+8	1	0.2	0	1
+21	5	0.0	1	0 5
+22	18	0.0	1	1 17
+23	1	0.0	1	0 1
+81	1	0.0	1	0 1
+83	1	0.0	1	0 1
+97	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 8955 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+19	1	0.0	1	1
+20	1	0.0	1	0 1
+21	88	0.0	1	21 67
+22	8831	0.0	1	8380 451
+23	34	0.0	1	2 32
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 223 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 80.3%
+  C: 7.2%
+  G: 8.1%
+  T: 4.5%
+  none/other: 0.0%
+WARNING:
+    The adapter is preceded by 'A' extremely often.
+    The provided adapter sequence could be incomplete at its 5' end.
+    Ignore this warning when trimming primers.
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	66	221.9	0	66
+12	1	0.0	1	0 1
+19	147	0.0	1	11 136
+146	9	0.0	1	0 9
+
+
+WARNING:
+    One or more of your adapter sequences may be incomplete.
+    Please see the detailed output above.
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862381_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862381_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862381_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862381_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              5,915
+  Read 1 with adapter:                   2,402 (40.6%)
+  Read 2 with adapter:                   2,556 (43.2%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            3,575 (60.4%)
+Pairs written (passing filters):         2,340 (39.6%)
+
+Total basepairs processed:     1,420,119 bp
+  Read 1:       709,752 bp
+  Read 2:       710,367 bp
+Total written (filtered):        577,948 bp (40.7%)
+  Read 1:       294,298 bp
+  Read 2:       283,650 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 2355 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	10	0.0	1	3 7
+19	2344	0.0	1	1906 438
+20	1	0.0	1	0 1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 55 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 38.2%
+  C: 16.4%
+  G: 25.5%
+  T: 20.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	21	92.4	0	21
+4	12	23.1	0	12
+6	1	1.4	0	1
+7	1	0.4	0	1
+8	1	0.1	0	1
+21	4	0.0	1	0 4
+22	15	0.0	1	3 12
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 2409 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	92.4	0	1
+15	1	0.0	1	1
+21	28	0.0	1	4 24
+22	2352	0.0	1	2191 161
+23	27	0.0	1	1 26
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 156 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 82.7%
+  C: 4.5%
+  G: 7.7%
+  T: 5.1%
+  none/other: 0.0%
+WARNING:
+    The adapter is preceded by 'A' extremely often.
+    The provided adapter sequence could be incomplete at its 5' end.
+    Ignore this warning when trimming primers.
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	46	92.4	0	46
+12	1	0.0	1	0 1
+19	101	0.0	1	2 99
+146	8	0.0	1	0 8
+
+
+WARNING:
+    One or more of your adapter sequences may be incomplete.
+    Please see the detailed output above.
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862383_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862383_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862383_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862383_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              5,683
+  Read 1 with adapter:                   5,259 (92.5%)
+  Read 2 with adapter:                   5,244 (92.3%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              454 (8.0%)
+Pairs written (passing filters):         5,229 (92.0%)
+
+Total basepairs processed:     1,611,690 bp
+  Read 1:       814,402 bp
+  Read 2:       797,288 bp
+Total written (filtered):      1,342,742 bp (83.3%)
+  Read 1:       688,518 bp
+  Read 2:       654,224 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 5258 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	21	0.0	1	4 17
+19	5229	0.0	1	5102 127
+20	8	0.0	1	2 6
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 13 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 7.7%
+  C: 7.7%
+  G: 69.2%
+  T: 15.4%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	6	88.8	0	6
+4	7	22.2	0	7
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 5231 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+20	1	0.0	1	0 1
+21	42	0.0	1	7 35
+22	5173	0.0	1	5046 127
+23	15	0.0	1	4 11
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 18 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 61.1%
+  C: 33.3%
+  G: 5.6%
+  T: 0.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	8	88.8	0	8
+19	10	0.0	1	1 9
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862385_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862385_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862385_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862385_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              3,682
+  Read 1 with adapter:                   3,151 (85.6%)
+  Read 2 with adapter:                   3,147 (85.5%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              551 (15.0%)
+Pairs written (passing filters):         3,131 (85.0%)
+
+Total basepairs processed:     1,020,759 bp
+  Read 1:       511,434 bp
+  Read 2:       509,325 bp
+Total written (filtered):        808,511 bp (79.2%)
+  Read 1:       410,566 bp
+  Read 2:       397,945 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 3149 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	57.5	0	1
+17	1	0.0	1	1
+18	15	0.0	1	6 9
+19	3127	0.0	1	3049 78
+20	5	0.0	1	1 4
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 10 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 30.0%
+  C: 20.0%
+  G: 20.0%
+  T: 30.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	9	57.5	0	9
+22	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 3127 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+20	1	0.0	1	1
+21	19	0.0	1	2 17
+22	3101	0.0	1	3016 85
+23	6	0.0	1	2 4
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 21 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 90.5%
+  C: 4.8%
+  G: 4.8%
+  T: 0.0%
+  none/other: 0.0%
+WARNING:
+    The adapter is preceded by 'A' extremely often.
+    The provided adapter sequence could be incomplete at its 5' end.
+    Ignore this warning when trimming primers.
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	57.5	0	1
+19	19	0.0	1	0 19
+146	1	0.0	1	0 1
+
+
+WARNING:
+    One or more of your adapter sequences may be incomplete.
+    Please see the detailed output above.
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862387_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862387_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862387_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862387_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             56,216
+  Read 1 with adapter:                  54,504 (97.0%)
+  Read 2 with adapter:                  54,382 (96.7%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            1,934 (3.4%)
+Pairs written (passing filters):        54,282 (96.6%)
+
+Total basepairs processed:    16,522,266 bp
+  Read 1:     8,324,696 bp
+  Read 2:     8,197,570 bp
+Total written (filtered):     14,008,464 bp (84.8%)
+  Read 1:     7,150,729 bp
+  Read 2:     6,857,735 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 54494 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+12	1	0.0	1	1
+17	11	0.0	1	6 5
+18	297	0.0	1	98 199
+19	54138	0.0	1	53450 688
+20	46	0.0	1	13 33
+38	1	0.0	1	1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 135 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 13.3%
+  C: 7.4%
+  G: 74.1%
+  T: 5.2%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	74	878.4	0	74
+4	45	219.6	0	45
+5	5	54.9	0	5
+6	2	13.7	0	2
+21	1	0.0	1	0 1
+22	7	0.0	1	4 3
+78	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 54291 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+20	1	0.0	1	0 1
+21	226	0.0	1	43 183
+22	53961	0.0	1	52600 1361
+23	103	0.0	1	24 79
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 114 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 79.8%
+  C: 13.2%
+  G: 6.1%
+  T: 0.9%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	27	878.4	0	27
+18	2	0.0	1	0 2
+19	84	0.0	1	7 77
+146	1	0.0	1	0 1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862389_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862389_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862389_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862389_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             27,559
+  Read 1 with adapter:                   2,684 (9.7%)
+  Read 2 with adapter:                   3,841 (13.9%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:           25,052 (90.9%)
+Pairs written (passing filters):         2,507 (9.1%)
+
+Total basepairs processed:     7,778,958 bp
+  Read 1:     3,898,033 bp
+  Read 2:     3,880,925 bp
+Total written (filtered):        607,930 bp (7.8%)
+  Read 1:       308,661 bp
+  Read 2:       299,269 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 2406 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	32	0.0	1	3 29
+19	2372	0.0	1	2003 369
+20	2	0.0	1	0 2
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 300 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 35.3%
+  C: 25.7%
+  G: 16.0%
+  T: 23.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	97	430.6	0	97
+4	32	107.7	0	32
+5	2	26.9	0	2
+6	3	6.7	0	3
+7	4	1.7	0	4
+8	1	0.4	0	1
+10	1	0.0	1	0 1
+15	1	0.0	1	1
+16	1	0.0	1	0 1
+17	1	0.0	1	0 1
+18	1	0.0	1	0 1
+19	1	0.0	1	0 1
+21	42	0.0	1	0 42
+22	103	0.0	1	12 91
+23	2	0.0	1	0 2
+72	1	0.0	1	1
+96	5	0.0	1	0 5
+97	1	0.0	1	0 1
+127	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 3556 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	3	430.6	0	3
+20	1	0.0	1	1
+21	162	0.0	1	5 157
+22	3323	0.0	1	2415 908
+23	67	0.0	1	1 66
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 353 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 55.8%
+  C: 15.0%
+  G: 18.1%
+  T: 11.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	216	430.6	0	216
+4	3	107.7	0	3
+18	5	0.0	1	0 5
+19	126	0.0	1	52 74
+74	2	0.0	1	1 1
+146	1	0.0	1	0 1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862391_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862391_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862391_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862391_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              5,378
+  Read 1 with adapter:                   2,209 (41.1%)
+  Read 2 with adapter:                   2,272 (42.2%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            3,197 (59.4%)
+Pairs written (passing filters):         2,181 (40.6%)
+
+Total basepairs processed:     1,207,030 bp
+  Read 1:       604,524 bp
+  Read 2:       602,506 bp
+Total written (filtered):        546,358 bp (45.3%)
+  Read 1:       277,609 bp
+  Read 2:       268,749 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 2199 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	18	0.0	1	2 16
+19	2180	0.0	1	1932 248
+20	1	0.0	1	0 1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 10 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 80.0%
+  C: 10.0%
+  G: 0.0%
+  T: 10.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	8	84.0	0	8
+22	1	0.0	1	0 1
+82	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 2185 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+20	1	0.0	1	1
+21	28	0.0	1	4 24
+22	2148	0.0	1	2052 96
+23	8	0.0	1	0 8
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 92 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 89.1%
+  C: 5.4%
+  G: 3.3%
+  T: 2.2%
+  none/other: 0.0%
+WARNING:
+    The adapter is preceded by 'A' extremely often.
+    The provided adapter sequence could be incomplete at its 5' end.
+    Ignore this warning when trimming primers.
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	8	84.0	0	8
+19	81	0.0	1	2 79
+136	1	0.0	1	0 1
+143	1	0.0	1	0 1
+146	1	0.0	1	0 1
+
+
+WARNING:
+    One or more of your adapter sequences may be incomplete.
+    Please see the detailed output above.
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862393_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862393_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862393_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862393_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              3,690
+  Read 1 with adapter:                   1,335 (36.2%)
+  Read 2 with adapter:                   1,378 (37.3%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            2,381 (64.5%)
+Pairs written (passing filters):         1,309 (35.5%)
+
+Total basepairs processed:     1,041,393 bp
+  Read 1:       521,707 bp
+  Read 2:       519,686 bp
+Total written (filtered):        336,008 bp (32.3%)
+  Read 1:       170,671 bp
+  Read 2:       165,337 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 1313 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	5	0.0	1	1 4
+19	1306	0.0	1	1151 155
+20	2	0.0	1	1 1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 24 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 33.3%
+  C: 25.0%
+  G: 16.7%
+  T: 25.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	11	57.7	0	11
+4	3	14.4	0	3
+5	1	3.6	0	1
+10	1	0.0	1	0 1
+21	6	0.0	1	0 6
+22	2	0.0	1	0 2
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 1355 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	15	0.0	1	0 15
+22	1337	0.0	1	1278 59
+23	3	0.0	1	0 3
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 24 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 37.5%
+  C: 12.5%
+  G: 41.7%
+  T: 8.3%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	6	57.7	0	6
+19	16	0.0	1	8 8
+74	1	0.0	1	1
+146	1	0.0	1	0 1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862395_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862395_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862395_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862395_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              7,215
+  Read 1 with adapter:                   5,041 (69.9%)
+  Read 2 with adapter:                   5,117 (70.9%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            2,240 (31.0%)
+Pairs written (passing filters):         4,975 (69.0%)
+
+Total basepairs processed:     2,034,291 bp
+  Read 1:     1,020,920 bp
+  Read 2:     1,013,371 bp
+Total written (filtered):      1,285,281 bp (63.2%)
+  Read 1:       652,798 bp
+  Read 2:       632,483 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 5021 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	112.7	0	1
+16	1	0.0	1	0 1
+18	19	0.0	1	4 15
+19	4995	0.0	1	4752 243
+20	5	0.0	1	1 4
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 22 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 27.3%
+  C: 9.1%
+  G: 27.3%
+  T: 36.4%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	6	112.7	0	6
+4	6	28.2	0	6
+11	1	0.0	1	1
+21	2	0.0	1	0 2
+22	6	0.0	1	0 6
+44	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 5075 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	2	112.7	0	2
+21	41	0.0	1	8 33
+22	5019	0.0	1	4812 207
+23	13	0.0	1	1 12
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 65 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 38.5%
+  C: 30.8%
+  G: 15.4%
+  T: 15.4%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	28	112.7	0	28
+4	3	28.2	0	3
+6	6	1.8	0	6
+19	27	0.0	1	1 26
+74	1	0.0	1	0 1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862397_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862397_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862397_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862397_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             22,193
+  Read 1 with adapter:                   2,269 (10.2%)
+  Read 2 with adapter:                   3,244 (14.6%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:           20,135 (90.7%)
+Pairs written (passing filters):         2,058 (9.3%)
+
+Total basepairs processed:     6,260,576 bp
+  Read 1:     3,136,037 bp
+  Read 2:     3,124,539 bp
+Total written (filtered):        499,800 bp (8.0%)
+  Read 1:       253,919 bp
+  Read 2:       245,881 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 1997 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	13	0.0	1	1 12
+19	1984	0.0	1	1672 312
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 283 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 31.4%
+  C: 30.7%
+  G: 19.8%
+  T: 18.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	92	346.8	0	92
+4	33	86.7	0	33
+5	2	21.7	0	2
+6	1	5.4	0	1
+7	5	1.4	0	5
+8	1	0.3	0	1
+12	1	0.0	1	0 1
+18	1	0.0	1	0 1
+21	62	0.0	1	0 62
+22	78	0.0	1	6 72
+23	4	0.0	1	0 4
+79	1	0.0	1	0 1
+96	1	0.0	1	0 1
+97	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 3031 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	2	346.8	0	2
+4	1	86.7	0	1
+18	1	0.0	1	0 1
+21	158	0.0	1	3 155
+22	2820	0.0	1	2171 649
+23	49	0.0	1	1 48
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 251 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 38.6%
+  C: 15.9%
+  G: 37.1%
+  T: 8.4%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	143	346.8	0	143
+4	1	86.7	0	1
+12	1	0.0	1	0 1
+18	2	0.0	1	0 2
+19	104	0.0	1	72 32
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862399_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862399_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862399_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862399_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             11,753
+  Read 1 with adapter:                  11,227 (95.5%)
+  Read 2 with adapter:                  11,207 (95.4%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              585 (5.0%)
+Pairs written (passing filters):        11,168 (95.0%)
+
+Total basepairs processed:     3,471,937 bp
+  Read 1:     1,736,452 bp
+  Read 2:     1,735,485 bp
+Total written (filtered):      2,905,431 bp (83.7%)
+  Read 1:     1,470,277 bp
+  Read 2:     1,435,154 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 11226 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	3	183.6	0	3
+17	2	0.0	1	0 2
+18	47	0.0	1	4 43
+19	11168	0.0	1	10686 482
+20	6	0.0	1	0 6
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 6 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 50.0%
+  C: 16.7%
+  G: 16.7%
+  T: 16.7%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	2	183.6	0	2
+21	1	0.0	1	0 1
+22	3	0.0	1	0 3
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 11186 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	60	0.0	1	8 52
+22	11098	0.0	1	10910 188
+23	28	0.0	1	10 18
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 22 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 72.7%
+  C: 18.2%
+  G: 4.5%
+  T: 4.5%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	2	183.6	0	2
+19	19	0.0	1	2 17
+109	1	0.0	1	0 1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862401_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862401_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862401_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862401_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             74,302
+  Read 1 with adapter:                  74,072 (99.7%)
+  Read 2 with adapter:                  73,921 (99.5%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              574 (0.8%)
+Pairs written (passing filters):        73,728 (99.2%)
+
+Total basepairs processed:    22,356,846 bp
+  Read 1:    11,211,580 bp
+  Read 2:    11,145,266 bp
+Total written (filtered):     19,164,976 bp (85.7%)
+  Read 1:     9,725,937 bp
+  Read 2:     9,439,039 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 74071 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	3	1161.0	0	3
+12	1	0.0	1	1
+15	1	0.0	1	1
+16	2	0.0	1	2
+17	4	0.0	1	1 3
+18	346	0.0	1	80 266
+19	73639	0.0	1	72825 814
+20	75	0.0	1	16 59
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 124 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 11.3%
+  C: 2.4%
+  G: 78.2%
+  T: 8.1%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	86	1161.0	0	86
+4	33	290.2	0	33
+21	1	0.0	1	0 1
+22	3	0.0	1	1 2
+23	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 73917 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+14	1	0.0	1	1
+19	1	0.0	1	1
+20	4	0.0	1	0 4
+21	358	0.0	1	77 281
+22	73402	0.0	1	71635 1767
+23	151	0.0	1	29 122
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 45 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 8.9%
+  C: 84.4%
+  G: 4.4%
+  T: 2.2%
+  none/other: 0.0%
+WARNING:
+    The adapter is preceded by 'C' extremely often.
+    The provided adapter sequence could be incomplete at its 5' end.
+    Ignore this warning when trimming primers.
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	41	1161.0	0	41
+19	4	0.0	1	3 1
+
+
+WARNING:
+    One or more of your adapter sequences may be incomplete.
+    Please see the detailed output above.
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862403_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862403_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862403_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862403_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              4,416
+  Read 1 with adapter:                   1,606 (36.4%)
+  Read 2 with adapter:                   1,718 (38.9%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            2,842 (64.4%)
+Pairs written (passing filters):         1,574 (35.6%)
+
+Total basepairs processed:     1,149,062 bp
+  Read 1:       575,548 bp
+  Read 2:       573,514 bp
+Total written (filtered):        395,639 bp (34.4%)
+  Read 1:       200,648 bp
+  Read 2:       194,991 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 1576 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	69.0	0	1
+16	1	0.0	1	0 1
+17	1	0.0	1	0 1
+18	15	0.0	1	1 14
+19	1557	0.0	1	1421 136
+20	1	0.0	1	0 1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 77 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 7.8%
+  C: 14.3%
+  G: 66.2%
+  T: 11.7%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	13	69.0	0	13
+4	6	17.2	0	6
+5	1	4.3	0	1
+21	4	0.0	1	0 4
+22	51	0.0	1	40 11
+23	1	0.0	1	0 1
+68	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 1671 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	34	0.0	1	9 25
+22	1632	0.0	1	1514 118
+23	5	0.0	1	0 5
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 93 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 72.0%
+  C: 5.4%
+  G: 9.7%
+  T: 12.9%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	18	69.0	0	18
+4	1	17.2	0	1
+6	1	1.1	0	1
+17	1	0.0	1	0 1
+18	3	0.0	1	0 3
+19	63	0.0	1	37 26
+20	1	0.0	1	0 1
+45	1	0.0	1	0 1
+65	4	0.0	1	1 3
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862405_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862405_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862405_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862405_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             16,503
+  Read 1 with adapter:                  16,259 (98.5%)
+  Read 2 with adapter:                  16,279 (98.6%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              299 (1.8%)
+Pairs written (passing filters):        16,204 (98.2%)
+
+Total basepairs processed:     4,963,632 bp
+  Read 1:     2,488,660 bp
+  Read 2:     2,474,972 bp
+Total written (filtered):      4,213,490 bp (84.9%)
+  Read 1:     2,137,697 bp
+  Read 2:     2,075,793 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 16252 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	3	257.9	0	3
+17	2	0.0	1	0 2
+18	28	0.0	1	11 17
+19	16208	0.0	1	15862 346
+20	10	0.0	1	3 7
+26	1	0.0	1	1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 30 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 13.3%
+  C: 23.3%
+  G: 56.7%
+  T: 6.7%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	10	257.9	0	10
+4	10	64.5	0	10
+6	2	4.0	0	2
+7	1	1.0	0	1
+21	5	0.0	1	0 5
+22	1	0.0	1	0 1
+55	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 16270 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+20	1	0.0	1	0 1
+21	83	0.0	1	20 63
+22	16160	0.0	1	15965 195
+23	26	0.0	1	6 20
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 54 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 3.7%
+  C: 75.9%
+  G: 14.8%
+  T: 5.6%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	47	257.9	0	47
+19	7	0.0	1	7
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862407_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862407_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862407_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862407_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              6,948
+  Read 1 with adapter:                   1,380 (19.9%)
+  Read 2 with adapter:                   1,636 (23.5%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            5,622 (80.9%)
+Pairs written (passing filters):         1,326 (19.1%)
+
+Total basepairs processed:     2,035,661 bp
+  Read 1:     1,018,938 bp
+  Read 2:     1,016,723 bp
+Total written (filtered):        342,142 bp (16.8%)
+  Read 1:       173,283 bp
+  Read 2:       168,859 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 1323 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	4	0.0	1	0 4
+19	1317	0.0	1	1124 193
+20	2	0.0	1	0 2
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 60 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 46.7%
+  C: 16.7%
+  G: 11.7%
+  T: 25.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	38	108.6	0	38
+4	4	27.1	0	4
+12	1	0.0	1	0 1
+21	8	0.0	1	0 8
+22	8	0.0	1	0 8
+23	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 1607 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	48	0.0	1	3 45
+22	1542	0.0	1	1346 196
+23	17	0.0	1	1 16
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 41 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 43.9%
+  C: 2.4%
+  G: 29.3%
+  T: 24.4%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	29	108.6	0	29
+19	11	0.0	1	8 3
+74	1	0.0	1	1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862409_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862409_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862409_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862409_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             64,563
+  Read 1 with adapter:                  63,442 (98.3%)
+  Read 2 with adapter:                  63,301 (98.0%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            1,403 (2.2%)
+Pairs written (passing filters):        63,160 (97.8%)
+
+Total basepairs processed:    19,125,745 bp
+  Read 1:     9,677,923 bp
+  Read 2:     9,447,822 bp
+Total written (filtered):     16,233,807 bp (84.9%)
+  Read 1:     8,326,635 bp
+  Read 2:     7,907,172 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 63424 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	5	1008.8	0	5
+12	1	0.0	1	1
+17	2	0.0	1	2
+18	263	0.0	1	84 179
+19	63089	0.0	1	62297 792
+20	64	0.0	1	9 55
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 154 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 15.6%
+  C: 8.4%
+  G: 67.5%
+  T: 8.4%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	90	1008.8	0	90
+4	36	252.2	0	36
+6	1	15.8	0	1
+21	4	0.0	1	0 4
+22	22	0.0	1	14 8
+42	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 63260 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	1008.8	0	1
+14	1	0.0	1	1
+19	1	0.0	1	0 1
+20	8	0.0	1	2 6
+21	364	0.0	1	78 286
+22	62786	0.0	1	61170 1616
+23	99	0.0	1	13 86
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 89 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 61.8%
+  C: 27.0%
+  G: 6.7%
+  T: 4.5%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	44	1008.8	0	44
+19	44	0.0	1	14 30
+146	1	0.0	1	0 1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862411_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862411_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862411_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862411_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             13,260
+  Read 1 with adapter:                   3,278 (24.7%)
+  Read 2 with adapter:                   3,560 (26.8%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:           10,057 (75.8%)
+Pairs written (passing filters):         3,203 (24.2%)
+
+Total basepairs processed:     3,894,679 bp
+  Read 1:     1,949,341 bp
+  Read 2:     1,945,338 bp
+Total written (filtered):        828,515 bp (21.3%)
+  Read 1:       419,831 bp
+  Read 2:       408,684 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 3196 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	2	207.2	0	2
+18	9	0.0	1	1 8
+19	3180	0.0	1	2981 199
+20	5	0.0	1	0 5
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 90 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 48.9%
+  C: 14.4%
+  G: 10.0%
+  T: 26.7%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	55	207.2	0	55
+4	7	51.8	0	7
+7	1	0.8	0	1
+21	7	0.0	1	0 7
+22	17	0.0	1	2 15
+23	1	0.0	1	0 1
+96	2	0.0	1	0 2
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 3519 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+20	1	0.0	1	0 1
+21	42	0.0	1	2 40
+22	3448	0.0	1	3199 249
+23	28	0.0	1	0 28
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 51 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 52.9%
+  C: 7.8%
+  G: 25.5%
+  T: 13.7%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	34	207.2	0	34
+18	1	0.0	1	0 1
+19	16	0.0	1	11 5
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862413_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862413_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862413_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862413_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             30,069
+  Read 1 with adapter:                   5,975 (19.9%)
+  Read 2 with adapter:                   6,842 (22.8%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:           24,281 (80.8%)
+Pairs written (passing filters):         5,788 (19.2%)
+
+Total basepairs processed:     8,797,833 bp
+  Read 1:     4,408,266 bp
+  Read 2:     4,389,567 bp
+Total written (filtered):      1,484,117 bp (16.9%)
+  Read 1:       757,277 bp
+  Read 2:       726,840 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 5771 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	3	469.8	0	3
+18	22	0.0	1	5 17
+19	5741	0.0	1	5333 408
+20	5	0.0	1	0 5
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 217 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 48.4%
+  C: 19.4%
+  G: 13.8%
+  T: 18.4%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	105	469.8	0	105
+4	21	117.5	0	21
+5	1	29.4	0	1
+7	1	1.8	0	1
+11	1	0.0	1	0 1
+21	28	0.0	1	0 28
+22	54	0.0	1	2 52
+23	1	0.0	1	0 1
+77	1	0.0	1	0 1
+79	1	0.0	1	0 1
+83	1	0.0	1	0 1
+96	2	0.0	1	0 2
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 6761 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	3	469.8	0	3
+21	143	0.0	1	10 133
+22	6568	0.0	1	5903 665
+23	46	0.0	1	4 42
+24	1	0.0	1	0 1
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 113 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 36.3%
+  C: 15.9%
+  G: 27.4%
+  T: 20.4%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	78	469.8	0	78
+4	1	117.5	0	1
+5	2	29.4	0	2
+9	1	0.1	0	0 1
+12	1	0.0	1	0 1
+18	1	0.0	1	0 1
+19	27	0.0	1	22 5
+70	1	0.0	1	1
+74	1	0.0	1	0 1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862415_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862415_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862415_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862415_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             10,113
+  Read 1 with adapter:                  10,078 (99.7%)
+  Read 2 with adapter:                  10,063 (99.5%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:               78 (0.8%)
+Pairs written (passing filters):        10,035 (99.2%)
+
+Total basepairs processed:     3,042,466 bp
+  Read 1:     1,525,973 bp
+  Read 2:     1,516,493 bp
+Total written (filtered):      2,608,229 bp (85.7%)
+  Read 1:     1,323,866 bp
+  Read 2:     1,284,363 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 10075 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+17	1	0.0	1	0 1
+18	37	0.0	1	14 23
+19	10029	0.0	1	9826 203
+20	8	0.0	1	0 8
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 12 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 8.3%
+  C: 8.3%
+  G: 58.3%
+  T: 25.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	4	158.0	0	4
+4	4	39.5	0	4
+21	1	0.0	1	0 1
+22	3	0.0	1	3
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 10062 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+19	1	0.0	1	1
+21	65	0.0	1	8 57
+22	9981	0.0	1	9808 173
+23	15	0.0	1	2 13
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 8 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 0.0%
+  C: 75.0%
+  G: 12.5%
+  T: 12.5%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	6	158.0	0	6
+19	2	0.0	1	0 2
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862417_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862417_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862417_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862417_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              7,958
+  Read 1 with adapter:                   7,609 (95.6%)
+  Read 2 with adapter:                   7,621 (95.8%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              370 (4.6%)
+Pairs written (passing filters):         7,588 (95.4%)
+
+Total basepairs processed:     2,353,335 bp
+  Read 1:     1,184,684 bp
+  Read 2:     1,168,651 bp
+Total written (filtered):      1,959,488 bp (83.3%)
+  Read 1:       999,163 bp
+  Read 2:       960,325 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 7593 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	17	0.0	1	5 12
+19	7572	0.0	1	7396 176
+20	4	0.0	1	1 3
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 21 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 23.8%
+  C: 33.3%
+  G: 42.9%
+  T: 0.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+4	4	31.1	0	4
+7	1	0.5	0	1
+18	1	0.0	1	0 1
+21	6	0.0	1	0 6
+22	8	0.0	1	2 6
+128	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 7599 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	29	0.0	1	1 28
+22	7557	0.0	1	7401 156
+23	13	0.0	1	1 12
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 24 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 20.8%
+  C: 0.0%
+  G: 79.2%
+  T: 0.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	2	124.3	0	2
+19	20	0.0	1	17 3
+74	2	0.0	1	0 2
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862419_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862419_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862419_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862419_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              2,274
+  Read 1 with adapter:                   1,839 (80.9%)
+  Read 2 with adapter:                   2,000 (88.0%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              447 (19.7%)
+Pairs written (passing filters):         1,827 (80.3%)
+
+Total basepairs processed:       680,582 bp
+  Read 1:       340,684 bp
+  Read 2:       339,898 bp
+Total written (filtered):        473,356 bp (69.6%)
+  Read 1:       239,776 bp
+  Read 2:       233,580 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 1823 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	5	0.0	1	1 4
+19	1818	0.0	1	1181 637
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 29 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 6.9%
+  C: 10.3%
+  G: 13.8%
+  T: 69.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	19	35.5	0	19
+4	1	8.9	0	1
+21	2	0.0	1	0 2
+22	7	0.0	1	4 3
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 1982 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	23	0.0	1	3 20
+22	1955	0.0	1	1858 97
+23	4	0.0	1	0 4
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 22 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 9.1%
+  C: 13.6%
+  G: 77.3%
+  T: 0.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	3	35.5	0	3
+19	18	0.0	1	14 4
+70	1	0.0	1	1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862421_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862421_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862421_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862421_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              1,061
+  Read 1 with adapter:                   1,014 (95.6%)
+  Read 2 with adapter:                   1,032 (97.3%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:               48 (4.5%)
+Pairs written (passing filters):         1,013 (95.5%)
+
+Total basepairs processed:       318,406 bp
+  Read 1:       159,844 bp
+  Read 2:       158,562 bp
+Total written (filtered):        262,861 bp (82.6%)
+  Read 1:       133,612 bp
+  Read 2:       129,249 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 1014 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	2	0.0	1	0 2
+19	1011	0.0	1	940 71
+20	1	0.0	1	0 1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 1 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 0.0%
+  C: 0.0%
+  G: 0.0%
+  T: 100.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+4	1	4.1	0	1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 1031 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	5	0.0	1	0 5
+22	1024	0.0	1	998 26
+23	2	0.0	1	1 1
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 1 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 0.0%
+  C: 0.0%
+  G: 100.0%
+  T: 0.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+19	1	0.0	1	1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862423_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862423_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862423_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862423_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              7,724
+  Read 1 with adapter:                   3,860 (50.0%)
+  Read 2 with adapter:                   4,088 (52.9%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            3,914 (50.7%)
+Pairs written (passing filters):         3,810 (49.3%)
+
+Total basepairs processed:     2,276,368 bp
+  Read 1:     1,141,517 bp
+  Read 2:     1,134,851 bp
+Total written (filtered):        982,841 bp (43.2%)
+  Read 1:       499,916 bp
+  Read 2:       482,925 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 3797 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	12	0.0	1	3 9
+19	3778	0.0	1	3553 225
+20	7	0.0	1	2 5
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 70 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 20.0%
+  C: 35.7%
+  G: 11.4%
+  T: 32.9%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	32	120.7	0	32
+4	6	30.2	0	6
+7	2	0.5	0	2
+21	15	0.0	1	0 15
+22	11	0.0	1	2 9
+77	1	0.0	1	0 1
+79	1	0.0	1	0 1
+81	2	0.0	1	0 2
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 4065 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	2	120.7	0	2
+20	1	0.0	1	1
+21	50	0.0	1	6 44
+22	4000	0.0	1	3799 201
+23	12	0.0	1	3 9
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 32 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 15.6%
+  C: 18.8%
+  G: 53.1%
+  T: 12.5%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	12	120.7	0	12
+4	1	30.2	0	1
+19	18	0.0	1	15 3
+74	1	0.0	1	0 1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862425_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862425_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862425_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862425_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              4,845
+  Read 1 with adapter:                   4,711 (97.2%)
+  Read 2 with adapter:                   4,718 (97.4%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              150 (3.1%)
+Pairs written (passing filters):         4,695 (96.9%)
+
+Total basepairs processed:     1,453,057 bp
+  Read 1:       728,726 bp
+  Read 2:       724,331 bp
+Total written (filtered):      1,219,712 bp (83.9%)
+  Read 1:       618,992 bp
+  Read 2:       600,720 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 4710 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+16	1	0.0	1	1
+18	11	0.0	1	2 9
+19	4696	0.0	1	4589 107
+20	2	0.0	1	1 1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 5 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 20.0%
+  C: 20.0%
+  G: 0.0%
+  T: 60.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	75.7	0	1
+4	2	18.9	0	2
+22	2	0.0	1	2
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 4714 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+20	1	0.0	1	1
+21	23	0.0	1	3 20
+22	4681	0.0	1	4597 84
+23	9	0.0	1	2 7
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 11 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 63.6%
+  C: 9.1%
+  G: 18.2%
+  T: 9.1%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	6	75.7	0	6
+19	5	0.0	1	0 5
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862427_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862427_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862427_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862427_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             25,797
+  Read 1 with adapter:                   4,129 (16.0%)
+  Read 2 with adapter:                   4,972 (19.3%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:           21,836 (84.6%)
+Pairs written (passing filters):         3,961 (15.4%)
+
+Total basepairs processed:     7,496,289 bp
+  Read 1:     3,754,731 bp
+  Read 2:     3,741,558 bp
+Total written (filtered):        992,438 bp (13.2%)
+  Read 1:       507,088 bp
+  Read 2:       485,350 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 3862 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	24	0.0	1	1 23
+19	3837	0.0	1	3194 643
+20	1	0.0	1	1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 292 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 44.9%
+  C: 20.9%
+  G: 9.2%
+  T: 25.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	113	403.1	0	113
+4	20	100.8	0	20
+7	3	1.6	0	3
+10	1	0.0	1	0 1
+11	1	0.0	1	0 1
+21	39	0.0	1	0 39
+22	102	0.0	1	2 100
+23	3	0.0	1	0 3
+42	1	0.0	1	0 1
+75	1	0.0	1	0 1
+77	3	0.0	1	0 3
+96	4	0.0	1	0 4
+97	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 4837 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	2	403.1	0	2
+21	111	0.0	1	10 101
+22	4682	0.0	1	4115 567
+23	42	0.0	1	1 41
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 153 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 18.3%
+  C: 11.1%
+  G: 60.8%
+  T: 9.8%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	50	403.1	0	50
+5	1	25.2	0	1
+9	1	0.1	0	0 1
+12	1	0.0	1	0 1
+18	6	0.0	1	0 6
+19	90	0.0	1	75 15
+74	4	0.0	1	4
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862429_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862429_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862429_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862429_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              2,694
+  Read 1 with adapter:                   2,305 (85.6%)
+  Read 2 with adapter:                   2,332 (86.6%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              408 (15.1%)
+Pairs written (passing filters):         2,286 (84.9%)
+
+Total basepairs processed:       799,769 bp
+  Read 1:       400,992 bp
+  Read 2:       398,777 bp
+Total written (filtered):        592,072 bp (74.0%)
+  Read 1:       300,391 bp
+  Read 2:       291,681 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 2293 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	8	0.0	1	1 7
+19	2283	0.0	1	2161 122
+20	2	0.0	1	0 2
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 14 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 28.6%
+  C: 35.7%
+  G: 7.1%
+  T: 28.6%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	3	42.1	0	3
+6	1	0.7	0	1
+7	1	0.2	0	1
+21	5	0.0	1	0 5
+22	4	0.0	1	0 4
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 2323 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	16	0.0	1	1 15
+22	2304	0.0	1	2239 65
+23	3	0.0	1	0 3
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 33 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 6.1%
+  C: 72.7%
+  G: 18.2%
+  T: 3.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	25	42.1	0	25
+18	1	0.0	1	0 1
+19	7	0.0	1	5 2
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862431_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862431_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862431_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862431_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             70,720
+  Read 1 with adapter:                  69,942 (98.9%)
+  Read 2 with adapter:                  69,767 (98.7%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            1,073 (1.5%)
+Pairs written (passing filters):        69,647 (98.5%)
+
+Total basepairs processed:    21,140,645 bp
+  Read 1:    10,647,990 bp
+  Read 2:    10,492,655 bp
+Total written (filtered):     18,003,322 bp (85.2%)
+  Read 1:     9,183,547 bp
+  Read 2:     8,819,775 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 69936 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	5	1105.0	0	5
+15	1	0.0	1	1
+16	2	0.0	1	1 1
+17	9	0.0	1	5 4
+18	415	0.0	1	113 302
+19	69429	0.0	1	68679 750
+20	75	0.0	1	19 56
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 174 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 14.4%
+  C: 5.7%
+  G: 71.8%
+  T: 8.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	103	1105.0	0	103
+4	54	276.2	0	54
+5	2	69.1	0	2
+6	1	17.3	0	1
+21	3	0.0	1	0 3
+22	9	0.0	1	6 3
+23	1	0.0	1	0 1
+86	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 69727 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	2	1105.0	0	2
+18	1	0.0	1	1
+20	6	0.0	1	1 5
+21	369	0.0	1	85 284
+22	69240	0.0	1	67674 1566
+23	109	0.0	1	26 83
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 80 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 50.0%
+  C: 32.5%
+  G: 11.2%
+  T: 6.2%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	44	1105.0	0	44
+4	1	276.2	0	1
+18	1	0.0	1	0 1
+19	30	0.0	1	10 20
+146	4	0.0	1	0 4
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862433_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862433_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862433_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862433_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              2,107
+  Read 1 with adapter:                   2,074 (98.4%)
+  Read 2 with adapter:                   2,071 (98.3%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:               44 (2.1%)
+Pairs written (passing filters):         2,063 (97.9%)
+
+Total basepairs processed:       631,233 bp
+  Read 1:       317,319 bp
+  Read 2:       313,914 bp
+Total written (filtered):        534,602 bp (84.7%)
+  Read 1:       272,082 bp
+  Read 2:       262,520 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 2073 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+17	1	0.0	1	0 1
+18	1	0.0	1	0 1
+19	2069	0.0	1	1975 94
+20	2	0.0	1	1 1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 2 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 0.0%
+  C: 50.0%
+  G: 50.0%
+  T: 0.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+5	1	2.1	0	1
+22	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 2071 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	18	0.0	1	6 12
+22	2051	0.0	1	2019 32
+23	2	0.0	1	2
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 3 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 0.0%
+  C: 66.7%
+  G: 33.3%
+  T: 0.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	3	32.9	0	3
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862435_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862435_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862435_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862435_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             90,819
+  Read 1 with adapter:                  90,499 (99.6%)
+  Read 2 with adapter:                  90,336 (99.5%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              660 (0.7%)
+Pairs written (passing filters):        90,159 (99.3%)
+
+Total basepairs processed:    27,394,492 bp
+  Read 1:    13,707,667 bp
+  Read 2:    13,686,825 bp
+Total written (filtered):     23,506,571 bp (85.8%)
+  Read 1:    11,898,814 bp
+  Read 2:    11,607,757 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 90501 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	8	1419.0	0	8
+14	1	0.0	1	0 1
+15	1	0.0	1	1
+17	2	0.0	1	1 1
+18	269	0.0	1	80 189
+19	90158	0.0	1	88660 1498
+20	60	0.0	1	18 42
+28	1	0.0	1	1
+43	1	0.0	1	1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 29 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 13.8%
+  C: 6.9%
+  G: 44.8%
+  T: 34.5%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	8	1419.0	0	8
+4	12	354.8	0	12
+6	4	22.2	0	4
+21	2	0.0	1	0 2
+22	2	0.0	1	0 2
+133	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 90333 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+14	1	0.0	1	1
+18	2	0.0	1	1 1
+19	1	0.0	1	1
+20	7	0.0	1	0 7
+21	395	0.0	1	81 314
+22	89735	0.0	1	88423 1312
+23	191	0.0	1	50 141
+28	1	0.0	1	0 1
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 12 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 16.7%
+  C: 83.3%
+  G: 0.0%
+  T: 0.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	10	1419.0	0	10
+19	2	0.0	1	0 2
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862437_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862437_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862437_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862437_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              3,069
+  Read 1 with adapter:                   2,312 (75.3%)
+  Read 2 with adapter:                   2,322 (75.7%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              771 (25.1%)
+Pairs written (passing filters):         2,298 (74.9%)
+
+Total basepairs processed:       831,152 bp
+  Read 1:       416,199 bp
+  Read 2:       414,953 bp
+Total written (filtered):        595,782 bp (71.7%)
+  Read 1:       302,015 bp
+  Read 2:       293,767 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 2309 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	10	0.0	1	0 10
+19	2297	0.0	1	2128 169
+20	2	0.0	1	0 2
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 3 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 33.3%
+  C: 66.7%
+  G: 0.0%
+  T: 0.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	3	48.0	0	3
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 2308 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	15	0.0	1	3 12
+22	2286	0.0	1	2244 42
+23	7	0.0	1	2 5
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 17 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 70.6%
+  C: 11.8%
+  G: 5.9%
+  T: 11.8%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	6	48.0	0	6
+19	11	0.0	1	1 10
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862439_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862439_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862439_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862439_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             11,098
+  Read 1 with adapter:                   4,059 (36.6%)
+  Read 2 with adapter:                   4,687 (42.2%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            7,110 (64.1%)
+Pairs written (passing filters):         3,988 (35.9%)
+
+Total basepairs processed:     3,197,322 bp
+  Read 1:     1,599,851 bp
+  Read 2:     1,597,471 bp
+Total written (filtered):      1,028,325 bp (32.2%)
+  Read 1:       520,688 bp
+  Read 2:       507,637 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 3954 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	28	0.0	1	10 18
+19	3920	0.0	1	3266 654
+20	6	0.0	1	2 4
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 116 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 43.1%
+  C: 13.8%
+  G: 10.3%
+  T: 32.8%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	53	173.4	0	53
+4	10	43.4	0	10
+5	1	10.8	0	1
+6	1	2.7	0	1
+7	1	0.7	0	1
+21	10	0.0	1	0 10
+22	37	0.0	1	2 35
+23	2	0.0	1	0 2
+96	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 4566 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	3	173.4	0	3
+21	61	0.0	1	4 57
+22	4468	0.0	1	4068 400
+23	34	0.0	1	1 33
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 138 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 51.4%
+  C: 18.8%
+  G: 24.6%
+  T: 5.1%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	97	173.4	0	97
+11	1	0.0	1	0 1
+12	1	0.0	1	0 1
+19	37	0.0	1	29 8
+42	1	0.0	1	0 1
+74	1	0.0	1	1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862441_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862441_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862441_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862441_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              7,043
+  Read 1 with adapter:                   2,712 (38.5%)
+  Read 2 with adapter:                   2,836 (40.3%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            4,364 (62.0%)
+Pairs written (passing filters):         2,679 (38.0%)
+
+Total basepairs processed:     2,055,669 bp
+  Read 1:     1,032,422 bp
+  Read 2:     1,023,247 bp
+Total written (filtered):        687,700 bp (33.5%)
+  Read 1:       352,235 bp
+  Read 2:       335,465 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 2686 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	16	0.0	1	2 14
+19	2668	0.0	1	2539 129
+20	2	0.0	1	1 1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 29 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 37.9%
+  C: 13.8%
+  G: 6.9%
+  T: 41.4%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	22	110.0	0	22
+4	2	27.5	0	2
+21	1	0.0	1	0 1
+22	3	0.0	1	0 3
+23	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 2809 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	23	0.0	1	4 19
+22	2769	0.0	1	2635 134
+23	17	0.0	1	2 15
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 32 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 46.9%
+  C: 18.8%
+  G: 21.9%
+  T: 12.5%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	17	110.0	0	17
+19	15	0.0	1	7 8
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862442_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862442_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862442_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862442_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             10,608
+  Read 1 with adapter:                   2,534 (23.9%)
+  Read 2 with adapter:                   2,932 (27.6%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            8,152 (76.8%)
+Pairs written (passing filters):         2,456 (23.2%)
+
+Total basepairs processed:     2,975,463 bp
+  Read 1:     1,487,902 bp
+  Read 2:     1,487,561 bp
+Total written (filtered):        624,235 bp (21.0%)
+  Read 1:       316,424 bp
+  Read 2:       307,811 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 2469 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+16	1	0.0	1	1
+17	1	0.0	1	0 1
+18	22	0.0	1	1 21
+19	2444	0.0	1	2075 369
+20	1	0.0	1	0 1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 69 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 36.2%
+  C: 18.8%
+  G: 17.4%
+  T: 27.5%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	37	165.8	0	37
+4	12	41.4	0	12
+6	1	2.6	0	1
+7	1	0.6	0	1
+8	1	0.2	0	1
+21	6	0.0	1	0 6
+22	11	0.0	1	1 10
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 2825 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	165.8	0	1
+21	47	0.0	1	5 42
+22	2762	0.0	1	2463 299
+23	15	0.0	1	1 14
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 133 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 54.9%
+  C: 17.3%
+  G: 15.8%
+  T: 12.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	72	165.8	0	72
+19	59	0.0	1	14 45
+146	2	0.0	1	0 2
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862444_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862444_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862444_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862444_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              6,059
+  Read 1 with adapter:                   5,194 (85.7%)
+  Read 2 with adapter:                   5,666 (93.5%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              888 (14.7%)
+Pairs written (passing filters):         5,171 (85.3%)
+
+Total basepairs processed:     1,812,795 bp
+  Read 1:       906,863 bp
+  Read 2:       905,932 bp
+Total written (filtered):      1,342,449 bp (74.1%)
+  Read 1:       679,647 bp
+  Read 2:       662,802 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 5158 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	94.7	0	1
+17	1	0.0	1	1
+18	21	0.0	1	2 19
+19	5131	0.0	1	4740 391
+20	4	0.0	1	0 4
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 60 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 8.3%
+  C: 31.7%
+  G: 5.0%
+  T: 55.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	30	94.7	0	30
+4	1	23.7	0	1
+5	7	5.9	0	7
+6	4	1.5	0	4
+10	1	0.0	1	0 1
+11	1	0.0	1	0 1
+14	1	0.0	1	0 1
+21	3	0.0	1	0 3
+22	10	0.0	1	3 7
+30	1	0.0	1	0 1
+79	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 5636 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	94.7	0	1
+17	1	0.0	1	0 1
+21	43	0.0	1	9 34
+22	5580	0.0	1	5412 168
+23	11	0.0	1	3 8
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 34 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 5.9%
+  C: 5.9%
+  G: 85.3%
+  T: 0.0%
+  none/other: 2.9%
+WARNING:
+    The adapter is preceded by 'G' extremely often.
+    The provided adapter sequence could be incomplete at its 5' end.
+    Ignore this warning when trimming primers.
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	2	94.7	0	2
+4	1	23.7	0	1
+18	1	0.0	1	0 1
+19	28	0.0	1	26 2
+74	2	0.0	1	1 1
+
+
+WARNING:
+    One or more of your adapter sequences may be incomplete.
+    Please see the detailed output above.
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862446_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862446_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862446_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862446_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              4,942
+  Read 1 with adapter:                   2,568 (52.0%)
+  Read 2 with adapter:                   2,779 (56.2%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            2,397 (48.5%)
+Pairs written (passing filters):         2,545 (51.5%)
+
+Total basepairs processed:     1,446,398 bp
+  Read 1:       723,826 bp
+  Read 2:       722,572 bp
+Total written (filtered):        658,113 bp (45.5%)
+  Read 1:       333,621 bp
+  Read 2:       324,492 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 2527 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	15	0.0	1	4 11
+19	2507	0.0	1	2348 159
+20	5	0.0	1	0 5
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 43 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 27.9%
+  C: 11.6%
+  G: 18.6%
+  T: 41.9%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	20	77.2	0	20
+4	3	19.3	0	3
+5	1	4.8	0	1
+8	1	0.1	0	1
+21	4	0.0	1	0 4
+22	14	0.0	1	4 10
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 2746 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	77.2	0	1
+21	33	0.0	1	8 25
+22	2702	0.0	1	2560 142
+23	10	0.0	1	1 9
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 38 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 60.5%
+  C: 10.5%
+  G: 28.9%
+  T: 0.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	21	77.2	0	21
+19	17	0.0	1	9 8
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862448_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862448_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862448_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862448_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             11,937
+  Read 1 with adapter:                   7,114 (59.6%)
+  Read 2 with adapter:                   7,317 (61.3%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            4,885 (40.9%)
+Pairs written (passing filters):         7,052 (59.1%)
+
+Total basepairs processed:     3,528,392 bp
+  Read 1:     1,775,329 bp
+  Read 2:     1,753,063 bp
+Total written (filtered):      1,814,234 bp (51.4%)
+  Read 1:       928,594 bp
+  Read 2:       885,640 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 7070 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	24	0.0	1	6 18
+19	7041	0.0	1	6730 311
+20	5	0.0	1	3 2
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 50 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 36.0%
+  C: 18.0%
+  G: 14.0%
+  T: 32.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	25	186.5	0	25
+4	3	46.6	0	3
+6	1	2.9	0	1
+12	2	0.0	1	0 2
+21	6	0.0	1	0 6
+22	12	0.0	1	1 11
+96	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 7294 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	63	0.0	1	9 54
+22	7205	0.0	1	6991 214
+23	26	0.0	1	6 20
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 29 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 31.0%
+  C: 13.8%
+  G: 51.7%
+  T: 3.4%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	13	186.5	0	13
+19	14	0.0	1	11 3
+74	2	0.0	1	2
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862450_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862450_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862450_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862450_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             34,384
+  Read 1 with adapter:                  33,402 (97.1%)
+  Read 2 with adapter:                  33,414 (97.2%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            1,119 (3.3%)
+Pairs written (passing filters):        33,265 (96.7%)
+
+Total basepairs processed:    10,339,250 bp
+  Read 1:     5,183,762 bp
+  Read 2:     5,155,488 bp
+Total written (filtered):      8,649,386 bp (83.7%)
+  Read 1:     4,388,437 bp
+  Read 2:     4,260,949 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 33400 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	5	537.2	0	5
+17	2	0.0	1	2
+18	104	0.0	1	37 67
+19	33255	0.0	1	32424 831
+20	34	0.0	1	9 25
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 23 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 30.4%
+  C: 26.1%
+  G: 34.8%
+  T: 8.7%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	5	537.2	0	5
+4	2	134.3	0	2
+5	5	33.6	0	5
+6	5	8.4	0	5
+7	1	2.1	0	1
+21	1	0.0	1	0 1
+22	3	0.0	1	1 2
+23	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 33402 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+20	1	0.0	1	0 1
+21	173	0.0	1	38 135
+22	33168	0.0	1	32514 654
+23	60	0.0	1	10 50
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 56 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 25.0%
+  C: 50.0%
+  G: 14.3%
+  T: 10.7%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	50	537.2	0	50
+6	2	8.4	0	2
+19	4	0.0	1	2 2
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862452_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862452_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862452_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862452_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             32,240
+  Read 1 with adapter:                  31,603 (98.0%)
+  Read 2 with adapter:                  31,547 (97.9%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              828 (2.6%)
+Pairs written (passing filters):        31,412 (97.4%)
+
+Total basepairs processed:     9,675,155 bp
+  Read 1:     4,853,837 bp
+  Read 2:     4,821,318 bp
+Total written (filtered):      8,159,065 bp (84.3%)
+  Read 1:     4,142,737 bp
+  Read 2:     4,016,328 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 31587 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+17	4	0.0	1	0 4
+18	187	0.0	1	33 154
+19	31370	0.0	1	29802 1568
+20	26	0.0	1	7 19
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 52 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 19.2%
+  C: 13.5%
+  G: 44.2%
+  T: 23.1%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	27	503.8	0	27
+4	12	125.9	0	12
+5	1	31.5	0	1
+8	2	0.5	0	2
+21	2	0.0	1	0 2
+22	6	0.0	1	1 5
+43	1	0.0	1	0 1
+77	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 31533 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	2	503.8	0	2
+16	1	0.0	1	0 1
+18	2	0.0	1	2
+19	1	0.0	1	1
+20	3	0.0	1	0 3
+21	180	0.0	1	48 132
+22	31288	0.0	1	29791 1497
+23	56	0.0	1	10 46
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 22 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 27.3%
+  C: 27.3%
+  G: 45.5%
+  T: 0.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	8	503.8	0	8
+18	2	0.0	1	0 2
+19	12	0.0	1	8 4
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862454_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862454_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862454_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862454_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             13,368
+  Read 1 with adapter:                   4,593 (34.4%)
+  Read 2 with adapter:                   6,100 (45.6%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            8,941 (66.9%)
+Pairs written (passing filters):         4,427 (33.1%)
+
+Total basepairs processed:     3,795,060 bp
+  Read 1:     1,899,768 bp
+  Read 2:     1,895,292 bp
+Total written (filtered):      1,139,555 bp (30.0%)
+  Read 1:       578,840 bp
+  Read 2:       560,715 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 4362 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	24	0.0	1	6 18
+19	4331	0.0	1	3904 427
+20	7	0.0	1	2 5
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 250 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 31.2%
+  C: 11.2%
+  G: 20.0%
+  T: 37.6%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	140	208.9	0	140
+4	42	52.2	0	42
+6	1	3.3	0	1
+7	2	0.8	0	2
+8	3	0.2	0	3
+10	1	0.0	1	0 1
+13	2	0.0	1	1 1
+21	6	0.0	1	0 6
+22	52	0.0	1	7 45
+23	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 5953 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	4	208.9	0	4
+20	1	0.0	1	0 1
+21	104	0.0	1	12 92
+22	5819	0.0	1	5035 784
+23	25	0.0	1	1 24
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 171 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 53.8%
+  C: 22.2%
+  G: 18.7%
+  T: 5.3%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	131	208.9	0	131
+12	2	0.0	1	0 2
+18	1	0.0	1	0 1
+19	36	0.0	1	22 14
+74	1	0.0	1	1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862456_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862456_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862456_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862456_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              4,068
+  Read 1 with adapter:                   2,758 (67.8%)
+  Read 2 with adapter:                   2,815 (69.2%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            1,337 (32.9%)
+Pairs written (passing filters):         2,731 (67.1%)
+
+Total basepairs processed:     1,196,974 bp
+  Read 1:       603,183 bp
+  Read 2:       593,791 bp
+Total written (filtered):        700,419 bp (58.5%)
+  Read 1:       358,829 bp
+  Read 2:       341,590 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 2747 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	9	0.0	1	2 7
+19	2737	0.0	1	2545 192
+20	1	0.0	1	0 1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 15 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 26.7%
+  C: 33.3%
+  G: 20.0%
+  T: 20.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	7	63.6	0	7
+4	2	15.9	0	2
+6	1	1.0	0	1
+21	2	0.0	1	0 2
+22	1	0.0	1	1
+79	1	0.0	1	0 1
+96	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 2794 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	18	0.0	1	1 17
+22	2764	0.0	1	2686 78
+23	12	0.0	1	4 8
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 28 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 39.3%
+  C: 28.6%
+  G: 32.1%
+  T: 0.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	12	63.6	0	12
+19	15	0.0	1	6 9
+74	1	0.0	1	1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862458_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862458_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862458_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862458_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             97,586
+  Read 1 with adapter:                  93,093 (95.4%)
+  Read 2 with adapter:                  92,607 (94.9%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            5,322 (5.5%)
+Pairs written (passing filters):        92,264 (94.5%)
+
+Total basepairs processed:    28,437,724 bp
+  Read 1:    14,333,498 bp
+  Read 2:    14,104,226 bp
+Total written (filtered):     23,804,136 bp (83.7%)
+  Read 1:    12,153,949 bp
+  Read 2:    11,650,187 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 93058 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	8	1524.8	0	8
+9	1	0.4	0	1
+12	2	0.0	1	2
+16	2	0.0	1	2
+17	16	0.0	1	7 9
+18	747	0.0	1	218 529
+19	92180	0.0	1	89990 2190
+20	102	0.0	1	24 78
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 58 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 31.0%
+  C: 25.9%
+  G: 19.0%
+  T: 24.1%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	11	1524.8	0	11
+4	5	381.2	0	5
+7	1	6.0	0	1
+8	1	1.5	0	1
+21	6	0.0	1	0 6
+22	29	0.0	1	10 19
+23	1	0.0	1	0 1
+43	1	0.0	1	0 1
+96	1	0.0	1	0 1
+104	1	0.0	1	0 1
+113	1	0.0	1	1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 92418 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+14	2	0.0	1	2
+16	1	0.0	1	0 1
+17	1	0.0	1	0 1
+18	2	0.0	1	2
+19	2	0.0	1	0 2
+20	14	0.0	1	2 12
+21	801	0.0	1	183 618
+22	91375	0.0	1	89637 1738
+23	219	0.0	1	64 155
+24	1	0.0	1	0 1
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 556 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 26.3%
+  C: 62.8%
+  G: 8.6%
+  T: 2.3%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	383	1524.8	0	383
+18	2	0.0	1	0 2
+19	163	0.0	1	48 115
+22	2	0.0	1	1 1
+74	2	0.0	1	2
+145	1	0.0	1	0 1
+146	3	0.0	1	0 3
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862460_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862460_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862460_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862460_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:            156,397
+  Read 1 with adapter:                 152,773 (97.7%)
+  Read 2 with adapter:                 152,596 (97.6%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            4,328 (2.8%)
+Pairs written (passing filters):       152,069 (97.2%)
+
+Total basepairs processed:    46,970,925 bp
+  Read 1:    23,532,946 bp
+  Read 2:    23,437,979 bp
+Total written (filtered):     39,561,494 bp (84.2%)
+  Read 1:    20,055,651 bp
+  Read 2:    19,505,843 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 152717 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	18	2443.7	0	18
+12	2	0.0	1	2
+13	1	0.0	1	1
+16	3	0.0	1	2 1
+17	14	0.0	1	8 6
+18	605	0.0	1	169 436
+19	151922	0.0	1	148425 3497
+20	152	0.0	1	43 109
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 131 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 31.3%
+  C: 19.8%
+  G: 35.1%
+  T: 13.7%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	45	2443.7	0	45
+4	17	610.9	0	17
+5	3	152.7	0	3
+6	2	38.2	0	2
+7	1	9.5	0	1
+21	12	0.0	1	0 12
+22	46	0.0	1	3 43
+23	1	0.0	1	0 1
+78	1	0.0	1	0 1
+83	1	0.0	1	0 1
+97	2	0.0	1	0 2
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 152529 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+19	2	0.0	1	0 2
+20	8	0.0	1	3 5
+21	785	0.0	1	180 605
+22	151426	0.0	1	149225 2201
+23	308	0.0	1	58 250
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 218 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 24.8%
+  C: 42.2%
+  G: 21.6%
+  T: 11.5%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	135	2443.7	0	135
+4	2	610.9	0	2
+5	4	152.7	0	4
+6	13	38.2	0	13
+8	3	2.4	0	3
+9	1	0.6	0	0 1
+19	59	0.0	1	20 39
+74	1	0.0	1	0 1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862462_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862462_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862462_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862462_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             66,351
+  Read 1 with adapter:                  60,445 (91.1%)
+  Read 2 with adapter:                  60,122 (90.6%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            6,345 (9.6%)
+Pairs written (passing filters):        60,006 (90.4%)
+
+Total basepairs processed:    18,305,767 bp
+  Read 1:     9,264,438 bp
+  Read 2:     9,041,329 bp
+Total written (filtered):     15,277,993 bp (83.5%)
+  Read 1:     7,841,192 bp
+  Read 2:     7,436,801 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 60431 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	1036.7	0	1
+16	1	0.0	1	1
+17	12	0.0	1	7 5
+18	583	0.0	1	175 408
+19	59736	0.0	1	58016 1720
+20	97	0.0	1	27 70
+28	1	0.0	1	1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 17 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 58.8%
+  C: 23.5%
+  G: 11.8%
+  T: 5.9%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	1036.7	0	1
+4	1	259.2	0	1
+8	2	1.0	0	2
+21	1	0.0	1	0 1
+22	10	0.0	1	0 10
+25	1	0.0	1	0 1
+128	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 59482 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	2	0.0	1	1 1
+20	11	0.0	1	0 11
+21	436	0.0	1	91 345
+22	58839	0.0	1	57630 1209
+23	194	0.0	1	36 158
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 654 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 96.9%
+  C: 1.4%
+  G: 0.8%
+  T: 0.9%
+  none/other: 0.0%
+WARNING:
+    The adapter is preceded by 'A' extremely often.
+    The provided adapter sequence could be incomplete at its 5' end.
+    Ignore this warning when trimming primers.
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	28	1036.7	0	28
+19	592	0.0	1	4 588
+74	3	0.0	1	3
+146	31	0.0	1	1 30
+
+
+WARNING:
+    One or more of your adapter sequences may be incomplete.
+    Please see the detailed output above.
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862464_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862464_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862464_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862464_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:            132,280
+  Read 1 with adapter:                 131,918 (99.7%)
+  Read 2 with adapter:                 130,992 (99.0%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            1,390 (1.1%)
+Pairs written (passing filters):       130,890 (98.9%)
+
+Total basepairs processed:    39,771,764 bp
+  Read 1:    19,947,250 bp
+  Read 2:    19,824,514 bp
+Total written (filtered):     34,015,647 bp (85.5%)
+  Read 1:    17,265,251 bp
+  Read 2:    16,750,396 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 131917 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	11	2066.9	0	11
+12	1	0.0	1	1
+16	1	0.0	1	1
+17	17	0.0	1	4 13
+18	997	0.0	1	301 696
+19	130750	0.0	1	128763 1987
+20	140	0.0	1	46 94
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 18 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 38.9%
+  C: 22.2%
+  G: 33.3%
+  T: 5.6%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	5	2066.9	0	5
+4	1	516.7	0	1
+7	1	8.1	0	1
+13	1	0.0	1	0 1
+21	3	0.0	1	0 3
+22	7	0.0	1	1 6
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 130973 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+17	1	0.0	1	1
+18	2	0.0	1	1 1
+19	9	0.0	1	5 4
+20	14	0.0	1	3 11
+21	1133	0.0	1	255 878
+22	129514	0.0	1	127726 1788
+23	300	0.0	1	67 233
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 37 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 10.8%
+  C: 56.8%
+  G: 32.4%
+  T: 0.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	22	2066.9	0	22
+19	13	0.0	1	10 3
+74	2	0.0	1	0 2
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862466_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862466_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862466_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862466_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             80,769
+  Read 1 with adapter:                  79,919 (98.9%)
+  Read 2 with adapter:                  79,480 (98.4%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            1,410 (1.7%)
+Pairs written (passing filters):        79,359 (98.3%)
+
+Total basepairs processed:    24,159,673 bp
+  Read 1:    12,119,030 bp
+  Read 2:    12,040,643 bp
+Total written (filtered):     20,615,119 bp (85.3%)
+  Read 1:    10,465,581 bp
+  Read 2:    10,149,538 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 79911 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	1262.0	0	1
+12	1	0.0	1	1
+13	1	0.0	1	1
+16	2	0.0	1	2
+17	12	0.0	1	5 7
+18	542	0.0	1	184 358
+19	79281	0.0	1	78078 1203
+20	71	0.0	1	20 51
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 13 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 46.2%
+  C: 23.1%
+  G: 7.7%
+  T: 23.1%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	2	1262.0	0	2
+7	1	4.9	0	1
+21	4	0.0	1	0 4
+22	6	0.0	1	0 6
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 79448 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+17	1	0.0	1	0 1
+18	2	0.0	1	2
+20	7	0.0	1	0 7
+21	532	0.0	1	123 409
+22	78715	0.0	1	77482 1233
+23	191	0.0	1	53 138
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 55 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 43.6%
+  C: 40.0%
+  G: 12.7%
+  T: 3.6%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	22	1262.0	0	22
+19	31	0.0	1	7 24
+146	2	0.0	1	0 2
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862468_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862468_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862468_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862468_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:            118,779
+  Read 1 with adapter:                 117,263 (98.7%)
+  Read 2 with adapter:                 116,610 (98.2%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            2,480 (2.1%)
+Pairs written (passing filters):       116,299 (97.9%)
+
+Total basepairs processed:    35,437,901 bp
+  Read 1:    17,865,835 bp
+  Read 2:    17,572,066 bp
+Total written (filtered):     30,019,943 bp (84.7%)
+  Read 1:    15,329,484 bp
+  Read 2:    14,690,459 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 117176 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	10	1855.9	0	10
+12	2	0.0	1	2
+14	3	0.0	1	1 2
+15	1	0.0	1	1
+16	2	0.0	1	2
+17	21	0.0	1	10 11
+18	867	0.0	1	285 582
+19	116159	0.0	1	113340 2819
+20	111	0.0	1	26 85
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 115 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 37.4%
+  C: 30.4%
+  G: 17.4%
+  T: 14.8%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	21	1855.9	0	21
+6	2	29.0	0	2
+13	1	0.0	1	1
+14	1	0.0	1	0 1
+19	1	0.0	1	0 1
+21	16	0.0	1	0 16
+22	71	0.0	1	15 56
+83	1	0.0	1	0 1
+96	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 116454 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	1855.9	0	1
+12	1	0.0	1	1
+16	1	0.0	1	1
+17	1	0.0	1	1
+18	2	0.0	1	2
+19	1	0.0	1	0 1
+20	6	0.0	1	0 6
+21	814	0.0	1	178 636
+22	115384	0.0	1	113067 2317
+23	242	0.0	1	75 167
+41	1	0.0	1	1
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 178 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 11.8%
+  C: 8.4%
+  G: 76.4%
+  T: 3.4%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	36	1855.9	0	36
+12	3	0.0	1	0 3
+19	136	0.0	1	121 15
+74	3	0.0	1	1 2
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862470_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862470_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862470_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862470_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             65,733
+  Read 1 with adapter:                  63,486 (96.6%)
+  Read 2 with adapter:                  63,324 (96.3%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            2,649 (4.0%)
+Pairs written (passing filters):        63,084 (96.0%)
+
+Total basepairs processed:    19,382,730 bp
+  Read 1:     9,729,116 bp
+  Read 2:     9,653,614 bp
+Total written (filtered):     16,355,191 bp (84.4%)
+  Read 1:     8,309,983 bp
+  Read 2:     8,045,208 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 63476 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	10	1027.1	0	10
+12	1	0.0	1	1
+16	1	0.0	1	1
+17	5	0.0	1	2 3
+18	287	0.0	1	71 216
+19	63120	0.0	1	61630 1490
+20	52	0.0	1	14 38
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 56 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 10.7%
+  C: 25.0%
+  G: 48.2%
+  T: 16.1%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	11	1027.1	0	11
+4	13	256.8	0	13
+5	2	64.2	0	2
+6	7	16.0	0	7
+8	1	1.0	0	1
+21	3	0.0	1	0 3
+22	15	0.0	1	6 9
+24	1	0.0	1	1
+25	2	0.0	1	2
+120	1	0.0	1	1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 63190 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+13	1	0.0	1	1
+18	1	0.0	1	0 1
+19	1	0.0	1	1
+20	3	0.0	1	1 2
+21	313	0.0	1	66 247
+22	62768	0.0	1	61249 1519
+23	102	0.0	1	28 74
+30	1	0.0	1	0 1
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 424 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 31.4%
+  C: 58.5%
+  G: 6.1%
+  T: 4.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	280	1027.1	0	280
+4	10	256.8	0	10
+6	1	16.0	0	1
+18	1	0.0	1	0 1
+19	122	0.0	1	12 110
+22	5	0.0	1	4 1
+145	1	0.0	1	0 1
+146	4	0.0	1	0 4
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862472_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862472_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862472_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862472_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             79,500
+  Read 1 with adapter:                  78,379 (98.6%)
+  Read 2 with adapter:                  78,088 (98.2%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            1,669 (2.1%)
+Pairs written (passing filters):        77,831 (97.9%)
+
+Total basepairs processed:    23,779,795 bp
+  Read 1:    11,927,262 bp
+  Read 2:    11,852,533 bp
+Total written (filtered):     20,196,573 bp (84.9%)
+  Read 1:    10,252,419 bp
+  Read 2:     9,944,154 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 78365 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	10	1242.2	0	10
+16	1	0.0	1	1
+17	4	0.0	1	3 1
+18	170	0.0	1	33 137
+19	78132	0.0	1	76584 1548
+20	48	0.0	1	17 31
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 52 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 30.8%
+  C: 9.6%
+  G: 40.4%
+  T: 19.2%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	23	1242.2	0	23
+4	4	310.5	0	4
+6	2	19.4	0	2
+21	3	0.0	1	0 3
+22	19	0.0	1	5 14
+97	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 77997 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	2	1242.2	0	2
+13	1	0.0	1	1
+19	1	0.0	1	0 1
+21	285	0.0	1	52 233
+22	77598	0.0	1	75636 1962
+23	110	0.0	1	30 80
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 313 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 18.2%
+  C: 61.7%
+  G: 15.7%
+  T: 4.5%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	195	1242.2	0	195
+4	7	310.5	0	7
+5	5	77.6	0	5
+6	17	19.4	0	17
+8	1	1.2	0	1
+9	1	0.3	0	1
+19	82	0.0	1	24 58
+38	1	0.0	1	0 1
+74	1	0.0	1	0 1
+144	1	0.0	1	0 1
+146	2	0.0	1	0 2
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862474_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862474_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862474_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862474_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             25,808
+  Read 1 with adapter:                  21,825 (84.6%)
+  Read 2 with adapter:                  22,004 (85.3%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            4,149 (16.1%)
+Pairs written (passing filters):        21,659 (83.9%)
+
+Total basepairs processed:     7,473,359 bp
+  Read 1:     3,773,388 bp
+  Read 2:     3,699,971 bp
+Total written (filtered):      5,555,714 bp (74.3%)
+  Read 1:     2,847,260 bp
+  Read 2:     2,708,454 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 21729 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	2	403.2	0	2
+17	5	0.0	1	2 3
+18	123	0.0	1	32 91
+19	21577	0.0	1	21008 569
+20	20	0.0	1	7 13
+21	2	0.0	1	0 2
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 138 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 23.9%
+  C: 17.4%
+  G: 43.5%
+  T: 15.2%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	50	403.2	0	50
+4	30	100.8	0	30
+6	1	6.3	0	1
+7	4	1.6	0	4
+10	1	0.0	1	0 1
+21	13	0.0	1	0 13
+22	37	0.0	1	4 33
+23	1	0.0	1	0 1
+96	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 21902 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	403.2	0	1
+19	1	0.0	1	1
+20	2	0.0	1	0 2
+21	157	0.0	1	26 131
+22	21688	0.0	1	21003 685
+23	53	0.0	1	16 37
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 131 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 61.1%
+  C: 14.5%
+  G: 16.0%
+  T: 8.4%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	64	403.2	0	64
+19	66	0.0	1	17 49
+74	1	0.0	1	1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862476_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862476_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862476_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862476_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              2,146
+  Read 1 with adapter:                   1,437 (67.0%)
+  Read 2 with adapter:                   1,453 (67.7%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              716 (33.4%)
+Pairs written (passing filters):         1,430 (66.6%)
+
+Total basepairs processed:       487,962 bp
+  Read 1:       245,284 bp
+  Read 2:       242,678 bp
+Total written (filtered):        364,123 bp (74.6%)
+  Read 1:       185,004 bp
+  Read 2:       179,119 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 1434 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+17	1	0.0	1	0 1
+18	16	0.0	1	7 9
+19	1412	0.0	1	1348 64
+20	5	0.0	1	0 5
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 7 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 14.3%
+  C: 0.0%
+  G: 85.7%
+  T: 0.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+4	2	8.4	0	2
+22	5	0.0	1	4 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 1424 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	10	0.0	1	6 4
+22	1410	0.0	1	1380 30
+23	4	0.0	1	1 3
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 33 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 90.9%
+  C: 3.0%
+  G: 6.1%
+  T: 0.0%
+  none/other: 0.0%
+WARNING:
+    The adapter is preceded by 'A' extremely often.
+    The provided adapter sequence could be incomplete at its 5' end.
+    Ignore this warning when trimming primers.
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	2	33.5	0	2
+19	31	0.0	1	4 27
+
+
+WARNING:
+    One or more of your adapter sequences may be incomplete.
+    Please see the detailed output above.
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862478_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862478_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862478_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862478_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             24,391
+  Read 1 with adapter:                  23,059 (94.5%)
+  Read 2 with adapter:                  23,160 (95.0%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            1,490 (6.1%)
+Pairs written (passing filters):        22,901 (93.9%)
+
+Total basepairs processed:     7,269,583 bp
+  Read 1:     3,646,014 bp
+  Read 2:     3,623,569 bp
+Total written (filtered):      5,946,764 bp (81.8%)
+  Read 1:     3,018,764 bp
+  Read 2:     2,928,000 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 23042 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	3	381.1	0	3
+12	2	0.0	1	2
+17	4	0.0	1	2 2
+18	137	0.0	1	32 105
+19	22878	0.0	1	22104 774
+20	17	0.0	1	7 10
+32	1	0.0	1	1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 25 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 56.0%
+  C: 8.0%
+  G: 12.0%
+  T: 24.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	15	381.1	0	15
+22	10	0.0	1	2 8
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 23141 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	2	381.1	0	2
+20	2	0.0	1	1 1
+21	164	0.0	1	28 136
+22	22912	0.0	1	22517 395
+23	61	0.0	1	12 49
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 25 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 40.0%
+  C: 8.0%
+  G: 40.0%
+  T: 12.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	11	381.1	0	11
+19	14	0.0	1	6 8
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862480_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862480_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862480_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862480_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             23,206
+  Read 1 with adapter:                  22,901 (98.7%)
+  Read 2 with adapter:                  22,771 (98.1%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              487 (2.1%)
+Pairs written (passing filters):        22,719 (97.9%)
+
+Total basepairs processed:     6,939,994 bp
+  Read 1:     3,481,012 bp
+  Read 2:     3,458,982 bp
+Total written (filtered):      5,902,550 bp (85.1%)
+  Read 1:     2,996,257 bp
+  Read 2:     2,906,293 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 22899 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	362.6	0	1
+14	1	0.0	1	0 1
+17	1	0.0	1	1
+18	182	0.0	1	49 133
+19	22690	0.0	1	22012 678
+20	24	0.0	1	7 17
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 6 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 50.0%
+  C: 16.7%
+  G: 16.7%
+  T: 16.7%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	362.6	0	1
+4	1	90.6	0	1
+5	1	22.7	0	1
+22	3	0.0	1	2 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 22760 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+14	1	0.0	1	1
+16	1	0.0	1	0 1
+20	4	0.0	1	0 4
+21	190	0.0	1	52 138
+22	22528	0.0	1	22110 418
+23	36	0.0	1	6 30
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 15 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 53.3%
+  C: 20.0%
+  G: 20.0%
+  T: 0.0%
+  none/other: 6.7%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	5	362.6	0	5
+18	1	0.0	1	0 1
+19	8	0.0	1	2 6
+74	1	0.0	1	1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862482_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862482_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862482_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862482_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             16,729
+  Read 1 with adapter:                  16,240 (97.1%)
+  Read 2 with adapter:                  16,199 (96.8%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              617 (3.7%)
+Pairs written (passing filters):        16,112 (96.3%)
+
+Total basepairs processed:     5,012,247 bp
+  Read 1:     2,513,686 bp
+  Read 2:     2,498,561 bp
+Total written (filtered):      4,186,363 bp (83.5%)
+  Read 1:     2,125,459 bp
+  Read 2:     2,060,904 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 16238 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	2	261.4	0	2
+17	3	0.0	1	2 1
+18	69	0.0	1	23 46
+19	16142	0.0	1	15902 240
+20	22	0.0	1	7 15
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 4 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 75.0%
+  C: 0.0%
+  G: 0.0%
+  T: 25.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	261.4	0	1
+22	3	0.0	1	0 3
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 16191 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	261.4	0	1
+4	1	65.3	0	1
+21	64	0.0	1	8 56
+22	16100	0.0	1	15780 320
+23	25	0.0	1	6 19
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 14 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 50.0%
+  C: 35.7%
+  G: 14.3%
+  T: 0.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	8	261.4	0	8
+6	1	4.1	0	1
+19	4	0.0	1	2 2
+146	1	0.0	1	0 1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862484_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862484_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862484_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862484_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             27,517
+  Read 1 with adapter:                  26,965 (98.0%)
+  Read 2 with adapter:                  26,843 (97.6%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              731 (2.7%)
+Pairs written (passing filters):        26,786 (97.3%)
+
+Total basepairs processed:     8,132,881 bp
+  Read 1:     4,114,793 bp
+  Read 2:     4,018,088 bp
+Total written (filtered):      6,882,402 bp (84.6%)
+  Read 1:     3,530,323 bp
+  Read 2:     3,352,079 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 26956 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+12	1	0.0	1	1
+16	1	0.0	1	1
+17	5	0.0	1	5
+18	144	0.0	1	45 99
+19	26780	0.0	1	26406 374
+20	25	0.0	1	9 16
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 41 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 4.9%
+  C: 7.3%
+  G: 73.2%
+  T: 14.6%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	12	430.0	0	12
+4	23	107.5	0	23
+6	1	6.7	0	1
+21	1	0.0	1	0 1
+22	4	0.0	1	1 3
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 26803 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+19	1	0.0	1	1
+20	1	0.0	1	0 1
+21	117	0.0	1	30 87
+22	26641	0.0	1	26096 545
+23	43	0.0	1	4 39
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 55 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 70.9%
+  C: 16.4%
+  G: 10.9%
+  T: 1.8%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	14	430.0	0	14
+19	40	0.0	1	6 34
+123	1	0.0	1	0 1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862486_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862486_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862486_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862486_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              7,048
+  Read 1 with adapter:                   5,926 (84.1%)
+  Read 2 with adapter:                   5,987 (84.9%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            1,158 (16.4%)
+Pairs written (passing filters):         5,890 (83.6%)
+
+Total basepairs processed:     2,023,798 bp
+  Read 1:     1,014,015 bp
+  Read 2:     1,009,783 bp
+Total written (filtered):      1,523,679 bp (75.3%)
+  Read 1:       773,294 bp
+  Read 2:       750,385 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 5915 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	24	0.0	1	7 17
+19	5888	0.0	1	5593 295
+20	3	0.0	1	1 2
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 19 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 21.1%
+  C: 21.1%
+  G: 42.1%
+  T: 15.8%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	12	110.1	0	12
+4	3	27.5	0	3
+21	3	0.0	1	0 3
+22	1	0.0	1	1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 5952 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	44	0.0	1	7 37
+22	5900	0.0	1	5709 191
+23	8	0.0	1	2 6
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 37 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 75.7%
+  C: 10.8%
+  G: 5.4%
+  T: 8.1%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	11	110.1	0	11
+19	26	0.0	1	2 24
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862488_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862488_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862488_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862488_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             11,358
+  Read 1 with adapter:                   8,406 (74.0%)
+  Read 2 with adapter:                   8,552 (75.3%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            3,038 (26.7%)
+Pairs written (passing filters):         8,320 (73.3%)
+
+Total basepairs processed:     3,151,804 bp
+  Read 1:     1,578,647 bp
+  Read 2:     1,573,157 bp
+Total written (filtered):      2,143,849 bp (68.0%)
+  Read 1:     1,088,462 bp
+  Read 2:     1,055,387 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 8360 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	177.5	0	1
+17	1	0.0	1	0 1
+18	59	0.0	1	16 43
+19	8293	0.0	1	8037 256
+20	6	0.0	1	1 5
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 62 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 46.8%
+  C: 11.3%
+  G: 25.8%
+  T: 16.1%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	22	177.5	0	22
+4	12	44.4	0	12
+6	1	2.8	0	1
+8	1	0.2	0	1
+13	1	0.0	1	0 1
+14	1	0.0	1	0 1
+21	1	0.0	1	0 1
+22	21	0.0	1	0 21
+23	1	0.0	1	0 1
+81	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 8451 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+20	1	0.0	1	0 1
+21	48	0.0	1	9 39
+22	8367	0.0	1	8037 330
+23	35	0.0	1	9 26
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 113 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 78.8%
+  C: 8.8%
+  G: 6.2%
+  T: 6.2%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	46	177.5	0	46
+6	1	2.8	0	1
+18	1	0.0	1	0 1
+19	65	0.0	1	6 59
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862490_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862490_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862490_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862490_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             53,206
+  Read 1 with adapter:                  52,119 (98.0%)
+  Read 2 with adapter:                  52,021 (97.8%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            1,328 (2.5%)
+Pairs written (passing filters):        51,878 (97.5%)
+
+Total basepairs processed:    15,868,926 bp
+  Read 1:     7,959,461 bp
+  Read 2:     7,909,465 bp
+Total written (filtered):     13,469,145 bp (84.9%)
+  Read 1:     6,837,974 bp
+  Read 2:     6,631,171 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 52110 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	7	831.3	0	7
+14	3	0.0	1	0 3
+17	3	0.0	1	1 2
+18	225	0.0	1	65 160
+19	51831	0.0	1	50942 889
+20	41	0.0	1	10 31
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 128 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 19.5%
+  C: 3.9%
+  G: 60.9%
+  T: 15.6%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	80	831.3	0	80
+4	35	207.8	0	35
+6	2	13.0	0	2
+22	11	0.0	1	2 9
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 51975 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+14	1	0.0	1	1
+15	1	0.0	1	0 1
+19	2	0.0	1	1 1
+20	5	0.0	1	0 5
+21	336	0.0	1	79 257
+22	51538	0.0	1	50216 1322
+23	92	0.0	1	20 72
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 98 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 42.9%
+  C: 50.0%
+  G: 6.1%
+  T: 0.0%
+  none/other: 1.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	52	831.3	0	52
+18	2	0.0	1	0 2
+19	43	0.0	1	3 40
+74	1	0.0	1	0 1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862492_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862492_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862492_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862492_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             78,929
+  Read 1 with adapter:                  78,100 (98.9%)
+  Read 2 with adapter:                  77,882 (98.7%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            1,192 (1.5%)
+Pairs written (passing filters):        77,737 (98.5%)
+
+Total basepairs processed:    23,576,334 bp
+  Read 1:    11,828,700 bp
+  Read 2:    11,747,634 bp
+Total written (filtered):     20,180,997 bp (85.6%)
+  Read 1:    10,249,612 bp
+  Read 2:     9,931,385 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 78101 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	4	1233.3	0	4
+12	1	0.0	1	1
+14	1	0.0	1	0 1
+15	1	0.0	1	1
+16	1	0.0	1	1
+17	9	0.0	1	3 6
+18	410	0.0	1	111 299
+19	77598	0.0	1	76560 1038
+20	75	0.0	1	17 58
+21	1	0.0	1	1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 90 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 5.6%
+  C: 4.4%
+  G: 83.3%
+  T: 6.7%
+  none/other: 0.0%
+WARNING:
+    The adapter is preceded by 'G' extremely often.
+    The provided adapter sequence could be incomplete at its 5' end.
+    Ignore this warning when trimming primers.
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	68	1233.3	0	68
+4	17	308.3	0	17
+5	1	77.1	0	1
+21	2	0.0	1	0 2
+22	2	0.0	1	1 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 77818 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+17	1	0.0	1	0 1
+20	6	0.0	1	1 5
+21	429	0.0	1	90 339
+22	77226	0.0	1	75314 1912
+23	156	0.0	1	53 103
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 151 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 45.7%
+  C: 51.7%
+  G: 2.0%
+  T: 0.7%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	88	1233.3	0	88
+6	1	19.3	0	1
+19	57	0.0	1	4 53
+146	5	0.0	1	0 5
+
+
+WARNING:
+    One or more of your adapter sequences may be incomplete.
+    Please see the detailed output above.
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862494_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862494_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862494_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862494_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             92,300
+  Read 1 with adapter:                  91,890 (99.6%)
+  Read 2 with adapter:                  91,611 (99.3%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              847 (0.9%)
+Pairs written (passing filters):        91,453 (99.1%)
+
+Total basepairs processed:    27,713,726 bp
+  Read 1:    13,910,420 bp
+  Read 2:    13,803,306 bp
+Total written (filtered):     23,746,037 bp (85.7%)
+  Read 1:    12,063,786 bp
+  Read 2:    11,682,251 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 91888 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	4	1442.2	0	4
+12	1	0.0	1	1
+16	3	0.0	1	3
+17	14	0.0	1	8 6
+18	491	0.0	1	137 354
+19	91267	0.0	1	90191 1076
+20	108	0.0	1	27 81
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 119 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 7.6%
+  C: 6.7%
+  G: 76.5%
+  T: 9.2%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	100	1442.2	0	100
+4	11	360.5	0	11
+6	1	22.5	0	1
+21	3	0.0	1	0 3
+22	4	0.0	1	2 2
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 91586 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	2	1442.2	0	2
+14	1	0.0	1	1
+17	1	0.0	1	1
+19	1	0.0	1	1
+20	11	0.0	1	3 8
+21	471	0.0	1	132 339
+22	90943	0.0	1	88765 2178
+23	156	0.0	1	40 116
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 97 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 24.7%
+  C: 66.0%
+  G: 7.2%
+  T: 2.1%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	69	1442.2	0	69
+18	1	0.0	1	0 1
+19	27	0.0	1	6 21
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862496_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862496_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862496_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862496_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              2,637
+  Read 1 with adapter:                   2,108 (79.9%)
+  Read 2 with adapter:                   2,124 (80.5%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              539 (20.4%)
+Pairs written (passing filters):         2,098 (79.6%)
+
+Total basepairs processed:       698,936 bp
+  Read 1:       351,081 bp
+  Read 2:       347,855 bp
+Total written (filtered):        538,404 bp (77.0%)
+  Read 1:       274,720 bp
+  Read 2:       263,684 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 2108 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+17	1	0.0	1	1
+18	13	0.0	1	3 10
+19	2092	0.0	1	2005 87
+20	2	0.0	1	1 1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 22 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 9.1%
+  C: 4.5%
+  G: 72.7%
+  T: 13.6%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	19	41.2	0	19
+4	2	10.3	0	2
+5	1	2.6	0	1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 2103 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	6	0.0	1	1 5
+22	2094	0.0	1	2039 55
+23	3	0.0	1	2 1
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 21 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 85.7%
+  C: 0.0%
+  G: 4.8%
+  T: 9.5%
+  none/other: 0.0%
+WARNING:
+    The adapter is preceded by 'A' extremely often.
+    The provided adapter sequence could be incomplete at its 5' end.
+    Ignore this warning when trimming primers.
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	4	41.2	0	4
+19	17	0.0	1	1 16
+
+
+WARNING:
+    One or more of your adapter sequences may be incomplete.
+    Please see the detailed output above.
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862498_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862498_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862498_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862498_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             30,586
+  Read 1 with adapter:                  30,494 (99.7%)
+  Read 2 with adapter:                  30,401 (99.4%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              222 (0.7%)
+Pairs written (passing filters):        30,364 (99.3%)
+
+Total basepairs processed:     9,199,259 bp
+  Read 1:     4,614,603 bp
+  Read 2:     4,584,656 bp
+Total written (filtered):      7,889,299 bp (85.8%)
+  Read 1:     4,005,031 bp
+  Read 2:     3,884,268 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 30490 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+17	3	0.0	1	1 2
+18	105	0.0	1	27 78
+19	30352	0.0	1	30058 294
+20	30	0.0	1	7 23
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 56 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 17.9%
+  C: 7.1%
+  G: 67.9%
+  T: 7.1%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	33	477.9	0	33
+4	18	119.5	0	18
+5	1	29.9	0	1
+6	1	7.5	0	1
+21	1	0.0	1	0 1
+22	1	0.0	1	1
+23	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 30395 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+20	1	0.0	1	0 1
+21	153	0.0	1	36 117
+22	30191	0.0	1	29444 747
+23	50	0.0	1	13 37
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 16 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 18.8%
+  C: 50.0%
+  G: 31.2%
+  T: 0.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	9	477.9	0	9
+12	1	0.0	1	0 1
+18	1	0.0	1	0 1
+19	5	0.0	1	3 2
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862500_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862500_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862500_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862500_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             19,778
+  Read 1 with adapter:                  19,269 (97.4%)
+  Read 2 with adapter:                  19,252 (97.3%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              622 (3.1%)
+Pairs written (passing filters):        19,156 (96.9%)
+
+Total basepairs processed:     5,931,190 bp
+  Read 1:     2,973,600 bp
+  Read 2:     2,957,590 bp
+Total written (filtered):      4,980,552 bp (84.0%)
+  Read 1:     2,526,849 bp
+  Read 2:     2,453,703 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 19257 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	4	309.0	0	4
+16	1	0.0	1	0 1
+18	71	0.0	1	17 54
+19	19166	0.0	1	17590 1576
+20	15	0.0	1	2 13
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 134 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 18.7%
+  C: 1.5%
+  G: 58.2%
+  T: 21.6%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	119	309.0	0	119
+4	11	77.3	0	11
+8	1	0.3	0	1
+22	2	0.0	1	0 2
+83	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 19238 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	78	0.0	1	16 62
+22	19115	0.0	1	18609 506
+23	45	0.0	1	8 37
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 28 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 32.1%
+  C: 25.0%
+  G: 21.4%
+  T: 21.4%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	18	309.0	0	18
+19	9	0.0	1	5 4
+134	1	0.0	1	0 1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862502_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862502_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862502_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862502_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              4,648
+  Read 1 with adapter:                   3,214 (69.1%)
+  Read 2 with adapter:                   3,293 (70.8%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            1,489 (32.0%)
+Pairs written (passing filters):         3,159 (68.0%)
+
+Total basepairs processed:     1,270,784 bp
+  Read 1:       636,111 bp
+  Read 2:       634,673 bp
+Total written (filtered):        811,801 bp (63.9%)
+  Read 1:       411,748 bp
+  Read 2:       400,053 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 3202 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	72.6	0	1
+16	1	0.0	1	1
+17	1	0.0	1	0 1
+18	17	0.0	1	3 14
+19	3178	0.0	1	2858 320
+20	4	0.0	1	0 4
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 31 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 22.6%
+  C: 9.7%
+  G: 48.4%
+  T: 19.4%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	19	72.6	0	19
+4	5	18.2	0	5
+7	1	0.3	0	1
+21	1	0.0	1	0 1
+22	4	0.0	1	1 3
+23	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 3246 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+20	1	0.0	1	0 1
+21	26	0.0	1	6 20
+22	3208	0.0	1	3086 122
+23	11	0.0	1	1 10
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 49 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 87.8%
+  C: 2.0%
+  G: 10.2%
+  T: 0.0%
+  none/other: 0.0%
+WARNING:
+    The adapter is preceded by 'A' extremely often.
+    The provided adapter sequence could be incomplete at its 5' end.
+    Ignore this warning when trimming primers.
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	8	72.6	0	8
+19	39	0.0	1	6 33
+146	2	0.0	1	0 2
+
+
+WARNING:
+    One or more of your adapter sequences may be incomplete.
+    Please see the detailed output above.
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862504_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862504_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862504_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862504_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             10,579
+  Read 1 with adapter:                   8,524 (80.6%)
+  Read 2 with adapter:                   8,778 (83.0%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            2,131 (20.1%)
+Pairs written (passing filters):         8,448 (79.9%)
+
+Total basepairs processed:     3,118,107 bp
+  Read 1:     1,562,921 bp
+  Read 2:     1,555,186 bp
+Total written (filtered):      2,192,685 bp (70.3%)
+  Read 1:     1,112,416 bp
+  Read 2:     1,080,269 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 8459 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	165.3	0	1
+16	1	0.0	1	0 1
+17	1	0.0	1	1
+18	41	0.0	1	9 32
+19	8408	0.0	1	7699 709
+20	7	0.0	1	0 7
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 85 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 24.7%
+  C: 12.9%
+  G: 38.8%
+  T: 23.5%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	29	165.3	0	29
+4	27	41.3	0	27
+7	1	0.6	0	1
+8	1	0.2	0	1
+11	1	0.0	1	0 1
+21	6	0.0	1	0 6
+22	18	0.0	1	0 18
+23	1	0.0	1	0 1
+125	1	0.0	1	0 1
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 8750 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+21	51	0.0	1	7 44
+22	8663	0.0	1	8297 366
+23	36	0.0	1	5 31
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 36 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 50.0%
+  C: 22.2%
+  G: 25.0%
+  T: 2.8%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	25	165.3	0	25
+19	11	0.0	1	7 4
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862506_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862506_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862506_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862506_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:              6,864
+  Read 1 with adapter:                   4,797 (69.9%)
+  Read 2 with adapter:                   4,863 (70.8%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            2,112 (30.8%)
+Pairs written (passing filters):         4,752 (69.2%)
+
+Total basepairs processed:     1,773,835 bp
+  Read 1:       892,835 bp
+  Read 2:       881,000 bp
+Total written (filtered):      1,206,506 bp (68.0%)
+  Read 1:       618,296 bp
+  Read 2:       588,210 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 4780 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	107.2	0	1
+17	2	0.0	1	1 1
+18	38	0.0	1	11 27
+19	4733	0.0	1	4430 303
+20	6	0.0	1	1 5
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 30 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 33.3%
+  C: 6.7%
+  G: 40.0%
+  T: 20.0%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	14	107.2	0	14
+4	8	26.8	0	8
+5	1	6.7	0	1
+6	1	1.7	0	1
+8	3	0.1	0	3
+14	1	0.0	1	0 1
+22	2	0.0	1	0 2
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 4785 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	107.2	0	1
+21	31	0.0	1	7 24
+22	4740	0.0	1	4585 155
+23	13	0.0	1	0 13
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 84 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 89.3%
+  C: 3.6%
+  G: 3.6%
+  T: 3.6%
+  none/other: 0.0%
+WARNING:
+    The adapter is preceded by 'A' extremely often.
+    The provided adapter sequence could be incomplete at its 5' end.
+    Ignore this warning when trimming primers.
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	15	107.2	0	15
+19	67	0.0	1	2 65
+146	2	0.0	1	0 2
+
+
+WARNING:
+    One or more of your adapter sequences may be incomplete.
+    Please see the detailed output above.
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862508_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862508_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862508_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862508_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             38,169
+  Read 1 with adapter:                  37,606 (98.5%)
+  Read 2 with adapter:                  37,469 (98.2%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:              744 (1.9%)
+Pairs written (passing filters):        37,425 (98.1%)
+
+Total basepairs processed:    11,276,797 bp
+  Read 1:     5,704,910 bp
+  Read 2:     5,571,887 bp
+Total written (filtered):      9,617,302 bp (85.3%)
+  Read 1:     4,932,417 bp
+  Read 2:     4,684,885 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 37599 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	1	596.4	0	1
+16	1	0.0	1	1
+17	4	0.0	1	1 3
+18	178	0.0	1	52 126
+19	37383	0.0	1	36963 420
+20	32	0.0	1	4 28
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 102 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 15.7%
+  C: 5.9%
+  G: 73.5%
+  T: 4.9%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	64	596.4	0	64
+4	30	149.1	0	30
+5	3	37.3	0	3
+22	5	0.0	1	3 2
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 37430 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+15	1	0.0	1	0 1
+19	2	0.0	1	1 1
+20	3	0.0	1	0 3
+21	219	0.0	1	57 162
+22	37150	0.0	1	36068 1082
+23	55	0.0	1	14 41
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 63 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 55.6%
+  C: 34.9%
+  G: 4.8%
+  T: 4.8%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	27	596.4	0	27
+19	35	0.0	1	2 33
+146	1	0.0	1	0 1
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862510_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862510_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862510_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862510_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             43,820
+  Read 1 with adapter:                  42,740 (97.5%)
+  Read 2 with adapter:                  42,637 (97.3%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            1,260 (2.9%)
+Pairs written (passing filters):        42,560 (97.1%)
+
+Total basepairs processed:    13,033,861 bp
+  Read 1:     6,549,756 bp
+  Read 2:     6,484,105 bp
+Total written (filtered):     11,019,369 bp (84.5%)
+  Read 1:     5,607,249 bp
+  Read 2:     5,412,120 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 42728 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	4	684.7	0	4
+12	1	0.0	1	1
+15	1	0.0	1	1
+16	1	0.0	1	0 1
+17	2	0.0	1	0 2
+18	193	0.0	1	53 140
+19	42491	0.0	1	41909 582
+20	35	0.0	1	5 30
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 107 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 19.6%
+  C: 8.4%
+  G: 64.5%
+  T: 7.5%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	66	684.7	0	66
+4	24	171.2	0	24
+6	4	10.7	0	4
+21	3	0.0	1	0 3
+22	10	0.0	1	1 9
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 42578 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+18	1	0.0	1	1
+20	3	0.0	1	0 3
+21	217	0.0	1	50 167
+22	42269	0.0	1	41134 1135
+23	88	0.0	1	29 59
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 79 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 68.4%
+  C: 20.3%
+  G: 8.9%
+  T: 2.5%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	26	684.7	0	26
+18	1	0.0	1	0 1
+19	49	0.0	1	6 43
+146	3	0.0	1	0 3
+This is cutadapt 5.2 with Python 3.10.12
+Command line parameters: -g GTGYCAGCMGCCGCGGTAA -a ATTAGAWACCCBNGTAGTCC -G GGACTACNVGGGTWTCTAAT -A TTACCGCGGCKGCTGRCAC -n 2 --discard-untrimmed -o /home/ubuntu/data/processed/dada2_cutadapt/SRR15862512_F_cut.fastq.gz -p /home/ubuntu/data/processed/dada2_cutadapt/SRR15862512_R_cut.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862512_F_nfilt.fastq.gz /home/ubuntu/data/processed/dada2_n_filtered/SRR15862512_R_nfilt.fastq.gz
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:             62,350
+  Read 1 with adapter:                  61,641 (98.9%)
+  Read 2 with adapter:                  61,401 (98.5%)
+
+== Read fate breakdown ==
+Pairs discarded as untrimmed:            1,030 (1.7%)
+Pairs written (passing filters):        61,320 (98.3%)
+
+Total basepairs processed:    18,571,335 bp
+  Read 1:     9,351,519 bp
+  Read 2:     9,219,816 bp
+Total written (filtered):     15,848,994 bp (85.3%)
+  Read 1:     8,082,919 bp
+  Read 2:     7,766,075 bp
+
+=== First read: Adapter 1 ===
+
+Sequence: GTGYCAGCMGCCGCGGTAA; Type: regular 5'; Length: 19; Trimmed: 61644 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	6	974.2	0	6
+13	1	0.0	1	1
+16	2	0.0	1	1 1
+17	8	0.0	1	5 3
+18	333	0.0	1	106 227
+19	61212	0.0	1	60498 714
+20	81	0.0	1	16 65
+21	1	0.0	1	1
+
+
+=== First read: Adapter 2 ===
+
+Sequence: ATTAGAWACCCBNGTAGTCC; Type: regular 3'; Length: 20; Trimmed: 156 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 17.9%
+  C: 3.8%
+  G: 73.1%
+  T: 5.1%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	100	974.2	0	100
+4	47	243.6	0	47
+5	2	60.9	0	2
+6	1	15.2	0	1
+22	6	0.0	1	3 3
+
+
+=== Second read: Adapter 3 ===
+
+Sequence: GGACTACNVGGGTWTCTAAT; Type: regular 5'; Length: 20; Trimmed: 61344 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+14	2	0.0	1	2
+18	1	0.0	1	1
+19	1	0.0	1	1
+20	7	0.0	1	1 6
+21	396	0.0	1	97 299
+22	60827	0.0	1	59197 1630
+23	109	0.0	1	31 78
+24	1	0.0	1	1
+
+
+=== Second read: Adapter 4 ===
+
+Sequence: TTACCGCGGCKGCTGRCAC; Type: regular 3'; Length: 19; Trimmed: 82 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 67.1%
+  C: 25.6%
+  G: 4.9%
+  T: 2.4%
+  none/other: 0.0%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	24	974.2	0	24
+19	56	0.0	1	8 48
+146	2	0.0	1	0 2
