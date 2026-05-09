@@ -43,7 +43,8 @@ bioc_packages <- c(
   "phyloseq", # Microbiome data visualization and analysis
   "DECIPHER", # DNA sequence alignment and tree building
   "Biostrings", # DNA/RNA/protein sequence manipulation
-  "ShortRead" # FASTQ file reading and quality control
+  "ShortRead", # FASTQ file reading and quality control
+  "phangorn" # Phylogenetic tree construction and analysis
 )
 
 # What each package does:
