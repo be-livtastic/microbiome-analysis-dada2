@@ -27,3 +27,7 @@ Path convention:
 - Keep raw data read-only.
 - Write all intermediate and final outputs under `data/processed/` or `outputs/`.
 - If a new file is temporary, place it in `outputs/` or a clearly named subfolder so it is easy to clean up later.
+
+Notes:
+
+- FigTree is a popular Java-based tree viewer for Newick files. It's not an R package; download it from the FigTree project page and use it to open trees saved to `outputs/phylogeny/`.

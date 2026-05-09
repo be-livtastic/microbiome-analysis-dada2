@@ -1,4 +1,5 @@
 # 16S rRNA Microbiome Analysis — IVF Reproductive Microbiome
+
 ## Practising with the Okwelogu et al. (2021) Dataset
 
 **Author:** Olivia Williams  
@@ -17,10 +18,13 @@ The biological question driving the original study: do microbiome compositions i
 ---
 
 ## What I Built
+
 <img width="1842" height="793" alt="image" src="https://github.com/user-attachments/assets/dfbdff27-c9dd-427b-af41-4ed3850be9a0" />
 
 ### Pipeline
+
 A reproducible, modular DADA2 workflow that handles:
+
 - Raw data ingestion and quality assessment
 - Adapter and primer removal via cutadapt
 - Quality filtering, error modelling, and ASV denoising
@@ -30,12 +34,13 @@ A reproducible, modular DADA2 workflow that handles:
 - Read-tracking across every processing step
 
 ### Outputs
-| File | Description |
-|---|---|
-| `ASV_table.rds` | Sample × ASV count matrix |
-| `taxonomy_SE.rds` | Kingdom → Species assignments (SILVA v138.1) |
-| Quality plots | Per-base profiles, error learning curves, ASV length distributions |
-| Read tracking table | Counts at each pipeline stage, per sample |
+
+| File                | Description                                                        |
+| ------------------- | ------------------------------------------------------------------ |
+| `ASV_table.rds`     | Sample × ASV count matrix                                          |
+| `taxonomy_SE.rds`   | Kingdom → Species assignments (SILVA v138.1)                       |
+| Quality plots       | Per-base profiles, error learning curves, ASV length distributions |
+| Read tracking table | Counts at each pipeline stage, per sample                          |
 
 ---
 
@@ -102,6 +107,18 @@ dada2, ShortRead, Biostrings, phyloseq
 tidyverse, here, ggplot2
 ```
 
+Additionally, for interactive and tree visualisation you may want:
+
+```r
+# Bioconductor
+ggtree
+
+# CRAN
+plotly, htmlwidgets
+```
+
+Note on FigTree: FigTree (<http://tree.bio.ed.ac.uk/software/figtree/>) is a Java-based standalone tree viewer useful for exploring Newick files; download and run FigTree separately to open files in `outputs/phylogeny/`.
+
 **Reference database:** SILVA v138.1 training sets from [Zenodo](https://zenodo.org/record/4587955) → place in `data/external/reference/`
 
 All scripts use `here::here()` for portable paths. Clone the repo, place inputs in the specified directories, and run `scripts/pipelines/dada2_pipeline.R`.
@@ -119,24 +136,25 @@ All scripts use `here::here()` for portable paths. Clone the repo, place inputs 
 
 ## References
 
-- Callahan et al. (2016). DADA2: High-resolution sample inference from Illumina amplicon data. *Nature Methods*. https://doi.org/10.1038/nmeth.3869  
-- Quast et al. (2013). The SILVA ribosomal RNA gene database project. *Nucleic Acids Research*. https://doi.org/10.1093/nar/gks1219  
-- McMurdie & Holmes (2013). phyloseq: An R package for reproducible interactive analysis of microbiome census data. *PLOS ONE*. https://doi.org/10.1371/journal.pone.0061217
+- Callahan et al. (2016). DADA2: High-resolution sample inference from Illumina amplicon data. *Nature Methods*. <https://doi.org/10.1038/nmeth.3869>  
+- Quast et al. (2013). The SILVA ribosomal RNA gene database project. *Nucleic Acids Research*. <https://doi.org/10.1093/nar/gks1219>  
+- McMurdie & Holmes (2013). phyloseq: An R package for reproducible interactive analysis of microbiome census data. *PLOS ONE*. <https://doi.org/10.1371/journal.pone.0061217>
 
 ---
 
 *Data sourced from NCBI SRA (public domain). SILVA database used under academic licence.*
 
-
 ### In Case Anyone Wants to re-use this pipeline
 
 **Option A: Use my test dataset (PRJNA762524)**
+
 ```bash
 # Download from NCBI SRA using provided script
 bash scripts/download/ena-file-download-read_run-PRJNA762524-fastq_ftp-*.sh
 ```
 
 **Option B: Use your own 16S data**
+
 - Place paired-end FASTQ files in `data/raw/fastq/`
 - Files must follow naming convention: `SAMPLE_1.fastq`, `SAMPLE_2.fastq`
 
@@ -160,13 +178,16 @@ bash scripts/download/ena-file-download-read_run-PRJNA762524-fastq_ftp-*.sh
 ## 🔬 Pipeline Workflow
 
 ### Step 1: Quality Assessment
+
 ```r
 plotQualityProfile(forward_reads)   # Visualize base quality scores
 plotQualityProfile(reverse_reads)
 ```
+
 **Decision point:** Determine where quality drops below Q30 → sets truncation length
 
 ### Step 2: Filter and Trim
+
 ```r
 filterAndTrim(
   trimLeft = c(19, 21),   # Remove primers (dataset-specific)
@@ -174,36 +195,47 @@ filterAndTrim(
   maxEE = c(2, 5)         # Maximum expected errors
 )
 ```
+
 **Output:** Filtered FASTQ files with low-quality reads removed
 
 ### Step 3: Learn Error Rates
+
 ```r
 errF <- learnErrors(filtFs, multithread = TRUE)
 ```
+
 **Purpose:** DADA2 learns the sequencing error profile to distinguish true variants from errors
 
 ### Step 4: Denoise with DADA2
+
 ```r
 dadaFs <- dada(filtFs, err = errF, pool = "pseudo")
 ```
+
 **Purpose:** Infer true Amplicon Sequence Variants (ASVs) by correcting sequencing errors
 
 ### Step 5: Merge Paired Reads
+
 ```r
 mergers <- mergePairs(dadaFs, filtFs, dadaRs, filtRs)
 ```
+
 **Purpose:** Combine forward and reverse reads to reconstruct full amplicon
 
 ### Step 6: Remove Chimeras
+
 ```r
 seqtab.nochim <- removeBimeraDenovo(seqtab)
 ```
+
 **Purpose:** Detect and remove PCR chimeras (artificial sequences)
 
 ### Step 7: Assign Taxonomy
+
 ```r
 taxa <- assignTaxonomy(seqtab.nochim, "silva_nr99_v138.1_train_set.fa.gz")
 ```
+
 **Output:** Taxonomic assignments from Kingdom → Species
 
 ---
@@ -211,25 +243,30 @@ taxa <- assignTaxonomy(seqtab.nochim, "silva_nr99_v138.1_train_set.fa.gz")
 ## 📊 Key Outputs
 
 ### 1. ASV Table (`ASV_table.rds`)
+
 - Matrix: Samples × ASVs
 - Each cell = read count for that ASV in that sample
 - Used for downstream diversity analysis
 
 ### 2. Taxonomy Table (`taxonomy_SE.rds`)
+
 - Taxonomic assignments for each ASV
 - Levels: Kingdom, Phylum, Class, Order, Family, Genus, Species
 - Based on SILVA v138.1 reference database
 
 ### 3. Quality Tracking Table
+
 ```r
          input  filtered  denoisedF  denoisedR  merged  nonchim
 Sample1  45821     42156      41234      40987   38456    36892
 Sample2  52134     48923      47821      47234   44123    42567
 ...
 ```
+
 Shows read counts at each processing step
 
 ### 4. Quality Plots
+
 - Per-base quality profiles (before/after filtering)
 - Error rate learning curves
 - ASV length distribution
@@ -239,11 +276,13 @@ Shows read counts at each processing step
 ## 🔧 Customization Guide
 
 **For different 16S regions:**
+
 1. Update `trimLeft` values (primer lengths)
 2. Update `truncLen` based on quality profiles
 3. Update `expected_v4_lengths` to your amplicon size range
 
 **For different sequencing platforms:**
+
 - Ion Torrent: Use `trimLeft = 0`, adjust `maxEE` upward
 - PacBio/Nanopore: Use alternative long-read pipelines (not DADA2)
 
@@ -255,18 +294,21 @@ Use `scripts/pipelines/single_end_16s.R` instead of main pipeline
 ## 🎓 What I Learned
 
 **Technical Skills:**
+
 - How 16S rRNA sequencing differs from whole genome sequencing
 - Quality control for amplicon data (different from RNA-seq QC)
 - ASV vs OTU approaches to microbiome analysis
 - Importance of chimera removal in PCR-based methods
 
 **Bioinformatics Concepts:**
+
 - Error model learning in sequencing data
 - Reference database limitations (genus-level vs species-level)
 - Paired-end read merging requirements
 - Batch effects in microbiome studies
 
 **R Programming:**
+
 - Portable project structure with `here` package
 - Bioconductor workflow integration
 - Quality tracking through multi-step pipelines

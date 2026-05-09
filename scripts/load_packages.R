@@ -44,7 +44,8 @@ bioc_packages <- c(
   "DECIPHER", # DNA sequence alignment and tree building
   "Biostrings", # DNA/RNA/protein sequence manipulation
   "ShortRead", # FASTQ file reading and quality control
-  "phangorn" # Phylogenetic tree construction and analysis
+  "phangorn", # Phylogenetic tree construction and analysis
+  "ggtree" # Tree visualization (Bioconductor)
 )
 
 # What each package does:
@@ -67,7 +68,9 @@ cran_packages <- c(
   "vegan", # Ecology statistics (diversity indices, ordination)
   "ape", # Phylogenetic tree manipulation and plotting
   "pheatmap", # Heatmap visualization
-  "here" # Portable file paths (works on any computer)
+  "here", # Portable file paths (works on any computer)
+  "plotly", # Interactive plots exported to HTML
+  "htmlwidgets" # Save interactive widgets/plots to HTML
 )
 
 install_missing(cran_packages, function(pkgs) {
@@ -109,6 +112,12 @@ if (all(test_results == "✓ OK")) {
   cat("\n⚠ Some packages failed to load.\n")
   cat("Try manually installing failed packages, then re-run this script.\n")
 }
+
+# Optional tools and viewers
+cat("\nOptional viewers and tooling:\n")
+cat("  - FigTree: a Java-based phylogenetic tree viewer (https://github.com/rambaut/figtree).\n")
+cat("    FigTree is not an R package; download and run the application to open Newick files generated in outputs/phylogeny/.\n")
+cat("  - ggtree + plotly: enable interactive tree visualization via scripts/phylogeny.R (HTML export to outputs/figures/).\n")
 
 # =============================================================================
 # TROUBLESHOOTING
