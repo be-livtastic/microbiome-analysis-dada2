@@ -17,6 +17,7 @@ The biological question driving the original study: do microbiome compositions i
 ---
 
 ## What I Built
+<img width="1842" height="793" alt="image" src="https://github.com/user-attachments/assets/dfbdff27-c9dd-427b-af41-4ed3850be9a0" />
 
 ### Pipeline
 A reproducible, modular DADA2 workflow that handles:
