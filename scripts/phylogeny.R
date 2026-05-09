@@ -107,6 +107,11 @@ if (requireNamespace("ggtree", quietly = TRUE)) {
 
 cat("Phylogeny outputs saved to:", output_dir, "\n")
 
+# Additional analyses could include:
+# - Calculating UniFrac distances using the phylogenetic tree and ASV abundances.
+# - Computing Faith's Phylogenetic Diversity for each sample.
+# - Visualizing the tree with metadata annotations (e.g., sample groups, ASV abundances).
+
 # =============================================================================
 # PIPELINE COMPLETE
 # =============================================================================
