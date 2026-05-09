@@ -57,18 +57,22 @@ ape::write.tree(nj_tree, file = file.path(output_dir, "asv_tree_nj.newick"))
 cat("Neighbor-joining tree constructed and saved.\n")
 
 # Refine the NJ tree with maximum likelihood using the aligned ASV sequences.
+cat("Starting maximum likelihood optimization of the tree. This may take a while...\n")
 fit_nj <- phangorn::pml(nj_tree, data = phang.alignment)
 fit_ml <- phangorn::optim.pml(
 	fit_nj,
 	model = "GTR",
 	optInv = TRUE,
-	optGamma = FALSE, # Estimate the proportion of invariant sites and the gamma shape parameter 
-    # for rate heterogeneity.
+	optGamma = TRUE,
 	rearrangement = "stochastic",
 	control = phangorn::pml.control(trace = 0) # Suppress optimization output for cleaner logs.
 )
 cat("Maximum likelihood tree optimization complete.\n")
 
+# This step will take a while for large ASV datasets, especially with complex models. 
+# The GTR model is a general time-reversible model that allows for different substitution rates between all pairs of nucleotides, 
+# which can provide a better fit to the data than simpler models like JC69.
+cat("Optimized tree log-likelihood:", fit_ml$logLik, "\n")
 ml_tree <- fit_ml$tree
 ml_tree$edge.length[ml_tree$edge.length < 0] <- 0
 cat("Negative branch lengths set to zero.\n")
@@ -80,6 +84,7 @@ ape::write.tree(ml_tree, file = file.path(output_dir, "asv_tree_ml.newick"))
 cat("Maximum likelihood tree saved in RDS and Newick formats.\n")
 
 # Optional branch support. Increase this value when you want bootstrap support values.
+cat("Calculating bootstrap support values for the tree (this can be very time-consuming)...\n")
 bootstrap_replicates <- 0L
 if (bootstrap_replicates > 0L) {
     bootstrap_support <- phangorn::bootstrap.pml(
@@ -96,6 +101,7 @@ if (bootstrap_replicates > 0L) {
 # phylogenetic diversity metrics, and visualizations that incorporate evolutionary relationships among ASVs.
 
 #Visualize the tree with ggtree (optional, requires ggtree package)
+cat("Visualizing the tree with ggtree (if installed)...\n")
 if (requireNamespace("ggtree", quietly = TRUE)) {
     library(ggtree)
     tree_plot <- ggtree(ml_tree) + 
