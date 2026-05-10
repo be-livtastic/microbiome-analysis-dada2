@@ -4,6 +4,27 @@
 # Any random operations (e.g., pseudo-pooling) will give same results each run
 set.seed(1)
 
+required_packages <- c(
+  "dada2",
+  "ShortRead",
+  "Biostrings",
+  "phyloseq",
+  "ape",
+  "dplyr",
+  "ggplot2",
+  "pheatmap"
+)
+
+for (pkg in required_packages) {
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    stop(
+      "Required package '", pkg, "' is not installed. ",
+      "Install dependencies first with scripts/load_packages.R."
+    )
+  }
+  library(pkg, character.only = TRUE)
+}
+
 # =============================================================================
 # PIPELINE MODE CONFIGURATION
 # =============================================================================
@@ -22,7 +43,7 @@ set.seed(1)
 #
 # Everything downstream of primer removal (error learning, denoising, merging,
 # taxonomy) is shared between both modes.
-pipeline_mode <- "cutadapt"  # Change to "standard" to use the standard workflow
+pipeline_mode <- "cutadapt" # Change to "standard" to use the standard workflow
 
 # ---- DEFINE PROJECT PATHS ----
 # Using here::here() makes paths work regardless of working directory
@@ -30,10 +51,23 @@ pipeline_mode <- "cutadapt"  # Change to "standard" to use the standard workflow
 project_dir <- here::here() # Root directory of the R project
 
 # Where raw FASTQ files are stored
-raw_dir <- here::here("data", "raw", "fastq") #or "NCBI_SRA_fastq"
+raw_dir <- here::here("data", "raw", "fastq") # or "NCBI_SRA_fastq"
 
 # Where filtered/processed files will be saved
 filtered_dir <- here::here("data", "processed", "dada2")
+
+# Public outputs directory (mirror important results here for easy access)
+outputs_dir <- here::here("outputs")
+dir.create(outputs_dir, recursive = TRUE, showWarnings = FALSE)
+
+# Helper to copy outputs and fail loudly if a copy fails
+safe_copy <- function(src, dst, overwrite = TRUE) {
+  ok <- file.copy(src, dst, overwrite = overwrite)
+  if (!all(ok)) {
+    stop(sprintf("Failed to copy %s to %s", src, dst))
+  }
+  invisible(TRUE)
+}
 
 # SILVA reference database for taxonomic classification
 # This file assigns taxonomy (Kingdom → Species) to our sequences
@@ -43,11 +77,39 @@ reference_fasta <- here::here(
 )
 
 
+write_reproducibility_manifest <- function(output_path, extra = list()) {
+  manifest <- c(
+    list(
+      timestamp_utc = format(Sys.time(), tz = "UTC", usetz = TRUE),
+      seed = 1L,
+      pipeline_mode = pipeline_mode,
+      project_dir = project_dir,
+      raw_dir = raw_dir,
+      filtered_dir = filtered_dir,
+      reference_fasta = reference_fasta,
+      sample_names = sample_names,
+      forward_reads = forward_reads,
+      reverse_reads = reverse_reads,
+      package_versions = setNames(
+        as.list(vapply(required_packages, function(pkg) as.character(packageVersion(pkg)), character(1))),
+        required_packages
+      ),
+      session_info = capture.output(sessionInfo())
+    ),
+    extra
+  )
+
+  saveRDS(manifest, output_path)
+  writeLines(capture.output(str(manifest, max.level = 1)), sub("\\.rds$", ".txt", output_path))
+  writeLines(capture.output(sessionInfo()), file.path(filtered_dir, "sessionInfo.txt"))
+}
+
+
 # =============================================================================
 # DISCOVER AND PAIR FASTQ FILES
 # =============================================================================
 
-fastq_files   <- list.files(raw_dir)
+fastq_files <- list.files(raw_dir)
 print(fastq_files)
 
 forward_reads <- sort(list.files(raw_dir, pattern = "_1\\.fastq$", full.names = TRUE))
@@ -65,7 +127,7 @@ if (length(forward_reads) != length(reverse_reads)) {
 
 # Extract sample names by removing the read suffix and file extension;
 # these are used for naming all output files consistently
-sample_names         <- sub("_1\\.fastq$", "", basename(forward_reads))
+sample_names <- sub("_1\\.fastq$", "", basename(forward_reads))
 reverse_sample_names <- sub("_2\\.fastq$", "", basename(reverse_reads))
 
 # Extra guard: confirm forward/reverse sample order is aligned
@@ -149,15 +211,15 @@ cat("\nNumber of identical forward/reverse sequences (should be ~0):", identical
 # 515FB = GTGYCAGCMGCCGCGGTAA  (19 bp, IUPAC degenerate: Y = C/T, M = A/C)
 # 806RB = GGACTACNVGGGTWTCTAAT (20 bp, IUPAC degenerate: N = any, V = A/C/G, W = A/T)
 
-FWD_primer <- "GTGYCAGCMGCCGCGGTAA"   # 515FB: 19 bp
-REV_primer <- "GGACTACNVGGGTWTCTAAT"  # 806RB: 20 bp
+FWD_primer <- "GTGYCAGCMGCCGCGGTAA" # 515FB: 19 bp
+REV_primer <- "GGACTACNVGGGTWTCTAAT" # 806RB: 20 bp
 
 # Function: Generate all orientations of a primer sequence
 # Primers can appear in unexpected orientations (e.g., read-through into the adapter).
 # We check all four orientations to catch any that survived into the reads.
 allOrients <- function(primer) {
   require(Biostrings)
-  dna    <- DNAString(primer) # Biostrings works with DNAString objects, not plain character strings
+  dna <- DNAString(primer) # Biostrings works with DNAString objects, not plain character strings
   orients <- c(
     Forward    = dna,
     Complement = Biostrings::complement(dna),
@@ -197,30 +259,29 @@ use_multithread <- FALSE
 # Primer removal via trimLeft inside filterAndTrim
 # =============================================================================
 if (pipeline_mode == "standard") {
-
   cat("\n--- Running STANDARD pipeline (trimLeft primer removal) ---\n\n")
 
   # These values are dataset-specific; revisit them if the primer set or quality profile changes.
   # BONUS: If reads are the same length, use Figaro to optimise trimming parameters
   # based on quality profiles and expected amplicon length:
   # https://github.com/Zymo-Research/figaro#figaro
-  trim_left <- c(19L, 20L)    # 515F = 19 bp; 806R = 20 bp
-                               # Add linker bp to REV if your reads carry a linker sequence
-  trunc_len <- c(150L, 150L)  # Truncate at positions where quality drops below Q25
-                               # Set per quality plots; must leave enough overlap for merging
-                               # Overlap = truncLenF + truncLenR - expected_amplicon_length
-                               # For V4 (~253 bp): 150 + 150 - 253 = 47 bp overlap (minimum ~20 bp needed)
+  trim_left <- c(19L, 20L) # 515F = 19 bp; 806R = 20 bp
+  # Add linker bp to REV if your reads carry a linker sequence
+  trunc_len <- c(150L, 150L) # Truncate at positions where quality drops below Q25
+  # Set per quality plots; must leave enough overlap for merging
+  # Overlap = truncLenF + truncLenR - expected_amplicon_length
+  # For V4 (~253 bp): 150 + 150 - 253 = 47 bp overlap (minimum ~20 bp needed)
 
   filtering_stats <- filterAndTrim(
     forward_reads, filtered_forward,
     reverse_reads, filtered_reverse,
-    trimLeft    = trim_left,   # Remove primer sequences from 5' end before quality filtering
-    truncLen    = trunc_len,   # Truncate reads to uniform length; also discards reads shorter than truncLen
-    maxN        = 0,           # Discard reads with any ambiguous bases (N); DADA2 cannot handle Ns
-    maxEE       = c(2, 5),     # Max expected errors: stricter for forward (higher quality), relaxed for reverse
-    truncQ      = 2,           # Truncate at first base with quality score <= 2; removes low-quality tails
-    rm.phix     = TRUE,        # Remove PhiX control sequences (Illumina spike-in; contaminant if present)
-    compress    = TRUE,        # Save output as .gz to save disk space
+    trimLeft    = trim_left, # Remove primer sequences from 5' end before quality filtering
+    truncLen    = trunc_len, # Truncate reads to uniform length; also discards reads shorter than truncLen
+    maxN        = 0, # Discard reads with any ambiguous bases (N); DADA2 cannot handle Ns
+    maxEE       = c(2, 5), # Max expected errors: stricter for forward (higher quality), relaxed for reverse
+    truncQ      = 2, # Truncate at first base with quality score <= 2; removes low-quality tails
+    rm.phix     = TRUE, # Remove PhiX control sequences (Illumina spike-in; contaminant if present)
+    compress    = TRUE, # Save output as .gz to save disk space
     multithread = use_multithread
   )
 
@@ -250,7 +311,6 @@ if (pipeline_mode == "standard") {
 # already been removed. We therefore skip demultiplexing and go straight to
 # primer removal and quality filtering.
 if (pipeline_mode == "cutadapt") {
-
   cat("\n--- Running CUTADAPT pipeline (external primer removal via WSL) ---\n\n")
 
   # ------------------------------------------------------------------
@@ -271,7 +331,7 @@ if (pipeline_mode == "cutadapt") {
   n_filtering_stats <- filterAndTrim(
     forward_reads, n_filtered_forward,
     reverse_reads, n_filtered_reverse,
-    maxN        = 0,   # Only filter: remove reads with ambiguous bases before primer mapping
+    maxN        = 0, # Only filter: remove reads with ambiguous bases before primer mapping
     compress    = TRUE,
     multithread = use_multithread
   )
@@ -320,6 +380,8 @@ if (pipeline_mode == "cutadapt") {
   cutadapt_dir <- here::here("data", "processed", "dada2_cutadapt")
   dir.create(cutadapt_dir, recursive = TRUE, showWarnings = FALSE)
 
+  cutadapt_logs <- character(0)
+
   fnFs.cut <- file.path(cutadapt_dir, paste0(sample_names, "_F_cut.fastq.gz"))
   fnRs.cut <- file.path(cutadapt_dir, paste0(sample_names, "_R_cut.fastq.gz"))
 
@@ -333,41 +395,51 @@ if (pipeline_mode == "cutadapt") {
   R1.flags <- paste("-g", FWD_primer, "-a", REV.RC)
   R2.flags <- paste("-G", REV_primer, "-A", FWD.RC)
 
-  # On Linux, paths need no conversion — use them directly 
+  # On Linux, paths need no conversion — use them directly
   n_filtered_forward_wsl <- to_wsl_path(n_filtered_forward)
   n_filtered_reverse_wsl <- to_wsl_path(n_filtered_reverse)
   fnFs.cut_wsl <- to_wsl_path(fnFs.cut)
   fnRs.cut_wsl <- to_wsl_path(fnRs.cut)
 
-  
+
   # Run cutadapt for each sample
   for (i in seq_along(n_filtered_forward)) {
     cat("Trimming primers for sample:", sample_names[i], "\n")
-    system2(
+    cmd_args <- c(
+      "cutadapt",
+      R1.flags,
+      R2.flags,
+      "-n", "2", # Run adapter trimming twice to catch read-through amplicons
+      "--discard-untrimmed", # Discard read pairs where the primer was NOT found
+      "-o", fnFs.cut_wsl[i],
+      "-p", fnRs.cut_wsl[i],
+      n_filtered_forward_wsl[i],
+      n_filtered_reverse_wsl[i]
+    )
+
+    # Run cutadapt inside WSL; args start with the command 'cutadapt'
+    cmd_output <- system2(
       "wsl",
-      args = c(
-        "cutadapt",
-        R1.flags,
-        R2.flags,
-        "-n", "2",                      # Run adapter trimming twice to catch read-through amplicons
-        "--discard-untrimmed",          # Discard read pairs where the primer was NOT found
-                                        # (these are likely non-target amplification products)
-  "-o", fnFs.cut_wsl[i],
-        "-p", fnRs.cut_wsl[i],
-        n_filtered_forward_wsl[i],
-        n_filtered_reverse_wsl[i]
-      ),
+      args = cmd_args,
       stdout = TRUE,
       stderr = TRUE
     )
-    
-    cutadapt_logs[[i]] <- cmd
+
+    cutadapt_logs[[i]] <- paste(
+      c(
+        paste0("Sample: ", sample_names[i]),
+        paste0("Command: ", paste(cmd_args, collapse = " ")),
+        "Output:",
+        cmd_output
+      ),
+      collapse = "\n"
+    )
   }
-  
+
   # ---- 11. Save logs for reproducibility ----
   log_file <- file.path(cutadapt_dir, "cutadapt_run_log.txt")
   writeLines(unlist(cutadapt_logs), con = log_file)
-  
+
   cat("\nCutadapt run complete. Logs saved to:\n", log_file, "\n")
 
   # Verify primers are removed; counts should be ~0 after cutadapt
@@ -391,12 +463,12 @@ if (pipeline_mode == "cutadapt") {
 
 
   filtering_stats <- filterAndTrim(
-    fnFs.cut, filtered_forward,   # Input: cutadapt-trimmed reads; output: quality-filtered reads
-    fnRs.cut, filtered_reverse,,
+    fnFs.cut, filtered_forward, # Input: cutadapt-trimmed reads; output: quality-filtered reads
+    fnRs.cut, filtered_reverse,
     maxN        = 0,
     maxEE       = c(2, 5),
     truncQ      = 2,
-    minLen      = 50,          # Discard reads that are too short after trimming; adjust as needed
+    minLen      = 50, # Discard reads that are too short after trimming; adjust as needed
     rm.phix     = TRUE,
     compress    = TRUE,
     multithread = use_multithread
@@ -418,8 +490,8 @@ print(head(filtering_stats))
 saveRDS(filtering_stats, file.path(filtered_dir, "filtering_merged_output.rds"))
 
 # Check the first few filtered reads to confirm trimming behaved as expected
-filtered_forward_fastq    <- readFastq(filtered_forward[[1]])
-filtered_forward_summary  <- summarize_fastq(filtered_forward_fastq)
+filtered_forward_fastq <- readFastq(filtered_forward[[1]])
+filtered_forward_summary <- summarize_fastq(filtered_forward_fastq)
 cat("\nFirst 25bp of filtered forward reads (primers should be absent):\n")
 print(filtered_forward_summary$sequence_starts)
 cat("\nFiltered forward read length distribution:\n")
@@ -442,7 +514,7 @@ cat("\nLearning error rates from filtered reads...\n")
 cat("(This step examines many reads to build the error model - be patient)\n\n")
 
 err_forward <- learnErrors(reads_for_dada_F, multithread = use_multithread)
-err_reverse  <- learnErrors(reads_for_dada_R, multithread = use_multithread)
+err_reverse <- learnErrors(reads_for_dada_R, multithread = use_multithread)
 
 # Visual sanity check:
 #   Black dots = observed error rates per quality score
@@ -451,9 +523,13 @@ err_reverse  <- learnErrors(reads_for_dada_R, multithread = use_multithread)
 # A good fit confirms the error model has learned the run's characteristics.
 # If dots diverge badly from the line, the error model is unreliable - check input read quality.
 print(plotErrors(err_forward, nominalQ = TRUE))
-print(plotErrors(err_reverse,  nominalQ = TRUE))
+print(plotErrors(err_reverse, nominalQ = TRUE))
 saveRDS(plotErrors(err_forward, nominalQ = TRUE), file.path(filtered_dir, "err_forward.rds"))
-saveRDS(plotErrors(err_reverse,  nominalQ = TRUE), file.path(filtered_dir, "err_reverse.rds"))
+saveRDS(plotErrors(err_reverse, nominalQ = TRUE), file.path(filtered_dir, "err_reverse.rds"))
+
+# Mirror error plots to outputs/ for quick access
+safe_copy(file.path(filtered_dir, "err_forward.rds"), file.path(outputs_dir, "err_forward.rds"))
+safe_copy(file.path(filtered_dir, "err_reverse.rds"), file.path(outputs_dir, "err_reverse.rds"))
 
 # =============================================================================
 # SHARED: DADA2 DENOISING
@@ -508,8 +584,8 @@ print(dada_forward[[1]])
 mergers <- mergePairs(
   dada_forward, reads_for_dada_F,
   dada_reverse, reads_for_dada_R,
-  minOverlap = 7,     # reduced from default 12; matches dataset ~8bp theoretical overlap, treat results skeptically
-  maxMismatch  = 0,       # keep strict on mismatches to compensate for short overlap
+  minOverlap = 7, # reduced from default 12; matches dataset ~8bp theoretical overlap, treat results skeptically
+  maxMismatch  = 0, # keep strict on mismatches to compensate for short overlap
   verbose = TRUE
 )
 print(head(mergers[[1]]))
@@ -528,10 +604,12 @@ print(table(nchar(getSequences(sequence_table))))
 # exclude non-specific products or chimera fragments outside this range.
 # Update expected_v4_lengths if you are using a different region or primer pair.
 expected_v4_lengths <- 250:256
-v4_sequence_table   <- sequence_table[, nchar(colnames(sequence_table)) %in% expected_v4_lengths]
+v4_sequence_table <- sequence_table[, nchar(colnames(sequence_table)) %in% expected_v4_lengths]
 
-cat("\nASVs retained after length filter (", paste(range(expected_v4_lengths), collapse = "-"), "bp):",
-    ncol(v4_sequence_table), "\n")
+cat(
+  "\nASVs retained after length filter (", paste(range(expected_v4_lengths), collapse = "-"), "bp):",
+  ncol(v4_sequence_table), "\n"
+)
 
 
 # =============================================================================
@@ -562,6 +640,9 @@ print(dim(nonchim_sequence_table))
 
 saveRDS(nonchim_sequence_table, file.path(filtered_dir, "ASV_table.rds"))
 
+# Mirror ASV table to outputs/
+safe_copy(file.path(filtered_dir, "ASV_table.rds"), file.path(outputs_dir, "ASV_table.rds"))
+
 
 # =============================================================================
 # SHARED: READ TRACKING TABLE
@@ -582,7 +663,7 @@ count_unique_reads <- function(x) sum(getUniques(x))
 # Use the rownames of nonchim_sequence_table as the authoritative sample list.
 surviving_samples <- rownames(nonchim_sequence_table)
 
-#Strip the "_F_cut.fastq.gz" suffix from the rownames of filtering_stats to match sample names
+# Strip the "_F_cut.fastq.gz" suffix from the rownames of filtering_stats to match sample names
 clean_names <- sub("_F_cut.fastq.gz", "", rownames(filtering_stats))
 rownames(filtering_stats) <- clean_names
 
@@ -593,7 +674,7 @@ tracking_table <- cbind(
   filtering_stats[surviving_samples, , drop = FALSE],
   sapply(dada_forward[surviving_samples], count_unique_reads),
   sapply(dada_reverse[surviving_samples], count_unique_reads),
-  sapply(mergers[surviving_samples],      count_unique_reads),
+  sapply(mergers[surviving_samples], count_unique_reads),
   rowSums(nonchim_sequence_table)
 )
 colnames(tracking_table) <- c("input", "filtered", "denoisedF", "denoisedR", "merged", "nonchim")
@@ -601,6 +682,9 @@ cat("\nRead tracking table:\n")
 print(tracking_table)
 
 saveRDS(tracking_table, file.path(filtered_dir, "tracking_table.rds"))
+
+# Mirror tracking table to outputs/
+safe_copy(file.path(filtered_dir, "tracking_table.rds"), file.path(outputs_dir, "tracking_table.rds"))
 
 
 # =============================================================================
@@ -626,6 +710,9 @@ print(head(taxonomy_preview))
 # Save taxonomy - required for phyloseq and all downstream analysis
 saveRDS(taxonomy, file.path(filtered_dir, "taxonomy.rds"))
 
+# Mirror taxonomy to outputs/
+safe_copy(file.path(filtered_dir, "taxonomy.rds"), file.path(outputs_dir, "taxonomy.rds"))
+
 
 # =============================================================================
 # PIPELINE COMPLETE
@@ -640,6 +727,19 @@ cat("  1. ASV_table.rds               - abundance of each ASV per sample\n")
 cat("  2. taxonomy.rds                - taxonomic assignments (Kingdom to Species)\n")
 cat("  3. filtering_merged_output.rds - quality filtering statistics\n")
 cat("  4. tracking_table.rds          - read counts at each pipeline step\n")
+
+if (exists("cutadapt_version") && !is.na(cutadapt_version)) {
+  cat("  5. cutadapt_run_log.txt        - cutadapt command/output log\n")
+}
+
+write_reproducibility_manifest(
+  file.path(filtered_dir, "pipeline_reproducibility_manifest.rds"),
+  extra = list(
+    cutadapt_version = if (exists("cutadapt_version")) cutadapt_version else NA_character_,
+    cutadapt_log_path = if (exists("cutadapt_dir")) file.path(cutadapt_dir, "cutadapt_run_log.txt") else NA_character_
+  )
+)
+
 cat("\nNext steps:\n")
 cat("  - Load ASV table and taxonomy into phyloseq for diversity analysis\n")
 cat("  - Create bar plots of taxonomic composition\n")

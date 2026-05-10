@@ -2,42 +2,155 @@
 
 set.seed(1)
 
-# Load data from the ASV table output by DADA2.
-# This should be an RDS file containing a matrix of ASV counts with ASV sequences as column names.
-asv_table_candidates <- c(
-    here::here("data", "processed", "dada2", "ASV_paired_end_table.rds"),
-    here::here("outputs", "ASV_paired_end_table.rds"),
-    here::here("data", "processed", "dada2", "single_end", "ASV_table_SE.rds"),
-    here::here("outputs", "single_end", "ASV_table_SE.rds")
-)
-
-asv_table_path <- asv_table_candidates[file.exists(asv_table_candidates)][1]
-if (is.na(asv_table_path)) {
-    stop("No ASV table was found. Looked for paired-end and single-end RDS outputs in the processed and outputs directories.")
-}
-
 output_dir <- here::here("outputs", "phylogeny")
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 # Directory for figures (separate from tree objects/newick)
 figures_dir <- here::here("outputs", "figures")
 dir.create(figures_dir, recursive = TRUE, showWarnings = FALSE)
-asv_table <- readRDS(asv_table_path)
-asv_table <- as.matrix(asv_table)
 
-if (is.null(colnames(asv_table))) {
-    stop("The ASV table does not have column names, so the ASV sequences cannot be recovered.")
+# Load an ASV table and a matching taxonomy table from the same analysis mode.
+# This lets the script create both a full circular ASV tree and reduced genus/family views.
+analysis_candidates <- list(
+    list(
+        label = "paired-end",
+        asv = c(
+            here::here("data", "processed", "dada2", "ASV_paired_end_table.rds"),
+            here::here("outputs", "ASV_paired_end_table.rds")
+        ),
+        tax = c(
+            here::here("data", "processed", "dada2", "taxonomy.rds"),
+            here::here("outputs", "taxonomy.rds")
+        )
+    ),
+    list(
+        label = "single-end",
+        asv = c(
+            here::here("data", "processed", "dada2", "single_end", "ASV_table_SE.rds"),
+            here::here("outputs", "single_end", "ASV_table_SE.rds")
+        ),
+        tax = c(
+            here::here("data", "processed", "dada2", "single_end", "taxonomy_SE.rds"),
+            here::here("outputs", "single_end", "taxonomy_SE.rds"),
+            here::here("data", "processed", "dada2", "single_end", "taxonomy_SE_genuslevel.rds"),
+            here::here("outputs", "single_end", "taxonomy_SE_genuslevel.rds")
+        )
+    )
+)
+
+# Minimum shared taxa required to accept a taxonomy table.
+# If this value is between 0 and 1 it is interpreted as a fraction of total ASVs
+# (e.g. 0.1 = 10% overlap). If >= 1 it is treated as an absolute count.
+# Default: 10% overlap required for reasonably confident taxonomy collapse.
+min_shared_taxa_for_taxonomy <- 0.1
+
+standardize_taxonomy <- function(taxonomy_object) {
+    taxonomy_matrix <- as.matrix(taxonomy_object)
+    if (is.null(rownames(taxonomy_matrix))) {
+        stop("The taxonomy table does not have row names, so it cannot be matched to ASVs.")
+    }
+
+    standard_names <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
+    lower_lookup <- setNames(standard_names, tolower(standard_names))
+    matched_names <- unname(lower_lookup[tolower(colnames(taxonomy_matrix))])
+    colnames(taxonomy_matrix) <- ifelse(is.na(matched_names), colnames(taxonomy_matrix), matched_names)
+    taxonomy_matrix
 }
 
-asv_sequences <- gsub("\\s+", "", colnames(asv_table))
-if (anyDuplicated(asv_sequences) > 0L) {
-    stop("Duplicate ASV sequences were found in the ASV table column names.")
+load_analysis_inputs <- function(candidate_sets) {
+    fallback_result <- NULL
+
+    for (candidate_set in candidate_sets) {
+        for (asv_path in candidate_set$asv[file.exists(candidate_set$asv)]) {
+            asv_table <- as.matrix(readRDS(asv_path))
+            if (is.null(colnames(asv_table))) {
+                next
+            }
+
+            asv_sequences <- gsub("\\s+", "", colnames(asv_table))
+            if (anyDuplicated(asv_sequences) > 0L) {
+                stop("Duplicate ASV sequences were found in the ASV table column names.")
+            }
+
+            matching_taxonomy_path <- NA_character_
+            taxonomy_table <- NULL
+            for (tax_path in candidate_set$tax[file.exists(candidate_set$tax)]) {
+                taxonomy_candidate <- tryCatch(readRDS(tax_path), error = function(e) NULL)
+                if (is.null(taxonomy_candidate)) {
+                    next
+                }
+
+                taxonomy_candidate <- standardize_taxonomy(taxonomy_candidate)
+                shared_taxa <- intersect(asv_sequences, rownames(taxonomy_candidate))
+                # Compute required overlap based on configured threshold
+                required_shared <- if (min_shared_taxa_for_taxonomy > 0 && min_shared_taxa_for_taxonomy < 1) {
+                    ceiling(length(asv_sequences) * min_shared_taxa_for_taxonomy)
+                } else {
+                    as.integer(min_shared_taxa_for_taxonomy)
+                }
+                if (length(shared_taxa) < required_shared) {
+                    next
+                }
+
+                taxonomy_table <- matrix(
+                    NA_character_,
+                    nrow = length(asv_sequences),
+                    ncol = ncol(taxonomy_candidate),
+                    dimnames = list(asv_sequences, colnames(taxonomy_candidate))
+                )
+                matched_rows <- match(asv_sequences, rownames(taxonomy_candidate))
+                present_rows <- !is.na(matched_rows)
+                taxonomy_table[present_rows, ] <- taxonomy_candidate[matched_rows[present_rows], , drop = FALSE]
+                matching_taxonomy_path <- tax_path
+                break
+            }
+
+            if (is.null(fallback_result)) {
+                fallback_result <- list(
+                    mode = candidate_set$label,
+                    asv_path = asv_path,
+                    asv_table = asv_table,
+                    asv_sequences = asv_sequences,
+                    taxonomy_path = NA_character_,
+                    taxonomy_table = NULL
+                )
+            }
+
+            if (!is.null(taxonomy_table)) {
+                return(list(
+                    mode = candidate_set$label,
+                    asv_path = asv_path,
+                    asv_table = asv_table,
+                    asv_sequences = asv_sequences,
+                    taxonomy_path = matching_taxonomy_path,
+                    taxonomy_table = taxonomy_table
+                ))
+            }
+        }
+    }
+
+    if (!is.null(fallback_result)) {
+        return(fallback_result)
+    }
+
+    stop("No ASV table was found. Looked for paired-end and single-end RDS outputs in the processed and outputs directories.")
 }
+
+analysis_input <- load_analysis_inputs(analysis_candidates)
+asv_table <- analysis_input$asv_table
+asv_sequences <- analysis_input$asv_sequences
+taxonomy_table <- analysis_input$taxonomy_table
+asv_table_path <- analysis_input$asv_path
 
 # Convert ASV sequences to DNAStringSet for alignment and tree building.
 asv_dna <- Biostrings::DNAStringSet(asv_sequences)
 names(asv_dna) <- asv_sequences
 
-cat("Loaded", nrow(asv_table), "samples and", ncol(asv_table), "ASVs from:", asv_table_path, "\n")
+cat("Loaded", nrow(asv_table), "samples and", ncol(asv_table), "ASVs from:", asv_table_path, " (analysis mode:", analysis_input$mode, ")\n")
+if (!is.na(analysis_input$taxonomy_path)) {
+    cat("Matched taxonomy table:", analysis_input$taxonomy_path, "\n")
+} else {
+    cat("No matching taxonomy table was found; only the full circular ASV tree will be created.\n")
+}
 
 # Align the ASV sequences before distance estimation and tree inference.
 aligned_asvs <- DECIPHER::AlignSeqs(asv_dna, processors = 1L)
@@ -102,23 +215,8 @@ if (bootstrap_replicates > 0L) {
 # The resulting tree can be used for phylogenetically informed analyses, such as UniFrac distance calculations,
 # phylogenetic diversity metrics, and visualizations that incorporate evolutionary relationships among ASVs.
 
-# Visualize the tree with ggtree (optional, requires ggtree package).
-cat("Visualizing the tree with ggtree (static output only)...\n")
-if (requireNamespace("ggtree", quietly = TRUE)) {
-    library(ggtree)
-    library(ggplot2)
-    tree_plot <- ggtree(ml_tree) +
-        geom_tiplab(size = 2) +
-        theme_tree2() +
-        ggtitle("Maximum Likelihood Phylogenetic Tree of ASVs")
-
-    # Save static PNG to the figures directory
-    ggsave(filename = file.path(figures_dir, "asv_tree_ml_ggtree.png"), plot = tree_plot, width = 8, height = 10)
-} else {
-    cat("ggtree not installed; skipping tree visualization.\n")
-}
-
 cat("Phylogeny outputs saved to:", output_dir, "\n")
+
 
 # Additional analyses could include:
 # - Calculating UniFrac distances using the phylogenetic tree and ASV abundances.
