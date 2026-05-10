@@ -106,6 +106,7 @@ if (bootstrap_replicates > 0L) {
 cat("Visualizing the tree with ggtree and optionally exporting an interactive Plotly HTML (if installed)...\n")
 if (requireNamespace("ggtree", quietly = TRUE)) {
     library(ggtree)
+    library(ggplot2)
     tree_plot <- ggtree(ml_tree) +
         geom_tiplab(size = 2) +
         theme_tree2() +
