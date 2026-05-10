@@ -44,8 +44,11 @@
 # ---- OUTPUTS (RESULTS) ----
 
 !outputs/
+!outputs/**
 !outputs/figures/
 !outputs/tables/
+!outputs/phylogeny/
+!outputs/phylogeny/**
 !outputs/figures/**
 !outputs/tables/**
 
