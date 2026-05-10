@@ -37,9 +37,11 @@ analysis_candidates <- list(
     )
 )
 
-# Require a reasonable overlap before collapsing the tree by taxonomy.
-# This avoids treating tiny or partial taxonomy tables as valid genus/family matches.
-min_shared_taxa_for_taxonomy <- 25L
+# Minimum shared taxa required to accept a taxonomy table.
+# If this value is between 0 and 1 it is interpreted as a fraction of total ASVs
+# (e.g. 0.1 = 10% overlap). If >= 1 it is treated as an absolute count.
+# Default: 10% overlap required for reasonably confident taxonomy collapse.
+min_shared_taxa_for_taxonomy <- 0.1
 
 standardize_taxonomy <- function(taxonomy_object) {
     taxonomy_matrix <- as.matrix(taxonomy_object)
@@ -79,7 +81,13 @@ load_analysis_inputs <- function(candidate_sets) {
 
                 taxonomy_candidate <- standardize_taxonomy(taxonomy_candidate)
                 shared_taxa <- intersect(asv_sequences, rownames(taxonomy_candidate))
-                if (length(shared_taxa) < min_shared_taxa_for_taxonomy) {
+                # Compute required overlap based on configured threshold
+                required_shared <- if (min_shared_taxa_for_taxonomy > 0 && min_shared_taxa_for_taxonomy < 1) {
+                    ceiling(length(asv_sequences) * min_shared_taxa_for_taxonomy)
+                } else {
+                    as.integer(min_shared_taxa_for_taxonomy)
+                }
+                if (length(shared_taxa) < required_shared) {
                     next
                 }
 
@@ -137,7 +145,7 @@ asv_table_path <- analysis_input$asv_path
 asv_dna <- Biostrings::DNAStringSet(asv_sequences)
 names(asv_dna) <- asv_sequences
 
-cat("Loaded", nrow(asv_table), "samples and", ncol(asv_table), "ASVs from:", asv_table_path, "(analysis mode:", analysis_input$mode, ")\n")
+cat("Loaded", nrow(asv_table), "samples and", ncol(asv_table), "ASVs from:", asv_table_path, " (analysis mode:", analysis_input$mode, ")\n")
 if (!is.na(analysis_input$taxonomy_path)) {
     cat("Matched taxonomy table:", analysis_input$taxonomy_path, "\n")
 } else {

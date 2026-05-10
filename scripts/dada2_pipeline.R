@@ -60,6 +60,15 @@ filtered_dir <- here::here("data", "processed", "dada2")
 outputs_dir <- here::here("outputs")
 dir.create(outputs_dir, recursive = TRUE, showWarnings = FALSE)
 
+# Helper to copy outputs and fail loudly if a copy fails
+safe_copy <- function(src, dst, overwrite = TRUE) {
+  ok <- file.copy(src, dst, overwrite = overwrite)
+  if (!all(ok)) {
+    stop(sprintf("Failed to copy %s to %s", src, dst))
+  }
+  invisible(TRUE)
+}
+
 # SILVA reference database for taxonomic classification
 # This file assigns taxonomy (Kingdom → Species) to our sequences
 reference_fasta <- here::here(
@@ -372,7 +381,6 @@ if (pipeline_mode == "cutadapt") {
   dir.create(cutadapt_dir, recursive = TRUE, showWarnings = FALSE)
 
   cutadapt_logs <- character(0)
-  cutadapt_version <- NA_character_
 
   fnFs.cut <- file.path(cutadapt_dir, paste0(sample_names, "_F_cut.fastq.gz"))
   fnRs.cut <- file.path(cutadapt_dir, paste0(sample_names, "_R_cut.fastq.gz"))
@@ -398,7 +406,6 @@ if (pipeline_mode == "cutadapt") {
   for (i in seq_along(n_filtered_forward)) {
     cat("Trimming primers for sample:", sample_names[i], "\n")
     cmd_args <- c(
-      "wsl",
       "cutadapt",
       R1.flags,
       R2.flags,
@@ -410,9 +417,10 @@ if (pipeline_mode == "cutadapt") {
       n_filtered_reverse_wsl[i]
     )
 
+    # Run cutadapt inside WSL; args start with the command 'cutadapt'
     cmd_output <- system2(
       "wsl",
-      args = cmd_args[-1],
+      args = cmd_args,
       stdout = TRUE,
       stderr = TRUE
     )
@@ -520,8 +528,8 @@ saveRDS(plotErrors(err_forward, nominalQ = TRUE), file.path(filtered_dir, "err_f
 saveRDS(plotErrors(err_reverse, nominalQ = TRUE), file.path(filtered_dir, "err_reverse.rds"))
 
 # Mirror error plots to outputs/ for quick access
-file.copy(file.path(filtered_dir, "err_forward.rds"), file.path(outputs_dir, "err_forward.rds"), overwrite = TRUE)
-file.copy(file.path(filtered_dir, "err_reverse.rds"), file.path(outputs_dir, "err_reverse.rds"), overwrite = TRUE)
+safe_copy(file.path(filtered_dir, "err_forward.rds"), file.path(outputs_dir, "err_forward.rds"))
+safe_copy(file.path(filtered_dir, "err_reverse.rds"), file.path(outputs_dir, "err_reverse.rds"))
 
 # =============================================================================
 # SHARED: DADA2 DENOISING
@@ -633,7 +641,7 @@ print(dim(nonchim_sequence_table))
 saveRDS(nonchim_sequence_table, file.path(filtered_dir, "ASV_table.rds"))
 
 # Mirror ASV table to outputs/
-file.copy(file.path(filtered_dir, "ASV_table.rds"), file.path(outputs_dir, "ASV_table.rds"), overwrite = TRUE)
+safe_copy(file.path(filtered_dir, "ASV_table.rds"), file.path(outputs_dir, "ASV_table.rds"))
 
 
 # =============================================================================
@@ -676,7 +684,7 @@ print(tracking_table)
 saveRDS(tracking_table, file.path(filtered_dir, "tracking_table.rds"))
 
 # Mirror tracking table to outputs/
-file.copy(file.path(filtered_dir, "tracking_table.rds"), file.path(outputs_dir, "tracking_table.rds"), overwrite = TRUE)
+safe_copy(file.path(filtered_dir, "tracking_table.rds"), file.path(outputs_dir, "tracking_table.rds"))
 
 
 # =============================================================================
@@ -703,7 +711,7 @@ print(head(taxonomy_preview))
 saveRDS(taxonomy, file.path(filtered_dir, "taxonomy.rds"))
 
 # Mirror taxonomy to outputs/
-file.copy(file.path(filtered_dir, "taxonomy.rds"), file.path(outputs_dir, "taxonomy.rds"), overwrite = TRUE)
+safe_copy(file.path(filtered_dir, "taxonomy.rds"), file.path(outputs_dir, "taxonomy.rds"))
 
 
 # =============================================================================

@@ -254,7 +254,7 @@ asv_abundance <- taxa_sums(ps)
 top50_taxa <- names(sort(
     asv_abundance,
     decreasing = TRUE
-))[1:50]
+))[seq_len(min(50, length(asv_abundance)))]
 
 # Prune phyloseq object
 ps_top50 <- prune_taxa(top50_taxa, ps)
@@ -404,7 +404,7 @@ pheatmap::pheatmap(
     # Read-depth annotation helps explain whether sample-level clustering reflects biology or sequencing depth.
     annotation_col = annotation_cols,
     # Title communicates that this is a normalized, log-scaled summary of the top ASVs.
-    main = "Improved Phylogenetic Heatmap of Top 30 ASVs",
+    main = paste("Improved Phylogenetic Heatmap of Top", top_n_asvs_heatmap, "ASVs"),
     # Save directly to file so the figure is reproducible and does not depend on the active plotting device.
     filename = file.path(
         figures_dir,
