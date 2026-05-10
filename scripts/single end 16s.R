@@ -44,6 +44,10 @@ if (!file.exists(silva_species_reference)) {
 # Create output directory
 dir.create(filtered_dir, recursive = TRUE, showWarnings = FALSE)
 
+# Also mirror single-end results to outputs/single_end for downstream scripts
+outputs_se_dir <- here::here("outputs", "single_end")
+dir.create(outputs_se_dir, recursive = TRUE, showWarnings = FALSE)
+
 fastq_files <- list.files(raw_dir)
 print(fastq_files)
 
@@ -105,6 +109,7 @@ out_SE <- filterAndTrim(
 
 print(head(out_SE))
 saveRDS(out_SE, file.path(filtered_dir, "filtering_output_SE.rds"))
+file.copy(file.path(filtered_dir, "filtering_output_SE.rds"), file.path(outputs_se_dir, "filtering_output_SE.rds"), overwrite = TRUE)
 
 # Check the first filtered reads to confirm the trimmed sequence start looks sensible.
 filtered_forward_fastq <- readFastq(filtFs[[1]])
@@ -138,6 +143,7 @@ rownames(track_SE) <- sample.names
 print(track_SE)
 
 saveRDS(seqtab_SE.nochim, file.path(filtered_dir, "ASV_table_SE.rds"))
+file.copy(file.path(filtered_dir, "ASV_table_SE.rds"), file.path(outputs_se_dir, "ASV_table_SE.rds"), overwrite = TRUE)
 
 taxa_SE <- assignTaxonomy(
   seqtab_SE.nochim,
@@ -147,6 +153,7 @@ taxa_SE <- assignTaxonomy(
 )
 
 saveRDS(taxa_SE, file.path(filtered_dir, "taxonomy_SE_genuslevel.rds"))
+file.copy(file.path(filtered_dir, "taxonomy_SE_genuslevel.rds"), file.path(outputs_se_dir, "taxonomy_SE_genuslevel.rds"), overwrite = TRUE)
 
 taxa_SE <- addSpecies(taxa_SE, silva_species_reference)
 
@@ -155,6 +162,7 @@ rownames(taxa_preview) <- NULL
 head(taxa_preview, 20)
 
 saveRDS(taxa_SE, file.path(filtered_dir, "taxonomy_SE.rds"))
+file.copy(file.path(filtered_dir, "taxonomy_SE.rds"), file.path(outputs_se_dir, "taxonomy_SE.rds"), overwrite = TRUE)
 # ---- PIPELINE COMPLETE ----
 cat("\n")
 cat("============================================\n")
