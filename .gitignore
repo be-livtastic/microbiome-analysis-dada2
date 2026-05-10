@@ -199,3 +199,8 @@ Thumbs.db
 # - Keep repo lightweight and reproducible
 
 # =============================================================================
+
+# Whitelist specific phylogeny outputs
+!outputs/phylogeny/
+!outputs/phylogeny/**
+!outputs/figures/asv_tree_ml_interactive.html
