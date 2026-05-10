@@ -103,7 +103,7 @@ if (bootstrap_replicates > 0L) {
 # phylogenetic diversity metrics, and visualizations that incorporate evolutionary relationships among ASVs.
 
 # Visualize the tree with ggtree (optional, requires ggtree package).
-cat("Visualizing the tree with ggtree and optionally exporting an interactive Plotly HTML (if installed)...\n")
+cat("Visualizing the tree with ggtree (static output only)...\n")
 if (requireNamespace("ggtree", quietly = TRUE)) {
     library(ggtree)
     library(ggplot2)
@@ -114,33 +114,8 @@ if (requireNamespace("ggtree", quietly = TRUE)) {
 
     # Save static PNG to the figures directory
     ggsave(filename = file.path(figures_dir, "asv_tree_ml_ggtree.png"), plot = tree_plot, width = 8, height = 10)
-
-    # If plotly is available, export an interactive HTML version
-    if (requireNamespace("plotly", quietly = TRUE)) {
-        if (exists("tree_plot") && inherits(tree_plot, "ggplot")) {
-            tryCatch(
-                {
-                    interactive_plot <- plotly::ggplotly(tree_plot)
-                    if (requireNamespace("htmlwidgets", quietly = TRUE)) {
-                        htmlwidgets::saveWidget(htmlwidgets::as_widget(interactive_plot),
-                            file = file.path(figures_dir, "asv_tree_ml_ggtree_interactive.html"),
-                            selfcontained = FALSE
-                        )
-                        cat("Interactive Plotly HTML saved to figures directory.\n")
-                    } else {
-                        warning("htmlwidgets package not available; cannot save interactive HTML.")
-                    }
-                },
-                error = function(e) {
-                    warning("Failed to create or save interactive Plotly plot: ", conditionMessage(e))
-                }
-            )
-        } else {
-            warning("`tree_plot` not created or not a ggplot object; skipping interactive export.")
-        }
-    } else {
-        cat("Plotly not installed; skipping interactive export.\n")
-    }
+} else {
+    cat("ggtree not installed; skipping tree visualization.\n")
 }
 
 cat("Phylogeny outputs saved to:", output_dir, "\n")
