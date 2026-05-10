@@ -37,6 +37,10 @@ analysis_candidates <- list(
     )
 )
 
+# Require a reasonable overlap before collapsing the tree by taxonomy.
+# This avoids treating tiny or partial taxonomy tables as valid genus/family matches.
+min_shared_taxa_for_taxonomy <- 25L
+
 standardize_taxonomy <- function(taxonomy_object) {
     taxonomy_matrix <- as.matrix(taxonomy_object)
     if (is.null(rownames(taxonomy_matrix))) {
@@ -75,7 +79,7 @@ load_analysis_inputs <- function(candidate_sets) {
 
                 taxonomy_candidate <- standardize_taxonomy(taxonomy_candidate)
                 shared_taxa <- intersect(asv_sequences, rownames(taxonomy_candidate))
-                if (length(shared_taxa) < 2L) {
+                if (length(shared_taxa) < min_shared_taxa_for_taxonomy) {
                     next
                 }
 
@@ -211,7 +215,7 @@ if (requireNamespace("ggtree", quietly = TRUE)) {
 
     save_tree_plot <- function(tree_object, plot_title, output_filename, plot_layout = "circular") {
         tree_plot <- ggtree(tree_object, layout = plot_layout) +
-            geom_tiplab(size = 1, aes(angle = angle)) +
+            geom_tiplab(size = 1) +
             theme_tree() +
             ggtitle(plot_title)
 
@@ -260,7 +264,12 @@ if (requireNamespace("ggtree", quietly = TRUE)) {
             )
 
             pruned_tree <- ape::keep.tip(phyloseq::phy_tree(ps_object), representative_taxa)
-            pruned_tree$tip.label <- names(taxon_groups)
+            relabel_map <- setNames(names(representative_taxa), representative_taxa)
+            new_labels <- unname(relabel_map[pruned_tree$tip.label])
+            if (anyNA(new_labels)) {
+                stop("Collapsed tree relabeling failed because one or more representative taxa were not found after pruning.")
+            }
+            pruned_tree$tip.label <- new_labels
             pruned_tree
         }
 
