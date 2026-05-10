@@ -154,8 +154,9 @@ cat("Calculating alpha diversity metrics...\n")
 # Explanation: Alpha diversity measures within-sample diversity. Common metrics:
 # - Observed (richness): count of ASVs observed in a sample.
 # - Shannon index: accounts for both richness and evenness; sensitive to rare taxa. # nolint
-# - Simpson index: probability that two randomly selected individuals belong to the same species 
-# (higher Simpson = lower diversity depending on definition). We report the Simpson diversity index (1-D) for interpretability.
+# - Simpson index: probability that two randomly selected individuals belong to the same species.
+#   For interpretability we report the Simpson diversity as 1 - D (the complement), so larger values mean
+#   greater diversity (this transformation is applied consistently below).
 # - Faith's PD: phylogenetic diversity summing branch lengths represented in a sample (requires a phylogenetic tree).
 
 alpha_df <- NULL
@@ -163,6 +164,10 @@ try(
     {
         if (!is.null(ps)) {
             alpha_df <- estimate_richness(ps, measures = c("Observed", "Shannon", "Simpson"))
+            # estimate_richness returns Simpson's D; convert to Simpson diversity (1 - D) for consistency
+            if ("Simpson" %in% colnames(alpha_df)) {
+                alpha_df$Simpson <- 1 - alpha_df$Simpson
+            }
         } else {
             # Fallback: compute from matrix
             obs <- rowSums(asv_mat > 0)
@@ -172,14 +177,18 @@ try(
         }
         # If phylogeny present, compute Faith's PD using picante::pd
         if (!is.null(phy_tree_obj) && requireNamespace("picante", quietly = TRUE)) {
-            library(picante)
-            # Ensure tree tip labels match taxa names
+            # Ensure tree tip labels match taxa names and subset tree properly using ape::keep.tip
             comm <- as.data.frame(asv_mat)
             if (!is.null(phy_tree_obj$tip.label)) {
                 common_taxa <- intersect(colnames(comm), phy_tree_obj$tip.label)
                 if (length(common_taxa) > 2) {
-                    pd_res <- picante::pd(comm[, common_taxa, drop = FALSE], phy_tree_obj[common_taxa], include.root = TRUE)
-                    alpha_df$Faith_PD <- pd_res$PD
+                    pruned_tree <- tryCatch(ape::keep.tip(phy_tree_obj, common_taxa), error = function(e) NULL)
+                    if (!is.null(pruned_tree)) {
+                        pd_res <- picante::pd(comm[, common_taxa, drop = FALSE], pruned_tree, include.root = TRUE)
+                        alpha_df$Faith_PD <- pd_res$PD
+                    } else {
+                        warning("Failed to prune tree for Faith's PD calculation; skipping Faith's PD.")
+                    }
                 } else {
                     warning("Not enough overlapping taxa between ASV table and tree tips to compute Faith's PD.")
                 }
@@ -237,12 +246,18 @@ try(
 cat("Performing alpha diversity group comparisons (if metadata available)...\n")
 
 if (!is.null(sample_metadata)) {
-    # Choose a grouping variable: prefer common names, else pick the first non-ID column
+    # Choose a grouping variable: prefer common names; otherwise pick the first categorical column.
     candidate_names <- c("Group", "group", "Treatment", "treatment", "SampleType", "sample_type")
     group_var <- intersect(candidate_names, colnames(sample_metadata))
     if (length(group_var) == 0) {
-        # pick the first column that is not rownames and is categorical
-        possible <- colnames(sample_metadata)[sapply(sample_metadata, function(x) length(unique(x)) > 1 && length(unique(x)) < nrow(sample_metadata))]
+        # Helper to detect categorical-ish columns (not all unique and not constant)
+        is_categorical_col <- function(vec, n) {
+            u <- unique(vec)
+            lu <- length(u)
+            # treat as categorical if there are between 2 and n-1 unique values
+            lu > 1 && lu < n
+        }
+        possible <- colnames(sample_metadata)[sapply(sample_metadata, is_categorical_col, n = nrow(sample_metadata))]
         group_var <- if (length(possible) > 0) possible[1] else NA_character_
     } else {
         group_var <- group_var[1]
@@ -251,22 +266,26 @@ if (!is.null(sample_metadata)) {
     if (!is.na(group_var)) {
         cat("Using grouping variable:", group_var, "for tests.\n")
         meta <- sample_metadata
+        # Keep sample IDs as a column for safe merging
         meta$.sample_id <- rownames(meta)
-        alpha_long <- alpha_df %>%
-            rownames_to_column(var = "Sample") %>%
-            as.data.frame()
-        merged <- merge(alpha_long, meta, by.x = "row.names", by.y = "row.names", all.x = TRUE)
-        rownames(merged) <- merged$Row.names
+        alpha_long <- data.frame(Sample = rownames(alpha_df), alpha_df, stringsAsFactors = FALSE)
+        # Merge on the explicit Sample column and metadata row names
+        merged <- merge(alpha_long, meta, by.x = "Sample", by.y = "row.names", all.x = TRUE)
+        rownames(merged) <- merged$Sample
         # For each alpha metric run Kruskal-Wallis (non-parametric alternative to ANOVA):
         alpha_stats <- lapply(c("Observed", "Shannon", "Simpson", "Faith_PD"), function(metric) {
             if (!metric %in% colnames(merged)) {
                 return(NULL)
             }
             # Kruskal-Wallis tests whether medians differ between groups (non-parametric)
-            formula <- as.formula(paste(metric, "~", group_var))
-            kw <- kruskal.test(formula, data = merged)
+            # Build a clean subset data.frame for the test to avoid inline subsetting in formulas
+            test_df <- merged[!is.na(merged[[group_var]]), c(metric, group_var)]
+            colnames(test_df) <- c("metric_val", "grouping")
+            formula <- metric_val ~ grouping
+            # Kruskal-Wallis tests whether medians differ between groups (non-parametric)
+            kw <- kruskal.test(as.formula(formula), data = test_df)
             # Pairwise Wilcoxon for post-hoc (with BH p-value correction)
-            pairwise <- pairwise.wilcox.test(merged[[metric]], merged[[group_var]], p.adjust.method = "BH")
+            pairwise <- pairwise.wilcox.test(test_df$metric_val, test_df$grouping, p.adjust.method = "BH")
             list(metric = metric, kruskal = kw, pairwise = pairwise)
         })
         saveRDS(alpha_stats, file = file.path(out_dir, "alpha_stats.rds"))
@@ -324,12 +343,15 @@ if (!is.null(sample_metadata)) {
         if (length(common_samples) < 3) {
             warning("Not enough overlapping samples between metadata and distance matrix for PERMANOVA.")
         } else {
-            ad <- adonis2(beta_results$bray ~ meta[common_samples, group_var, drop = TRUE], permutations = 999)
+            subset_meta <- meta[common_samples, , drop = FALSE]
+            # Create a simple grouping column for clarity and testing
+            subset_meta$grouping <- subset_meta[[group_var]]
+            ad <- adonis2(beta_results$bray ~ grouping, data = subset_meta, permutations = 999)
             saveRDS(ad, file = file.path(out_dir, "permanova_adonis2.rds"))
             cat("PERMANOVA results saved to:", file.path(out_dir, "permanova_adonis2.rds"), "\n")
 
-            # Test homogeneity of dispersions (betadisper)
-            bd <- betadisper(beta_results$bray, meta[common_samples, group_var, drop = TRUE])
+            # Test homogeneity of dispersions (betadisper) using the same grouping
+            bd <- betadisper(beta_results$bray, subset_meta$grouping)
             bd_anova <- anova(bd)
             saveRDS(list(betadisper = bd, anova = bd_anova), file = file.path(out_dir, "betadisper_results.rds"))
             cat("Betadisper results saved to:", file.path(out_dir, "betadisper_results.rds"), "\n")
@@ -350,13 +372,24 @@ try(
         nmds <- metaMDS(beta_results$bray, k = 2, trymax = 100)
         nmds_scores <- as.data.frame(scores(nmds))
         nmds_scores$Sample <- rownames(nmds_scores)
-        if (!is.null(sample_metadata) && !is.na(group_var)) {
-            nmds_scores <- merge(nmds_scores, sample_metadata, by = "row.names", all.x = TRUE)
+        # Merge sample metadata if available
+        if (!is.null(sample_metadata)) {
+            nmds_scores <- merge(nmds_scores, sample_metadata, by.x = "Sample", by.y = "row.names", all.x = TRUE)
+            rownames(nmds_scores) <- nmds_scores$Sample
         }
-        p <- ggplot(nmds_scores, aes(x = NMDS1, y = NMDS2, color = .data[[group_var]])) +
-            geom_point(size = 3, alpha = 0.8) +
-            theme_minimal() +
-            labs(title = "NMDS (Bray-Curtis)", color = group_var)
+
+        # Build plot: include color aesthetic only if group_var is valid and present
+        if (!is.null(sample_metadata) && !is.na(group_var) && group_var %in% colnames(nmds_scores)) {
+            p <- ggplot(nmds_scores, aes(x = NMDS1, y = NMDS2, color = .data[[group_var]])) +
+                geom_point(size = 3, alpha = 0.8) +
+                theme_minimal() +
+                labs(title = "NMDS (Bray-Curtis)", color = group_var)
+        } else {
+            p <- ggplot(nmds_scores, aes(x = NMDS1, y = NMDS2)) +
+                geom_point(size = 3, alpha = 0.8) +
+                theme_minimal() +
+                labs(title = "NMDS (Bray-Curtis)")
+        }
         ggsave(filename = file.path(fig_dir, "nmds_bray.png"), plot = p, width = 7, height = 6)
         cat("Saved NMDS plot to:", file.path(fig_dir, "nmds_bray.png"), "\n")
     },
