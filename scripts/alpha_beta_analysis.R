@@ -241,6 +241,29 @@ try(
 )
 
 #############################
+# RAREFACTION CURVES
+#############################
+cat("Plotting rarefaction curves...\n")
+try(
+    {
+        asv_int <- round(asv_mat)
+        rarefaction_path <- file.path(fig_dir, "rarefaction_curve.png")
+        png(rarefaction_path, width = 10, height = 7, units = "in", res = 150)
+        rarecurve(asv_int,
+            step = 50,
+            xlab = "Reads sampled",
+            ylab = "ASVs observed",
+            main = "Rarefaction Curves",
+            label = FALSE
+        )
+        abline(v = min(rowSums(asv_int)), lty = 2, col = "red")
+        dev.off()
+        cat("Rarefaction curve saved to:", rarefaction_path, "\n")
+    },
+    silent = FALSE
+)
+
+#############################
 # STATISTICAL TESTS ON ALPHA
 #############################
 cat("Performing alpha diversity group comparisons (if metadata available)...\n")
@@ -328,6 +351,31 @@ try(
     silent = FALSE
 )
 
+# Runs PERMANOVA (adonis2) + betadisper as a paired unit for one distance matrix.
+# betadisper tests homogeneity of dispersions; it must accompany every PERMANOVA
+# because adonis2 is sensitive to differences in dispersion as well as centroids.
+run_permanova_betadisper <- function(dist_obj, meta_df, group_col, label, out_dir) {
+    if (is.null(dist_obj)) {
+        cat("Skipping PERMANOVA/betadisper for", label, ": distance object is NULL.\n")
+        return(invisible(NULL))
+    }
+    common_samples <- intersect(rownames(meta_df), attr(dist_obj, "Labels"))
+    if (length(common_samples) < 3) {
+        warning(sprintf("Not enough overlapping samples for PERMANOVA on %s (%d found).", label, length(common_samples)))
+        return(invisible(NULL))
+    }
+    sub_meta <- meta_df[common_samples, , drop = FALSE]
+    sub_meta$grouping <- sub_meta[[group_col]]
+    ad <- adonis2(dist_obj ~ grouping, data = sub_meta, permutations = 999)
+    saveRDS(ad, file = file.path(out_dir, paste0("permanova_", label, ".rds")))
+    cat("PERMANOVA results saved to:", file.path(out_dir, paste0("permanova_", label, ".rds")), "\n")
+    bd <- betadisper(dist_obj, sub_meta$grouping)
+    bd_anova <- anova(bd)
+    saveRDS(list(betadisper = bd, anova = bd_anova), file = file.path(out_dir, paste0("betadisper_", label, ".rds")))
+    cat("Betadisper results saved to:", file.path(out_dir, paste0("betadisper_", label, ".rds")), "\n")
+    invisible(list(permanova = ad, betadisper = bd, betadisper_anova = bd_anova))
+}
+
 #############################
 # PERMANOVA and dispersion (betadisper)
 #############################
@@ -338,23 +386,12 @@ if (!is.null(sample_metadata)) {
     } else {
         cat("Running PERMANOVA (adonis2) using grouping variable:", group_var, "\n")
         meta <- sample_metadata
-        # Ensure sample ordering matches distance
-        common_samples <- intersect(rownames(meta), attr(beta_results$bray, "Labels"))
-        if (length(common_samples) < 3) {
-            warning("Not enough overlapping samples between metadata and distance matrix for PERMANOVA.")
-        } else {
-            subset_meta <- meta[common_samples, , drop = FALSE]
-            # Create a simple grouping column for clarity and testing
-            subset_meta$grouping <- subset_meta[[group_var]]
-            ad <- adonis2(beta_results$bray ~ grouping, data = subset_meta, permutations = 999)
-            saveRDS(ad, file = file.path(out_dir, "permanova_adonis2.rds"))
-            cat("PERMANOVA results saved to:", file.path(out_dir, "permanova_adonis2.rds"), "\n")
-
-            # Test homogeneity of dispersions (betadisper) using the same grouping
-            bd <- betadisper(beta_results$bray, subset_meta$grouping)
-            bd_anova <- anova(bd)
-            saveRDS(list(betadisper = bd, anova = bd_anova), file = file.path(out_dir, "betadisper_results.rds"))
-            cat("Betadisper results saved to:", file.path(out_dir, "betadisper_results.rds"), "\n")
+        run_permanova_betadisper(beta_results$bray, meta, group_var, "bray", out_dir)
+        if (!is.null(beta_results$wunifrac)) {
+            run_permanova_betadisper(beta_results$wunifrac, meta, group_var, "wunifrac", out_dir)
+        }
+        if (!is.null(beta_results$runifrac)) {
+            run_permanova_betadisper(beta_results$runifrac, meta, group_var, "runifrac", out_dir)
         }
     }
 } else {
@@ -404,7 +441,7 @@ cat("Alpha/Beta pipeline finished. Outputs are in:", out_dir, "and figures in:",
 cat("Notes and interpretation help:\n")
 cat("- Alpha diversity tests: Kruskal-Wallis tests whether the distribution (median) of a diversity metric differs across groups. If significant, pairwise Wilcoxon tests provide post-hoc comparisons with BH correction.\n")
 cat("- Beta diversity: Bray-Curtis quantifies compositional differences between samples; UniFrac incorporates phylogenetic relatedness.\n")
-cat("- PERMANOVA (adonis2): tests whether group centroids differ in multivariate space; sensitive to differences in dispersion. Use betadisper to check homogeneity of dispersion.\n")
+cat("- PERMANOVA (adonis2): tests whether group centroids differ in multivariate space; sensitive to differences in dispersion. betadisper is always run alongside to check homogeneity of dispersion (permanova_<label>.rds / betadisper_<label>.rds).\n")
 cat("- NMDS: non-metric multidimensional scaling for visualizing sample relationships based on distance matrices.\n")
 
 ### END
