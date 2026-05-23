@@ -35,12 +35,14 @@ A reproducible, modular DADA2 workflow that handles:
 
 ### Outputs
 
-| File                | Description                                                        |
-| ------------------- | ------------------------------------------------------------------ |
-| `ASV_table.rds`     | Sample × ASV count matrix                                          |
-| `taxonomy_SE.rds`   | Kingdom → Species assignments (SILVA v138.1)                       |
-| Quality plots       | Per-base profiles, error learning curves, ASV length distributions |
-| Read tracking table | Counts at each pipeline stage, per sample                          |
+| File                                  | Description                                                        |
+| ------------------------------------- | ------------------------------------------------------------------ |
+| `ASV_table.rds`                       | Sample × ASV count matrix                                          |
+| `taxonomy_SE.rds`                     | Kingdom → Species assignments (SILVA v138.1)                       |
+| Quality plots                         | Per-base profiles, error learning curves, ASV length distributions |
+| Read tracking table                   | Counts at each pipeline stage, per sample                          |
+| `data/processed/dada2/metadata.csv`   | Sample metadata from NCBI SRA (SRR accessions as row names)        |
+| `outputs/qc/seqkit_stats.tsv`         | Per-file read statistics from seqkit (read count, length, GC%, N50)|
 
 ---
 
@@ -142,7 +144,7 @@ All scripts use `here::here()` for portable paths. Clone the repo, place inputs 
 
 ## What's Next
 
-1. **Alpha and beta diversity analysis** — Shannon/Simpson indices, PCoA ordination, PERMANOVA
+1. ~~**Alpha and beta diversity analysis** — Shannon/Simpson indices, PCoA ordination, PERMANOVA, rarefaction curves~~ ✓ (`scripts/alpha_beta_analysis.R`)
 2. **Differential abundance testing** — DESeq2 and LEfSe adapted for microbiome count data
 3. **Visualisation** — Taxonomic bar plots, co-occurrence networks, per-group composition heatmaps
 4. **Metadata integration** — Correlating microbiome composition with the clinical IVF outcome variables reported in Okwelogu et al.
@@ -191,6 +193,22 @@ bash scripts/download/ena-file-download-read_run-PRJNA762524-fastq_ftp-*.sh
 ---
 
 ## 🔬 Pipeline Workflow
+
+### Step 0a: Fetch Sample Metadata
+
+```bash
+bash scripts/fetch_metadata.sh
+```
+
+**Purpose:** Downloads run-level metadata for PRJNA762524 from NCBI via `ffq`, converts it to a CSV with SRR accessions as row names (matching FASTQ filenames), and saves it to `data/processed/dada2/metadata.csv`. Requires `ffq` (`pip install ffq`) and the `jsonlite` R package.
+
+### Step 0b: Read Statistics
+
+```bash
+bash scripts/seqkit_stats.sh
+```
+
+**Purpose:** Summarises read count, length distribution, GC content, and N50 for all raw FASTQ files before any processing. Requires `seqkit` on PATH.
 
 ### Step 1: Quality Assessment
 
@@ -338,7 +356,7 @@ Planned additions to this project:
 1. **Alpha/Beta Diversity Analysis**
    - Shannon diversity, Simpson index
    - PCoA ordination, PERMANOVA testing
-   - Rarefaction curves
+   - ~~Rarefaction curves~~
 
 2. **Differential Abundance Testing**
    - DESeq2 for microbiome data
