@@ -97,31 +97,46 @@ These are not defaults — they reflect deliberate decisions based on the qualit
 
 ## Reproducing This Analysis
 
-**Dependencies:** R ≥ 4.0, cutadapt, and the following R packages:
+**Requirements:** R ≥ 4.0, cutadapt
+
+This project uses [renv](https://rstudio.github.io/renv/) to lock every R package to an exact version, so the environment is fully reproducible across machines.
+
+### First-time setup (new machine or new collaborator)
 
 ```r
-# Bioconductor
-dada2, ShortRead, Biostrings, phyloseq
-
-# CRAN  
-tidyverse, here, ggplot2
+source("scripts/setup_renv.R")
 ```
 
-Additionally, for interactive and tree visualisation you may want:
+This installs renv, installs all required packages (Bioconductor + CRAN), and writes `renv.lock`. R will print `"Project '...' loaded. [renv x.y.z]"` on every subsequent startup to confirm the isolated library is active.
+
+### Restoring from a committed `renv.lock` (subsequent clones)
 
 ```r
-# Bioconductor
-ggtree
-
-# CRAN
-plotly, htmlwidgets
+renv::restore()
 ```
+
+This reads `renv.lock` and installs every package at its locked version — no manual package hunting required.
+
+### After pulling an update that added packages
+
+```r
+renv::restore()
+```
+
+Same command — syncs your local library to the updated lock file.
+
+### Packages installed
+
+| Source       | Packages                                                                                                       |
+|:-------------|:---------------------------------------------------------------------------------------------------------------|
+| Bioconductor | `dada2`, `phyloseq`, `DECIPHER`, `Biostrings`, `ShortRead`, `phangorn`, `ggtree`                               |
+| CRAN         | `ggplot2`, `tidyverse`, `vegan`, `ape`, `pheatmap`, `here`, `plotly`, `htmlwidgets`, `RColorBrewer`, `picante` |
 
 Note on FigTree: FigTree (<http://tree.bio.ed.ac.uk/software/figtree/>) is a Java-based standalone tree viewer useful for exploring Newick files; download and run FigTree separately to open files in `outputs/phylogeny/`.
 
 **Reference database:** SILVA v138.1 training sets from [Zenodo](https://zenodo.org/record/4587955) → place in `data/external/reference/`
 
-All scripts use `here::here()` for portable paths. Clone the repo, place inputs in the specified directories, and run `scripts/pipelines/dada2_pipeline.R`.
+All scripts use `here::here()` for portable paths. Clone the repo, place inputs in the specified directories, and run `scripts/dada2_pipeline.R`.
 
 ---
 
