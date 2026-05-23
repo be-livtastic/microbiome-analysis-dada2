@@ -9,6 +9,7 @@ This project is organized around a simple reproducible layout:
 - `docs/` for project notes and workflow guidance
 - `outputs/figures/` for plots and diagnostic images
 - `outputs/tables/` for exported tables and summaries
+- `outputs/qc/` for quality control outputs (seqkit read statistics, ffq metadata JSON)
 
 Current file mapping:
 

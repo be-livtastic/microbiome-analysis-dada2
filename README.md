@@ -31,8 +31,16 @@ This is not a tutorial replication. It is a from-scratch implementation of a ful
 - Read-tracking across every processing step
 - Downstream diversity analysis (alpha/beta) and phylogenetic tree construction
 
-**Pharma/clinical relevance:**
-The pipeline produces analysis-ready microbiome objects suitable for differential abundance testing (e.g., DESeq2), which has direct application in microbiome-drug interaction research, clinical trial stratification by microbiome profile, and biomarker discovery in reproductive medicine.
+### Outputs
+
+| File                                  | Description                                                        |
+| ------------------------------------- | ------------------------------------------------------------------ |
+| `ASV_table.rds`                       | Sample × ASV count matrix                                          |
+| `taxonomy_SE.rds`                     | Kingdom → Species assignments (SILVA v138.1)                       |
+| Quality plots                         | Per-base profiles, error learning curves, ASV length distributions |
+| Read tracking table                   | Counts at each pipeline stage, per sample                          |
+| `data/processed/dada2/metadata.csv`   | Sample metadata from NCBI SRA (SRR accessions as row names)        |
+| `outputs/qc/seqkit_stats.tsv`         | Per-file read statistics from seqkit (read count, length, GC%, N50)|
 
 ---
 
@@ -79,31 +87,57 @@ These are not defaults. They reflect decisions made after examining the quality 
 
 ---
 
-## Repository Structure
+## Reproducing This Analysis
 
+**Requirements:** R ≥ 4.0, cutadapt
+
+This project uses [renv](https://rstudio.github.io/renv/) to lock every R package to an exact version, so the environment is fully reproducible across machines.
+
+### First-time setup (new machine or new collaborator)
+
+```r
+source("scripts/setup_renv.R")
 ```
-microbiome_practice/
-├── scripts/
-│   ├── dada2_pipeline.R          # Main paired-end workflow (cutadapt mode default)
-│   ├── single end 16s.R          # Single-end fallback pipeline
-│   ├── troubleshooting.R         # Diagnostic scripts (overlap checks, quality plots)
-│   ├── phylogeny.R               # Tree construction
-│   ├── visualization.R           # Phylogenetic tree visualisation
-│   ├── alpha_beta_analysis.R     # Diversity analysis
-│   └── os/
-│       ├── linux_script.sh       # NCBI SRA download (prefetch + fasterq-dump)
-│       └── ena-file-download-*.sh # ENA FTP download
-├── data/
-│   ├── raw/fastq/                # Raw FASTQs (not tracked in Git)
-│   ├── processed/dada2/          # Filtered reads, ASV table, taxonomy
-│   └── external/reference/       # SILVA database (download separately)
-├── outputs/
-│   ├── figures/                  # Quality plots, diversity plots, tree visualisations
-│   ├── phylogeny/                # Tree files (RDS, Newick)
-│   └── tables/
-└── docs/
-    └── project_structure.md
+
+This installs renv, installs all required packages (Bioconductor + CRAN), and writes `renv.lock`. R will print `"Project '...' loaded. [renv x.y.z]"` on every subsequent startup to confirm the isolated library is active.
+
+### Restoring from a committed `renv.lock` (subsequent clones)
+
+```r
+renv::restore()
 ```
+
+This reads `renv.lock` and installs every package at its locked version — no manual package hunting required.
+
+### After pulling an update that added packages
+
+```r
+renv::restore()
+```
+
+Same command — syncs your local library to the updated lock file.
+
+### Packages installed
+
+| Source       | Packages                                                                                                       |
+|:-------------|:---------------------------------------------------------------------------------------------------------------|
+| Bioconductor | `dada2`, `phyloseq`, `DECIPHER`, `Biostrings`, `ShortRead`, `phangorn`, `ggtree`                               |
+| CRAN         | `ggplot2`, `tidyverse`, `vegan`, `ape`, `pheatmap`, `here`, `plotly`, `htmlwidgets`, `RColorBrewer`, `picante` |
+
+Note on FigTree: FigTree (<http://tree.bio.ed.ac.uk/software/figtree/>) is a Java-based standalone tree viewer useful for exploring Newick files; download and run FigTree separately to open files in `outputs/phylogeny/`.
+
+**Reference database:** SILVA v138.1 training sets from [Zenodo](https://zenodo.org/record/4587955) → place in `data/external/reference/`
+
+All scripts use `here::here()` for portable paths. Clone the repo, place inputs in the specified directories, and run `scripts/dada2_pipeline.R`.
+
+---
+
+## What's Next
+
+1. ~~**Alpha and beta diversity analysis** — Shannon/Simpson indices, PCoA ordination, PERMANOVA, rarefaction curves~~ ✓ (`scripts/alpha_beta_analysis.R`)
+2. **Differential abundance testing** — DESeq2 and LEfSe adapted for microbiome count data
+3. **Visualisation** — Taxonomic bar plots, co-occurrence networks, per-group composition heatmaps
+4. **Metadata integration** — Correlating microbiome composition with the clinical IVF outcome variables reported in Okwelogu et al.
 
 ---
 
@@ -120,7 +154,52 @@ microbiome_practice/
 
 ---
 
-## Reproducing This Analysis
+## 🔬 Pipeline Workflow
+
+### Step 0a: Fetch Sample Metadata
+
+```bash
+bash scripts/fetch_metadata.sh
+```
+
+**Purpose:** Downloads run-level metadata for PRJNA762524 from NCBI via `ffq`, converts it to a CSV with SRR accessions as row names (matching FASTQ filenames), and saves it to `data/processed/dada2/metadata.csv`. Requires `ffq` (`pip install ffq`) and the `jsonlite` R package.
+
+### Step 0b: Read Statistics
+
+```bash
+bash scripts/seqkit_stats.sh
+```
+
+**Purpose:** Summarises read count, length distribution, GC content, and N50 for all raw FASTQ files before any processing. Requires `seqkit` on PATH.
+
+### Step 1: Quality Assessment
+
+```r
+plotQualityProfile(forward_reads)   # Visualize base quality scores
+plotQualityProfile(reverse_reads)
+```
+
+**Decision point:** Determine where quality drops below Q30 → sets truncation length
+
+### Step 2: Filter and Trim
+
+```r
+filterAndTrim(
+  trimLeft = c(19, 21),   # Remove primers (dataset-specific)
+  truncLen = c(150, 130), # Trim at quality drop-off
+  maxEE = c(2, 5)         # Maximum expected errors
+)
+```
+
+**Output:** Filtered FASTQ files with low-quality reads removed
+
+### Step 3: Learn Error Rates
+
+```r
+errF <- learnErrors(filtFs, multithread = TRUE)
+```
+
+**Purpose:** DADA2 learns the sequencing error profile to distinguish true variants from errors
 
 **Dependencies**
 
@@ -178,7 +257,10 @@ These next steps are in progress and will be added to this repository.
 
 Microbiome research is increasingly relevant to drug development and clinical trial design. Key areas where this type of pipeline applies:
 
-**Pharmacomicrobiomics** — the gut microbiome modulates the metabolism of a significant proportion of clinically used drugs. Characterising microbiome composition in patient cohorts is a growing requirement in Phase I/II trial design.
+1. **Alpha/Beta Diversity Analysis**
+   - Shannon diversity, Simpson index
+   - PCoA ordination, PERMANOVA testing
+   - ~~Rarefaction curves~~
 
 **Reproductive medicine** — vaginal and endometrial microbiome profiles are being explored as predictors of IVF success and implantation failure. This dataset sits directly in that space.
 
