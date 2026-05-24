@@ -1,108 +1,110 @@
 #!/usr/bin/env Rscript
-# Parses ffq JSON for PRJNA762524 → data/processed/dada2/metadata.csv
-# Row names = SRR accession numbers, matching FASTQ filename convention:
-#   SRR15862403_1.fastq.gz  →  sample name SRR15862403
-# Run via: Rscript scripts/process_metadata.R
-# Or called automatically by: bash scripts/fetch_metadata.sh
+# Parses ffq SRR-level JSON → data/processed/dada2/metadata.csv
+# Handles flat SRR structure where sample/experiment are string accessions
 
-`%||%` <- function(a, b) if (!is.null(a)) a else b
-
-if (!requireNamespace("jsonlite", quietly = TRUE)) {
-    stop("jsonlite required: install.packages('jsonlite')")
-}
 library(jsonlite)
 
 json_path <- file.path("outputs", "qc", "ffq_prjna762524.json")
-if (!file.exists(json_path)) {
-    stop("ffq JSON not found at: ", json_path, "\nRun scripts/fetch_metadata.sh first.")
-}
+if (!file.exists(json_path)) stop("JSON not found: ", json_path)
 
-cat("Reading ffq JSON from:", json_path, "\n")
+cat("Reading JSON...\n")
 raw <- jsonlite::fromJSON(json_path, simplifyVector = FALSE)
+cat("Top-level keys:", length(raw), "\n")
 
-if (!is.list(raw) || length(raw) == 0) {
-    stop("ffq JSON is empty or malformed. Re-run scripts/fetch_metadata.sh.")
-}
+# Inspect first record to understand structure
+first_key <- names(raw)[1]
+first_run <- raw[[first_key]]
+cat("First record key:", first_key, "\n")
+cat("Fields in first record:", paste(names(first_run), collapse = ", "), "\n")
+cat("Type of 'sample' field:", class(first_run[["sample"]]), "\n")
+cat("Type of 'experiment' field:", class(first_run[["experiment"]]), "\n\n")
 
-cat("Found", length(raw), "run records.\n")
+rows <- list()
 
-# Each top-level element is one sequencing run.
-# Extract accession + platform/instrument + all sample attributes.
-meta_list <- lapply(raw, function(run) {
-    acc <- run[["accession"]]
-    if (is.null(acc) || nchar(acc) == 0) return(NULL)
+for (srr in names(raw)) {
+    run <- raw[[srr]]
+
+    # sample and experiment may be plain strings (accession IDs only)
+    # or nested lists -- handle both safely
+    samp_field <- run[["sample"]]
+    exp_field  <- run[["experiment"]]
+
+    samp_acc   <- if (is.character(samp_field)) samp_field else
+                  if (is.list(samp_field)) samp_field[["accession"]] %||% NA_character_ else NA_character_
+
+    platform   <- if (is.list(exp_field)) exp_field[["platform"]] %||% NA_character_ else
+                  run[["platform"]] %||% NA_character_
+
+    instrument <- if (is.list(exp_field)) exp_field[["instrument"]] %||% NA_character_ else
+                  run[["instrument"]] %||% NA_character_
+
+    exp_acc    <- if (is.character(exp_field)) exp_field else
+                  if (is.list(exp_field)) exp_field[["accession"]] %||% NA_character_ else NA_character_
+
+    run_title  <- if (is.character(run[["title"]])) run[["title"]] else NA_character_
 
     row <- data.frame(
-        stringsAsFactors = FALSE,
-        SampleAccession = run[["sample"]][["accession"]] %||% NA_character_,
-        Platform        = run[["platform"]]              %||% NA_character_,
-        Instrument      = run[["instrument"]]            %||% NA_character_
+        RunAccession    = srr,
+        SampleAccession = samp_acc,
+        ExperimentAccession = exp_acc,
+        RunTitle        = run_title,
+        Platform        = platform,
+        Instrument      = instrument,
+        stringsAsFactors = FALSE
     )
 
-    # Flatten sample attributes (study-specific key-value pairs)
-    attrs <- run[["sample"]][["attributes"]]
-    if (is.list(attrs) && length(attrs) > 0) {
-        # attrs may be a named list or a list of {tag, value} objects
-        if (!is.null(names(attrs))) {
-            attr_df <- as.data.frame(lapply(attrs, function(v) if (is.null(v)) NA_character_ else as.character(v)),
-                stringsAsFactors = FALSE)
+    # Run-level attributes
+    run_attrs <- run[["attributes"]]
+    if (is.list(run_attrs) && length(run_attrs) > 0) {
+        if (!is.null(names(run_attrs))) {
+            for (k in names(run_attrs)) {
+                v <- run_attrs[[k]]
+                row[[make.names(k)]] <- if (is.null(v)) NA_character_ else as.character(v)
+            }
         } else {
-            # List of {tag, value} pairs
-            tags   <- vapply(attrs, function(x) x[["tag"]]   %||% NA_character_, character(1))
-            values <- vapply(attrs, function(x) x[["value"]] %||% NA_character_, character(1))
-            attr_df <- as.data.frame(
-                setNames(as.list(values), make.names(tags, unique = TRUE)),
-                stringsAsFactors = FALSE
-            )
+            for (item in run_attrs) {
+                k <- make.names(if (!is.null(item[["tag"]])) item[["tag"]] else "unknown")
+                v <- item[["value"]]
+                row[[k]] <- if (is.null(v)) NA_character_ else as.character(v)
+            }
         }
-        row <- cbind(row, attr_df)
     }
 
-    rownames(row) <- acc
-    row
-})
+    rownames(row) <- srr
+    rows[[srr]]   <- row
+}
 
-meta_list <- Filter(Negate(is.null), meta_list)
+if (length(rows) == 0) stop("No records extracted.")
 
-# Bind rows, filling any missing columns with NA
-all_cols <- unique(unlist(lapply(meta_list, colnames)))
-meta_df <- do.call(rbind, lapply(meta_list, function(df) {
-    missing <- setdiff(all_cols, colnames(df))
+# Bind rows, filling missing columns with NA
+all_cols <- unique(unlist(lapply(rows, colnames)))
+meta_df  <- do.call(rbind, lapply(rows, function(df) {
+    missing     <- setdiff(all_cols, colnames(df))
     df[missing] <- NA_character_
     df[, all_cols, drop = FALSE]
 }))
 
-cat("Built metadata data frame:", nrow(meta_df), "samples,", ncol(meta_df), "columns.\n")
+cat("Built metadata:", nrow(meta_df), "rows,", ncol(meta_df), "columns\n")
 cat("Columns:", paste(colnames(meta_df), collapse = ", "), "\n\n")
 
-# Validate Sample IDs against FASTQ filenames (if raw data already downloaded)
+# Validate against FASTQs
 fastq_dir <- file.path("data", "raw", "fastq")
 if (dir.exists(fastq_dir)) {
-    fq_files   <- list.files(fastq_dir, pattern = "_1\\.fastq\\.gz$", full.names = FALSE)
-    fq_samples <- sub("_1\\.fastq\\.gz$", "", fq_files)
+    fq_samples <- sub("_1\\.fastq\\.gz$", "",
+                      list.files(fastq_dir, pattern = "_1\\.fastq\\.gz$"))
     if (length(fq_samples) > 0) {
-        in_both    <- intersect(rownames(meta_df), fq_samples)
-        only_fq    <- setdiff(fq_samples, rownames(meta_df))
-        only_meta  <- setdiff(rownames(meta_df), fq_samples)
-        cat(sprintf("Sample ID validation: %d matched, %d FASTQ-only, %d metadata-only.\n",
-            length(in_both), length(only_fq), length(only_meta)))
-        if (length(only_fq) > 0) {
-            warning("FASTQ files with no metadata entry: ", paste(only_fq, collapse = ", "))
-        }
-        if (length(only_meta) > 0) {
-            cat(sprintf("  (%d metadata samples have no FASTQ yet — normal if data not fully downloaded)\n",
-                length(only_meta)))
-        }
-    } else {
-        cat("data/raw/fastq/ exists but no *_1.fastq.gz files found. Download data first.\n")
+        matched <- intersect(rownames(meta_df), fq_samples)
+        cat(sprintf("Matched %d / %d FASTQs to metadata\n",
+                    length(matched), length(fq_samples)))
+        unmatched <- setdiff(fq_samples, rownames(meta_df))
+        if (length(unmatched) > 0)
+            cat("Unmatched FASTQs:", paste(unmatched, collapse = ", "), "\n")
     }
-} else {
-    cat("data/raw/fastq/ not found; skipping FASTQ validation.\n")
-    cat("Re-run this script after downloading data to confirm Sample ID alignment.\n")
 }
 
 out_path <- file.path("data", "processed", "dada2", "metadata.csv")
 dir.create(dirname(out_path), recursive = TRUE, showWarnings = FALSE)
 write.csv(meta_df, file = out_path)
-cat("\nMetadata CSV saved to:", out_path, "\n")
-cat("Row names are SRR accession numbers and will match sample names produced by dada2_pipeline.R.\n")
+cat("\nSaved:", out_path, "\n")
+cat("Preview:\n")
+print(head(meta_df[, intersect(c("RunAccession","SampleAccession","RunTitle","Platform","Instrument"), colnames(meta_df))]))

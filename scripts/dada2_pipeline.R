@@ -112,9 +112,10 @@ write_reproducibility_manifest <- function(output_path, extra = list()) {
 fastq_files <- list.files(raw_dir)
 print(fastq_files)
 
-forward_reads <- sort(list.files(raw_dir, pattern = "_1\\.fastq$", full.names = TRUE))
-reverse_reads <- sort(list.files(raw_dir, pattern = "_2\\.fastq$", full.names = TRUE))
-
+path <- here::here("data", "raw", "fastq")
+forward_reads <- sort(list.files(path, pattern="_1\\.fastq\\.gz$", full.names=TRUE))
+reverse_reads <- sort(list.files(path, pattern="_2\\.fastq\\.gz$", full.names=TRUE))
+cat(length(forward_reads), "forward /", length(reverse_reads), "reverse\n")
 
 # ---- PRE-CHECKS ----
 # Basic checks to confirm files are found and paired correctly before processing
@@ -127,8 +128,8 @@ if (length(forward_reads) != length(reverse_reads)) {
 
 # Extract sample names by removing the read suffix and file extension;
 # these are used for naming all output files consistently
-sample_names <- sub("_1\\.fastq$", "", basename(forward_reads))
-reverse_sample_names <- sub("_2\\.fastq$", "", basename(reverse_reads))
+sample_names <- sub("_1\\.fastq\\.gz$", "", basename(forward_reads))
+reverse_sample_names <- sub("_2\\.fastq\\.gz$", "", basename(reverse_reads))
 
 # Extra guard: confirm forward/reverse sample order is aligned
 # sort() above should guarantee this, but explicit confirmation prevents silent mispairing
@@ -251,7 +252,7 @@ names(filtered_forward) <- sample_names
 names(filtered_reverse) <- sample_names
 
 # Windows requires multithread = FALSE for all DADA2 steps (no forking support)
-use_multithread <- FALSE
+use_multithread <- TRUE
 
 
 # =============================================================================
@@ -363,18 +364,14 @@ if (pipeline_mode == "cutadapt") {
     gsub("^([A-Za-z]):/", "/mnt/\\L\\1/", path, perl = TRUE)
   }
 
-  # Verify cutadapt is accessible before attempting to run the loop
-  cutadapt_version <- tryCatch(
-    system2("wsl", args = c("cutadapt", "--version"), stdout = TRUE, stderr = TRUE),
+cutadapt_version <- tryCatch(
+    system2("cutadapt", args = "--version", stdout = TRUE, stderr = TRUE),
     error = function(e) character(0)
-  )
-  if (length(cutadapt_version) == 0L || grepl("not found", cutadapt_version[1], ignore.case = TRUE)) {
-    stop(
-      "cutadapt not found via WSL. ",
-      "Install it in your WSL environment: pip install cutadapt"
-    )
-  }
-  cat("\ncutadapt version:", cutadapt_version[1], "\n")
+)
+
+if (length(cutadapt_version) == 0L || grepl("not found", cutadapt_version[1], ignore.case = TRUE)) {
+    stop("cutadapt not found. Install with: pip3 install cutadapt")
+}
 
   # Output directory for cutadapt-trimmed (but not yet quality-filtered) files
   cutadapt_dir <- here::here("data", "processed", "dada2_cutadapt")
@@ -410,6 +407,7 @@ if (pipeline_mode == "cutadapt") {
       R1.flags,
       R2.flags,
       "-n", "2", # Run adapter trimming twice to catch read-through amplicons
+        "-j", "20",
       "--discard-untrimmed", # Discard read pairs where the primer was NOT found
       "-o", fnFs.cut_wsl[i],
       "-p", fnRs.cut_wsl[i],
@@ -417,13 +415,12 @@ if (pipeline_mode == "cutadapt") {
       n_filtered_reverse_wsl[i]
     )
 
-    # Run cutadapt inside WSL; args start with the command 'cutadapt'
-    cmd_output <- system2(
-      "wsl",
-      args = cmd_args,
-      stdout = TRUE,
-      stderr = TRUE
-    )
+cmd_output <- system2(
+    "cutadapt",
+    args = cmd_args[-1],
+    stdout = TRUE,
+    stderr = TRUE
+)
 
     cutadapt_logs[[i]] <- paste(
       c(
@@ -638,10 +635,10 @@ print(sum(nonchim_sequence_table) / sum(v4_sequence_table))
 cat("\nFinal ASV table dimensions (samples x ASVs):\n")
 print(dim(nonchim_sequence_table))
 
-saveRDS(nonchim_sequence_table, file.path(filtered_dir, "ASV_table.rds"))
+saveRDS(nonchim_sequence_table, file.path(filtered_dir, "ASV_paired_end_table.rds"))
 
 # Mirror ASV table to outputs/
-safe_copy(file.path(filtered_dir, "ASV_table.rds"), file.path(outputs_dir, "ASV_table.rds"))
+safe_copy(file.path(filtered_dir, "ASV_paired_end_table.rds"), file.path(outputs_dir, "AASV_paired_end_table.rds"))
 
 
 # =============================================================================
@@ -696,37 +693,56 @@ safe_copy(file.path(filtered_dir, "tracking_table.rds"), file.path(outputs_dir, 
 # For species-level resolution, use addSpecies() with silva_species_assignment_v138.1.fa.gz
 # (separate download from the same Zenodo record).
 
+# Load the ASV table saved by the pipeline
+cat("Loading nonchim sequence table...\n")
+nonchim_sequence_table <- readRDS(file.path(filtered_dir, "ASV_paired_end_table.rds"))
+cat("ASV table dimensions:", dim(nonchim_sequence_table), "\n")
+
+# CORRECT reference file for assignTaxonomy
+reference_fasta <- here::here(
+  "data", "external", "reference",
+  "silva_nr99_v138.1_train_set.fa.gz"
+)
+
+species_fasta <- here::here(
+  "data", "external", "reference",
+  "silva_species_assignment_v138.1.fa.gz"
+)
+
+cat("Reference file:", reference_fasta, "\n")
+cat("File exists:", file.exists(reference_fasta), "\n")
+
+# Assign genus-level taxonomy
+cat("\nRunning assignTaxonomy (this takes 20-60 min for 72 samples)...\n")
 taxonomy <- assignTaxonomy(
   nonchim_sequence_table,
   reference_fasta,
-  multithread = use_multithread
+  multithread = TRUE
 )
+
+# Add species-level assignments
+cat("\nRunning addSpecies...\n")
+taxonomy <- addSpecies(taxonomy, species_fasta)
 
 taxonomy_preview <- taxonomy
 rownames(taxonomy_preview) <- NULL
 cat("\nTaxonomy preview (first 6 ASVs):\n")
 print(head(taxonomy_preview))
 
-# Save taxonomy - required for phyloseq and all downstream analysis
 saveRDS(taxonomy, file.path(filtered_dir, "taxonomy.rds"))
-
-# Mirror taxonomy to outputs/
 safe_copy(file.path(filtered_dir, "taxonomy.rds"), file.path(outputs_dir, "taxonomy.rds"))
+cat("\nTaxonomy saved successfully.\n")
 
-
-# =============================================================================
-# PIPELINE COMPLETE
-# =============================================================================
-cat("\n")
-cat("============================================\n")
+cat("\n============================================\n")
 cat("   PIPELINE COMPLETED SUCCESSFULLY!\n")
-cat("   Mode:", pipeline_mode, "\n")
 cat("============================================\n")
-cat("\nKey outputs saved in:", filtered_dir, "\n")
-cat("  1. ASV_table.rds               - abundance of each ASV per sample\n")
-cat("  2. taxonomy.rds                - taxonomic assignments (Kingdom to Species)\n")
-cat("  3. filtering_merged_output.rds - quality filtering statistics\n")
-cat("  4. tracking_table.rds          - read counts at each pipeline step\n")
+cat("\nKey outputs in:", filtered_dir, "\n")
+cat("  1. ASV_paired_end_table.rds\n")
+cat("  2. taxonomy.rds\n")
+cat("  3. tracking_table.rds\n")
+cat("\nNext steps:\n")
+cat("  Rscript scripts/phylogeny.R\n")
+cat("  Rscript scripts/alpha_beta_analysis.R\n")
 
 if (exists("cutadapt_version") && !is.na(cutadapt_version)) {
   cat("  5. cutadapt_run_log.txt        - cutadapt command/output log\n")
@@ -739,13 +755,6 @@ write_reproducibility_manifest(
     cutadapt_log_path = if (exists("cutadapt_dir")) file.path(cutadapt_dir, "cutadapt_run_log.txt") else NA_character_
   )
 )
-
-cat("\nNext steps:\n")
-cat("  - Load ASV table and taxonomy into phyloseq for diversity analysis\n")
-cat("  - Create bar plots of taxonomic composition\n")
-cat("  - Calculate alpha/beta diversity metrics\n")
-cat("  - Test for differential abundance between sample groups (DESeq2)\n")
-cat("\n")
 
 # =============================================================================
 # END OF PIPELINE

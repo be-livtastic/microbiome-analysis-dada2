@@ -176,7 +176,7 @@ if (!is.null(taxonomy_table)) {
 
     # Remove taxa without family assignment
     ps_family <- prune_taxa(
-        !is.na(tax_table(ps_family)[, "Family"]),
+        !is.na(as.vector(tax_table(ps_family)[, "Family"])),
         ps_family
     )
 
@@ -213,7 +213,7 @@ if (!is.null(taxonomy_table)) {
     ps_genus <- tax_glom(ps, taxrank = "Genus")
 
     ps_genus <- prune_taxa(
-        !is.na(tax_table(ps_genus)[, "Genus"]),
+        !is.na(as.vector(tax_table(ps_genus)[, "Genus"])),
         ps_genus
     )
 
