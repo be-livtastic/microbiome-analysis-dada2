@@ -4,6 +4,11 @@
 
 library(jsonlite)
 
+cat("\n============================================================\n")
+cat("   METADATA PROCESSING\n")
+cat("   Parses ffq JSON to sample-level CSV with SRR row names\n")
+cat("============================================================\n\n")
+
 json_path <- file.path("outputs", "qc", "ffq_prjna762524.json")
 if (!file.exists(json_path)) stop("JSON not found: ", json_path)
 

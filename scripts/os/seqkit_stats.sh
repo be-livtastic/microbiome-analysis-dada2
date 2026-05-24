@@ -5,6 +5,13 @@
 
 set -euo pipefail
 
+echo ""
+echo "============================================================"
+echo "   SEQKIT READ STATISTICS"
+echo "   Summarises read counts, lengths, GC%, N50 per FASTQ file"
+echo "============================================================"
+echo ""
+
 mkdir -p outputs/qc
 
 echo "Running seqkit stats on data/raw/fastq/*.fastq.gz ..."

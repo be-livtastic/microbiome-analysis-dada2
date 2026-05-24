@@ -4,6 +4,13 @@ set -euo pipefail
 
 cd "$(dirname "$0")/../.." # run from project root regardless of where called from
 
+echo ""
+echo "============================================================"
+echo "   FETCH METADATA"
+echo "   Downloads PRJNA762524 metadata from NCBI via ffq"
+echo "============================================================"
+echo ""
+
 if ! command -v ffq &>/dev/null; then
     echo "ffq not found; installing..."
     pip install ffq

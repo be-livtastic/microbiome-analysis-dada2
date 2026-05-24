@@ -2,6 +2,11 @@
 
 set.seed(1)
 
+cat("\n============================================================\n")
+cat("   PHYLOGENETIC TREE CONSTRUCTION\n")
+cat("   DECIPHER alignment · NJ tree · ML optimisation (GTR+G)\n")
+cat("============================================================\n\n")
+
 output_dir <- here::here("outputs", "phylogeny")
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 # Directory for figures (separate from tree objects/newick)
@@ -152,6 +157,7 @@ if (!is.na(analysis_input$taxonomy_path)) {
     cat("No matching taxonomy table was found; only the full circular ASV tree will be created.\n")
 }
 
+cat("   Step: Aligning ASV sequences (DECIPHER)...\n")
 # Align the ASV sequences before distance estimation and tree inference.
 aligned_asvs <- DECIPHER::AlignSeqs(asv_dna, processors = 1L)
 phang.alignment <- phangorn::phyDat(as(aligned_asvs, "matrix"), type = "DNA")
@@ -162,6 +168,7 @@ phang.alignment <- phangorn::phyDat(as(aligned_asvs, "matrix"), type = "DNA")
 asv_distance_matrix <- phangorn::dist.ml(phang.alignment, model = "JC69")
 saveRDS(asv_distance_matrix, file.path(output_dir, "asv_distance_matrix.rds"))
 
+cat("   Step: Building neighbor-joining starting tree...\n")
 # Build a neighbor-joining tree as a starting point for maximum likelihood optimization.
 nj_tree <- ape::nj(asv_distance_matrix)
 nj_tree$edge.length[nj_tree$edge.length < 0] <- 0 # NJ can produce negative branch lengths,
@@ -171,6 +178,7 @@ ape::write.tree(nj_tree, file = file.path(output_dir, "asv_tree_nj.newick"))
 # Save the NJ tree in Newick format for compatibility with other software.
 cat("Neighbor-joining tree constructed and saved.\n")
 
+cat("   Step: Optimising tree with maximum likelihood (GTR+G+I) — this may take a while...\n")
 # Refine the NJ tree with maximum likelihood using the aligned ASV sequences.
 cat("Starting maximum likelihood optimization of the tree. This may take a while...\n")
 fit_nj <- phangorn::pml(nj_tree, data = phang.alignment)

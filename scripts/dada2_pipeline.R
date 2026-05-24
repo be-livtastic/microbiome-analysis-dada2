@@ -4,6 +4,12 @@
 # Any random operations (e.g., pseudo-pooling) will give same results each run
 set.seed(1)
 
+cat("\n============================================================\n")
+cat("   DADA2 PAIRED-END AMPLICON PIPELINE\n")
+cat("   16S rRNA V4 · Okwelogu et al. (2021) · PRJNA762524\n")
+cat("============================================================\n")
+cat("   Step: Loading packages and configuring paths...\n\n")
+
 required_packages <- c(
   "dada2",
   "ShortRead",
@@ -59,6 +65,7 @@ filtered_dir <- here::here("data", "processed", "dada2")
 # Public outputs directory (mirror important results here for easy access)
 outputs_dir <- here::here("outputs")
 dir.create(outputs_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(file.path(outputs_dir, "figures"), recursive = TRUE, showWarnings = FALSE)
 
 # Helper to copy outputs and fail loudly if a copy fails
 safe_copy <- function(src, dst, overwrite = TRUE) {
@@ -108,6 +115,7 @@ write_reproducibility_manifest <- function(output_path, extra = list()) {
 # =============================================================================
 # DISCOVER AND PAIR FASTQ FILES
 # =============================================================================
+cat("   Step: Discovering and pairing FASTQ files...\n\n")
 
 fastq_files <- list.files(raw_dir)
 print(fastq_files)
@@ -173,8 +181,15 @@ primer_hits <- function(primer, fastq_file) {
 
 
 # Quality profiles drive the trimming decision, so inspect a few samples first.
+cat("\n   Step: Plotting raw read quality profiles...\n")
+pdf(file.path(outputs_dir, "figures", "quality_profiles_raw_forward.pdf"), width = 10, height = 6)
 plot_quality_profiles(forward_reads)
+dev.off()
+pdf(file.path(outputs_dir, "figures", "quality_profiles_raw_reverse.pdf"), width = 10, height = 6)
 plot_quality_profiles(reverse_reads)
+dev.off()
+cat("   -> outputs/figures/quality_profiles_raw_forward.pdf\n")
+cat("   -> outputs/figures/quality_profiles_raw_reverse.pdf\n")
 
 # Before filtering, confirm that forward and reverse reads are not identical (they should be different - sequencing from opposite ends).
 raw_forward_fastq <- readFastq(forward_reads[[1]])
@@ -230,6 +245,7 @@ allOrients <- function(primer) {
   return(sapply(orients, toString)) # Convert back to character vector for printing / pattern matching
 }
 
+cat("\n   Step: Checking primer orientations...\n")
 FWD.orients <- allOrients(FWD_primer)
 REV.orients <- allOrients(REV_primer)
 cat("Forward primer orientations:\n")
@@ -259,6 +275,7 @@ use_multithread <- TRUE
 # PIPELINE BRANCH A: STANDARD MODE
 # Primer removal via trimLeft inside filterAndTrim
 # =============================================================================
+cat("\n   Step: Quality filtering and trimming (pipeline mode:", pipeline_mode, ")...\n")
 if (pipeline_mode == "standard") {
   cat("\n--- Running STANDARD pipeline (trimLeft primer removal) ---\n\n")
 
@@ -507,7 +524,7 @@ print(filtered_forward_summary$length_distribution)
 # Important: learnErrors uses a random subset of reads to build the model.
 # Always rerun this step if you change filtering settings above.
 
-cat("\nLearning error rates from filtered reads...\n")
+cat("\n   Step: Learning error rates (DADA2 error model)...\n")
 cat("(This step examines many reads to build the error model - be patient)\n\n")
 
 err_forward <- learnErrors(reads_for_dada_F, multithread = use_multithread)
@@ -519,12 +536,20 @@ err_reverse <- learnErrors(reads_for_dada_R, multithread = use_multithread)
 #   Red line   = expected error rates based purely on Q-scores
 # A good fit confirms the error model has learned the run's characteristics.
 # If dots diverge badly from the line, the error model is unreliable - check input read quality.
+cat("\n   Saving error model diagnostic plots...\n")
+pdf(file.path(outputs_dir, "figures", "error_model_forward.pdf"), width = 10, height = 8)
 print(plotErrors(err_forward, nominalQ = TRUE))
+dev.off()
+pdf(file.path(outputs_dir, "figures", "error_model_reverse.pdf"), width = 10, height = 8)
 print(plotErrors(err_reverse, nominalQ = TRUE))
+dev.off()
+cat("   -> outputs/figures/error_model_forward.pdf\n")
+cat("   -> outputs/figures/error_model_reverse.pdf\n")
+
 saveRDS(plotErrors(err_forward, nominalQ = TRUE), file.path(filtered_dir, "err_forward.rds"))
 saveRDS(plotErrors(err_reverse, nominalQ = TRUE), file.path(filtered_dir, "err_reverse.rds"))
 
-# Mirror error plots to outputs/ for quick access
+# Mirror error plot objects to outputs/ for quick access
 safe_copy(file.path(filtered_dir, "err_forward.rds"), file.path(outputs_dir, "err_forward.rds"))
 safe_copy(file.path(filtered_dir, "err_reverse.rds"), file.path(outputs_dir, "err_reverse.rds"))
 
@@ -542,7 +567,8 @@ safe_copy(file.path(filtered_dir, "err_reverse.rds"), file.path(outputs_dir, "er
 # For reproductive microbiome work where clinically relevant taxa (e.g., Ureaplasma)
 # may appear rarely, pseudo-pooling is the correct default.
 
-cat("\nRunning DADA2 algorithm on forward reads...\n")
+cat("\n   Step: Running DADA2 denoising algorithm...\n")
+cat("Running DADA2 algorithm on forward reads...\n")
 dada_forward <- dada(
   reads_for_dada_F,
   err         = err_forward,
@@ -578,6 +604,7 @@ print(dada_forward[[1]])
 #      NCBI SRA's fastq-dump can corrupt read orientation for some datasets.
 #      ENA downloads preserve the original submitted orientation.
 
+cat("\n   Step: Merging paired-end reads...\n")
 mergers <- mergePairs(
   dada_forward, reads_for_dada_F,
   dada_reverse, reads_for_dada_R,
@@ -622,6 +649,7 @@ cat(
 # fully removed before constructing the sequence table - residual primers are a
 # common cause of inflated chimera rates.
 
+cat("\n   Step: Removing chimeric sequences...\n")
 nonchim_sequence_table <- removeBimeraDenovo(
   v4_sequence_table,
   method      = "consensus",
@@ -638,7 +666,7 @@ print(dim(nonchim_sequence_table))
 saveRDS(nonchim_sequence_table, file.path(filtered_dir, "ASV_paired_end_table.rds"))
 
 # Mirror ASV table to outputs/
-safe_copy(file.path(filtered_dir, "ASV_paired_end_table.rds"), file.path(outputs_dir, "AASV_paired_end_table.rds"))
+safe_copy(file.path(filtered_dir, "ASV_paired_end_table.rds"), file.path(outputs_dir, "ASV_paired_end_table.rds"))
 
 
 # =============================================================================
@@ -693,6 +721,7 @@ safe_copy(file.path(filtered_dir, "tracking_table.rds"), file.path(outputs_dir, 
 # For species-level resolution, use addSpecies() with silva_species_assignment_v138.1.fa.gz
 # (separate download from the same Zenodo record).
 
+cat("\n   Step: Assigning taxonomy via SILVA v138.1 (20–60 min)...\n")
 # Load the ASV table saved by the pipeline
 cat("Loading nonchim sequence table...\n")
 nonchim_sequence_table <- readRDS(file.path(filtered_dir, "ASV_paired_end_table.rds"))

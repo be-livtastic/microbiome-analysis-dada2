@@ -39,13 +39,15 @@ if (!requireNamespace("BiocManager", quietly = TRUE)) {
 cat("\n--- Checking Bioconductor packages ---\n")
 
 bioc_packages <- c(
-  "dada2", # Core: 16S amplicon analysis pipeline
-  "phyloseq", # Microbiome data visualization and analysis
-  "DECIPHER", # DNA sequence alignment and tree building
-  "Biostrings", # DNA/RNA/protein sequence manipulation
-  "ShortRead", # FASTQ file reading and quality control
-  "phangorn", # Phylogenetic tree construction and analysis
-  "ggtree" # Tree visualization (Bioconductor)
+  "dada2",          # Core: 16S amplicon analysis pipeline
+  "phyloseq",       # Microbiome data visualization and analysis
+  "DECIPHER",       # DNA sequence alignment and tree building
+  "Biostrings",     # DNA/RNA/protein sequence manipulation
+  "ShortRead",      # FASTQ file reading and quality control
+  "phangorn",       # Phylogenetic tree construction and analysis
+  "ggtree",         # Tree visualization (Bioconductor)
+  "ComplexHeatmap", # Advanced heatmap visualisation (alpha_beta_visualisation.R)
+  "microbiome"      # Microbiome-specific utilities: composition, core taxa, prevalence
 )
 
 # What each package does:
@@ -54,6 +56,8 @@ bioc_packages <- c(
 # - DECIPHER: Aligns 16S sequences, builds phylogenetic trees
 # - Biostrings: Handles DNA sequence objects in R
 # - ShortRead: Reads FASTQ files, calculates quality metrics
+# - ComplexHeatmap: High-quality clustered heatmaps used in diversity visualisation
+# - microbiome: Convenience functions for microbiome data (composition, prevalence)
 
 install_missing(bioc_packages, function(pkgs) {
   BiocManager::install(pkgs, ask = FALSE, update = FALSE)
@@ -82,7 +86,8 @@ cat("\n=== Installation Complete! ===\n\n")
 cat("Verifying core packages can be loaded...\n")
 
 # Test that critical packages load without errors
-test_packages <- c("dada2", "phyloseq", "ggplot2", "here")
+test_packages <- c("dada2", "phyloseq", "ggplot2", "here",
+                   "ggtree", "ComplexHeatmap", "microbiome", "vegan")
 test_results <- sapply(test_packages, function(pkg) {
   result <- tryCatch(
     {

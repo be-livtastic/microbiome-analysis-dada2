@@ -7,6 +7,11 @@ library(ShortRead) # FASTQ file inspection
 library(Biostrings) # DNA sequence manipulation
 library(here) # Portable file paths
 
+cat("\n============================================================\n")
+cat("   PIPELINE TROUBLESHOOTING & DIAGNOSTICS\n")
+cat("   Run this script after dada2_pipeline.R to diagnose issues\n")
+cat("============================================================\n\n")
+
 # ---- SETUP ----
 project_dir <- here::here()
 
@@ -17,7 +22,7 @@ silva_genus_reference <- here::here(
 )
 silva_species_reference <- here::here(
     "data", "external", "reference",
-    "silva_nr99_v138.1_wSpecies_train_set.fa.gz"
+    "silva_species_assignment_v138.1.fa.gz"
 )
 
 # ---- CHECK FOR REQUIRED OBJECTS ----

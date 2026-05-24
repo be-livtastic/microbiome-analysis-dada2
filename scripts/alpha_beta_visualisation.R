@@ -2,6 +2,10 @@
 options(warn = 1)
 set.seed(1)
 
+cat("\n============================================================\n")
+cat("   ALPHA & BETA DIVERSITY VISUALISATION\n")
+cat("   Boxplots · Taxonomic barplots · PCoA · NMDS · Heatmap\n")
+cat("============================================================\n\n")
 cat("Starting alpha and beta diversity visualisation workflow...\n")
 
 choose_file <- function(cands) {
@@ -29,9 +33,7 @@ dir.create(out_alpha_dir, recursive=TRUE, showWarnings=FALSE)
 
 asv_path <- choose_file(c(
     file.path("data","processed","dada2","ASV_paired_end_table.rds"),
-    file.path("data","processed","dada2","ASV_table.rds"),
-    file.path("outputs","ASV_paired_end_table.rds"),
-    file.path("outputs","ASV_table.rds")))
+    file.path("outputs","ASV_paired_end_table.rds")))
 tax_path <- choose_file(c(
     file.path("data","processed","dada2","taxonomy.rds"),
     file.path("outputs","taxonomy.rds")))

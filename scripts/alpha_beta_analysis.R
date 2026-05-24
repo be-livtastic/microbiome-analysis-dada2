@@ -6,6 +6,10 @@
 options(warn = 1)
 set.seed(1)
 
+cat("\n============================================================\n")
+cat("   ALPHA & BETA DIVERSITY ANALYSIS\n")
+cat("   Shannon · Simpson · Hill numbers · PCoA · PERMANOVA\n")
+cat("============================================================\n\n")
 cat("Starting alpha and beta diversity analysis pipeline...\n")
 
 # Helper: choose the first existing file from candidates
